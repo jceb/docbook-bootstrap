@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: ft=docbk:tw=80:sw=4:ts=4:noet
+-->
+<!--
+  Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
+
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+
+<!-- if you are compiling with SaxonHE, make sure to remove the docbook namespace -->
+<!-- from this document! http://stackoverflow.com/questions/2141278/exslt-org-extensions -->
+<!-- Otherwise, if you have a license of SaxonPE, you can use it as well -->
+<article xml:lang="en" version='5.0'
+	xmlns='http://docbook.org/ns/docbook'
+	xmlns:xi="http://www.w3.org/2001/XInclude"
+	xmlns:xlink="http://www.w3.org/1999/xlink"
+	class='whitepaper'>
+	<!--class='faq|journalarticle|productsheet|specification|techreport|whitepaper'-->
+	<info>
+		<title></title>
+		<!--<subtitle>My Article</subtitle>-->
+		<!--<titleabbrev>Abbr title</titleabbrev>-->
+		<author>
+			<personname>
+				<!--<honorific>Dr</honorific>-->
+				<firstname>FIRSTNAME</firstname>
+				<surname>LASTNAME</surname>
+			</personname>
+			<address>
+				<email>EMAIL</email>
+				<phone>PHONE</phone>
+				<!--<fax>FAX</fax>-->
+				<street>STREET</street>
+				<postcode>ZIP</postcode>
+				<city>CITY</city>
+				<state>STATE</state>
+				<country>COUNTRY</country>
+			</address>
+		</author>
+		<!--<artpagenums>33-40</artpagenums>-->
+		<!--<volumenum>13</volumenum>-->
+		<!--<issuenum>3</issuenum>-->
+		<!--<publisher><publishername>publisher</publishername></publisher>-->
+		<!--<pudate>1994</pudate>-->
+	</info>
+	<!--Include section from a file on your harddrive-->
+	<!--<xi:include href="section.xml" />-->
+	<section xml:id='section1'>
+		<title>TITLE</title>
+		<para>
+			<!-- Image inclusion -->
+			<!--<mediaobject>-->
+				<!--<imageobject>-->
+					<!--<imagedata fileref="figures/example.svg" format="svg" />-->
+				<!--</imageobject>-->
+			<!--</mediaobject>-->
+	</para>
+	</section>
+	<!--<bibliography>-->
+		<!--<title></title>-->
+		<!--<biblioentry xml:id="" xreflabel="">-->
+			<!--<abbrev></abbrev>-->
+			<!--<orgname></orgname>-->
+			<!--<authorgroup>-->
+				<!--<author><personname>-->
+						<!--<firstname></firstname><surname></surname>-->
+				<!--</personname></author>-->
+			<!--</authorgroup>-->
+			<!--<copyright><year></year>-->
+				<!--<holder></holder></copyright>-->
+			<!--<editor><personname>-->
+					<!--<firstname></firstname><surname></surname>-->
+			<!--</personname></editor>-->
+			<!--<biblioid class="isbn"></biblioid>-->
+			<!--<publisher>-->
+				<!--<publishername></publishername>-->
+			<!--</publisher>-->
+			<!--<title></title>-->
+			<!--<bibliosource class="uri">-->
+				<!--<link xlink:href="" />-->
+			<!--</bibliosource>-->
+		<!--</biblioentry>-->
+	<!--</bibliography>-->
+</article>

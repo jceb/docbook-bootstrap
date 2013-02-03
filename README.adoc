@@ -1,0 +1,53 @@
+Purpose
+-------
+Setting up a DocBook build environment seems to be extra difficult and
+cumbersome.  The goal of this project is to create a platform
+independent, easy to depoly environment that brings you to the core
+tasks of getting started with THE document within seconds.
+
+.Objectives
+- Incorate all the wisdom and hints from
+  http://www.docbook.org/tdg51/en/html/
+- Be platform independent -> embrace the Java eco-system as much as
+  possible
+- Make building DocBook documents a breeze
+
+Setup
+-----
+0. Get all the additional software (see section Additional Software).
+   Hopefully, you've to do this just once (in a while).
+1. Copy a DocBook template from templates into the root directory
+2. The file build.properties holds the general settings for building a
+   DocBook file.  Platform specific values are stored in the
+   build.properties.PLATFORM files.  The one thing you have to customize
+   is the filename of your main DocBook file:
+   build.properties -> main.file
+   - Customization of stylesheets is possible, check out
+   	 stylesheets/fo/docbook.xsl
+3. Start writing your document
+
+Build Tasks / Functionatlity
+----------------------------
+Run the following tasks the create the desired output
+format, e.g. "ant pdf".  All output is stored it the directory "build",
+it's customizable throught the variable "output.dir":
+
+pdf           : create PDF output (default task)
+epub          : create EPUB output
+epub3         : create EPUB3 output
+xhtml         : create XHTML output
+xhtmlchunk    : create chunked XHTML output
+xhtml5        : create XHTML5 output
+xhtml5chunk   : create chunked XHTML5 output
+validate      : validates the DocBook document
+clean         : delete all dynamically created files/the "out" directory
+test          : execute all creation tasks one after the other
+
+Additional software
+-------------------
+Make sure you have a working Java/Ant setup: https://www.java.com/,
+http://ant.apache.org
+
+In addition you need the software listed in file lib/README.
+
+// vi: ft=asciidoc:tw=72:sw=2:ts=4

@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: ft=ant:tw=80:sw=4:ts=4:et
+-->
+<!--
+  Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
+
+  Licensed to the Apache Software Foundation (ASF) under one
+  or more contributor license agreements.  See the NOTICE file
+  distributed with this work for additional information
+  regarding copyright ownership.  The ASF licenses this file
+  to you under the Apache License, Version 2.0 (the
+  "License"); you may not use this file except in compliance
+  with the License.  You may obtain a copy of the License at
+
+  http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing,
+  software distributed under the License is distributed on an
+  "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+  KIND, either express or implied.  See the License for the
+  specific language governing permissions and limitations
+  under the License.
+-->
+<project name="docbook" default="default">
+    <!-- ant contrib tasks -->
+    <taskdef resource="net/sf/antcontrib/antcontrib.properties">
+      <classpath>
+        <pathelement location="lib/ant-contrib/ant-contrib-1.0b3.jar"/>
+      </classpath>
+    </taskdef>
+
+    <!-- ########## -->
+    <!-- Properties -->
+    <!-- ########## -->
+    <condition property="os" value="windows">
+        <os family="windows" />
+    </condition>
+    <condition property="os" value="unix">
+        <os family="unix" />
+    </condition>
+    <condition property="os" value="mac">
+        <os family="mac" />
+    </condition>
+
+    <!-- Platform specific properties take precedence over the general properties -->
+    <property file="build.properties.${os}" />
+
+    <!-- General properties -->
+    <property file="build.properties" />
+
+    <!-- ##### -->
+    <!-- Tasks -->
+    <!-- ##### -->
+
+    <!-- none -->
+
+    <!-- Filename of main file without suffix -->
+    <basename property='main.file.docbook.name' file='${main.file}' suffix='${main.file.suffix}' />
+
+    <xmlcatalog id="allcatalogs">
+        <catalogpath>
+            <pathelement location="${docbookxsl.dir}/catalog.xml" />
+        </catalogpath>
+    </xmlcatalog>
+
+    <!-- ############## -->
+    <!-- Public Targets -->
+    <!-- ############## -->
+    <target name="default" depends='pdf'>
+    </target>
+
+    <target name="test" depends="pdf,epub,epub3,xhtml,xhtmlchunk,xhtml5,xhtml5chunk">
+    </target>
+
+    <target name="clean">
+        <!-- delete output directory -->
+        <delete dir="${output.dir}" />
+    </target>
+
+    <target name="validate" depends="todocbook" unless='novalidation'>
+        <!-- validate DocBook file -->
+        <java jar="${validate.jar}" fork='true' failonerror='true'>
+            <jvmarg value='${validate.jvmarg}' />
+            <arg value='${docbook.rng}' />
+            <arg value='${main.file.docbook}' />
+        </java>
+    </target>
+
+    <target name="pdf" depends='fo' description="Create PDF output">
+        <if>
+            <and>
+                <isset property="fop.config" />
+                <length string="${fop.config}" when="greater" length="0" trim="true" />
+            </and>
+            <then>
+                <exec executable="${fop.exe}">
+                    <env key="FOP_HYPHENATION_PATH" value="${hyphenation.jar}" />
+                    <arg line="--noconfig" />
+                    <arg line="-c" />
+                    <arg line="${fop.config}" />
+                    <arg line="${output.dir}/${main.file.docbook.name}.fo" />
+                    <arg line="${output.dir}/${main.file.docbook.name}.pdf" />
+                </exec>
+            </then>
+            <else>
+                <then>
+                    <exec executable="${fop.exe}">
+                        <env key="FOP_HYPHENATION_PATH" value="${hyphenation.jar}" />
+                        <arg line="--noconfig" />
+                        <arg line="${output.dir}/${main.file.docbook.name}.fo" />
+                        <arg line="${output.dir}/${main.file.docbook.name}.pdf" />
+                    </exec>
+                </then>
+            </else>
+        </if>
+    </target>
+
+    <target name="epub" depends='todocbook,validate,clean' description="Translate document to EPUB">
+        <antcall target="convert">
+            <param name="stylesheet" value="${epub.stylesheet}"/>
+            <param name="main.file.output" value="${output.dir}/"/>
+        </antcall>
+        <echo message="application/epub+zip" file="${output.dir}/mimetype"/>
+        <zip destfile="${output.dir}/${main.file.docbook.name}.epub" compress="false">
+            <fileset dir="${output.dir}" includes="mimetype" />
+            <fileset dir="${output.dir}" includes="META-INF/**"/>
+            <fileset dir="${output.dir}" includes="OEBPS/**"/>
+        </zip>
+        <!--currently, updating the epub file using the below statement corrupts
+        the epub file.  As long as this doesn't work, compression for epub is
+        not supported .. :-/ -->
+        <!--<zip destfile="${output.dir}/${main.file.docbook.name}.epub" update="true" level="9" keepcompression="true">-->
+            <!--<fileset dir="${output.dir}" includes="META-INF/**"/>-->
+            <!--<fileset dir="${output.dir}" includes="OEBPS/**"/>-->
+        <!--</zip>-->
+    </target>
+
+    <target name="epub3" depends='todocbook,validate,clean' description="Translate document to EPUB3">
+        <antcall target="convert">
+            <param name="stylesheet" value="${epub3.stylesheet}"/>
+            <param name="base.dir" value="${output.dir}/OEBPS/"/>
+        </antcall>
+        <zip destfile="${output.dir}/${main.file.docbook.name}.epub" compress="false">
+            <fileset dir="${output.dir}" includes="mimetype" />
+            <fileset dir="${output.dir}" includes="META-INF/**"/>
+            <fileset dir="${output.dir}" includes="OEBPS/**"/>
+        </zip>
+        <!--currently, updating the epub file using the below statement corrupts
+        the epub file.  As long as this doesn't work, compression for epub is
+        not supported .. :-/ -->
+        <!--<zip destfile="${output.dir}/${main.file.docbook.name}.epub" update="true" level="9" keepcompression="true">-->
+            <!--<fileset dir="${output.dir}" includes="META-INF/**"/>-->
+            <!--<fileset dir="${output.dir}" includes="OEBPS/**"/>-->
+        <!--</zip>-->
+    </target>
+
+    <target name="xhtml" depends='todocbook,validate' description="Translate document to XHMTL">
+        <antcall target="convert">
+            <param name="stylesheet" value="${xhtml.stylesheet}"/>
+            <param name="main.file.output" value="${output.dir}/${main.file.docbook.name}.html"/>
+        </antcall>
+    </target>
+
+    <target name="xhtmlchunk" depends='todocbook,validate' description="Translate document to XHMTL chunked output">
+        <antcall target="convert">
+            <param name="stylesheet" value="${xhtmlchunk.stylesheet}"/>
+            <param name="base.dir" value="${output.dir}/"/>
+        </antcall>
+    </target>
+    <target name="xhtml5" depends='todocbook,validate' description="Translate document to XHMTL">
+        <antcall target="convert">
+            <param name="stylesheet" value="${xhtml5.stylesheet}"/>
+            <param name="main.file.output" value="${output.dir}/${main.file.docbook.name}.xhtml"/>
+        </antcall>
+    </target>
+
+    <target name="xhtml5chunk" depends='todocbook,validate' description="Translate document to XHMTL chunked output">
+        <antcall target="convert">
+            <param name="stylesheet" value="${xhtml5chunk.stylesheet}"/>
+            <param name="base.dir" value="${output.dir}/"/>
+        </antcall>
+    </target>
+
+    <target name="fo" depends='todocbook,validate' description="Translate document to fo">
+        <antcall target="convert">
+            <param name="stylesheet" value="${fo.stylesheet}"/>
+            <param name="main.file.output" value="${output.dir}/${main.file.docbook.name}.fo"/>
+        </antcall>
+    </target>
+
+
+    <!-- ########################################## -->
+    <!-- Private Targets (don't call them directly) -->
+    <!-- ########################################## -->
+    <target name="output" description="Create output directory structure">
+        <mkdir dir='${output.dir}' />
+    </target>
+
+    <target name="convert" description="Convert DocBook document into a new format">
+        <!-- Parmeters:
+        main.file.docbook # the DocBook file/document to convert
+        main.file.output # full path to the output file
+        stylesheet # the stylesheet used to convert the document
+        -->
+        <if>
+            <and>
+                <isset property="xsltproc.exe" />
+                <length string="${xsltproc.exe}" when="greater" length="0" trim="true" />
+            </and>
+            <then>
+                <if>
+                    <isset property="base.dir" />
+                    <then>
+                        <!--epub3 workaround - it needs a directory and no output filename!-->
+                        <exec executable="${xsltproc.exe}">
+                            <arg line="--xinclude" />
+                            <arg line="--stringparam" />
+                            <arg line="base.dir" />
+                            <arg line="${base.dir}" />
+                            <arg line="${stylesheet}" />
+                            <arg line="${main.file.docbook}" />
+                        </exec>
+                    </then>
+                    <else>
+                        <exec executable="${xsltproc.exe}">
+                            <arg line="--xinclude" />
+                            <arg line="--output" />
+                            <arg line="${main.file.output}" />
+                            <arg line="${stylesheet}" />
+                            <arg line="${main.file.docbook}" />
+                        </exec>
+                    </else>
+                </if>
+            </then>
+            <elseif>
+                <and>
+                    <isset property="xslt.jar" />
+                    <length string="${xslt.jar}" when="greater" length="0" trim="true" />
+                </and>
+                <then>
+                    <if>
+                        <isset property="base.dir" />
+                        <then>
+                            <!--epub3 workaround - it needs a directory and no output filename!-->
+                            <xslt in="${main.file.docbook}"
+                                style="${stylesheet}" force="true">
+                                <classpath path="${xslt.jar}" />
+                                <param name="base.dir" expression="${base.dir}" />
+                            </xslt>
+                        </then>
+                        <else>
+                            <xslt in="${main.file.docbook}" out="${main.file.output}"
+                                style="${stylesheet}" force="true">
+                                <classpath path="${xslt.jar}" />
+                            </xslt>
+                        </else>
+                    </if>
+                </then>
+            </elseif>
+            <else>
+                <fail message="Neither xsltproc.exe nor xslt.jar were specified." />
+            </else>
+        </if>
+    </target>
+
+    <!-- ################# -->
+    <!-- Format conversion -->
+    <!-- ################# -->
+    <target name="todocbook" depends="output" description="Transforms different
+        file formats to docbook so that they can be processed later on.  Feel
+        free to add more transformations here">
+        <if>
+            <!-- insert other formats here -->
+            <equals arg1="${main.file.format}" arg2="asciidoc" />
+            <then>
+                <antcallback target="convert_asciidoc" return="main.file.docbook" />
+            </then>
+            <else>
+                <antcallback target="convert_docbook" return="main.file.docbook" />
+            </else>
+        </if>
+    </target>
+
+    <target name="convert_asciidoc">
+        <property name="main.file.docbook" value="${output.dir}/${main.file.docbook.name}.xml" />
+        <exec executable="${asciidoc.exe}">
+            <arg value="--backend=docbook" />
+            <arg value="--out-file=${main.file.docbook}" />
+            <arg value="${main.file}" />
+        </exec>
+    </target>
+
+    <target name="convert_docbook">
+        <property name="main.file.docbook" value="${main.file}" />
+    </target>
+</project>

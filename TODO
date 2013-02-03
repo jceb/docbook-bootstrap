@@ -1,0 +1,6 @@
+- read this (http://wiki.apache.org/ant/TheElementsOfAntStyle) again and apply it to the build file
+- read this (http://www.dpawson.co.uk/docbook/ant.html) again and apply it to the build file
+- always the startingpoint of any search (http://docbook.sourceforge.net/)
+- find good stylesheets for pdf and xhtml output
+- try compiling a larger project with this build file
+- add usage target that prints usage information
