@@ -1,5 +1,5 @@
-Purpose
--------
+= DocBook Bootstrap
+== Purpose
 Setting up a DocBook build environment seems to be extra difficult and
 cumbersome.  The goal of this project is to create a platform
 independent, easy to depoly environment that brings you to the core
@@ -12,8 +12,7 @@ tasks of getting started with THE document within seconds.
   possible
 - Make building DocBook documents a breeze
 
-Setup
------
+== Setup
 0. Get all the additional software (see section Additional Software).
    Hopefully, you've to do this just once (in a while).
 1. Copy a DocBook template from templates into the root directory
@@ -26,8 +25,9 @@ Setup
    	 stylesheets/fo/docbook.xsl
 3. Start writing your document
 
-Build Tasks / Functionatlity
-----------------------------
+== Usage
+
+=== Build Tasks
 Run the following tasks the create the desired output
 format, e.g. "ant pdf".  All output is stored it the directory "build",
 it's customizable throught the variable "output.dir":
@@ -43,8 +43,29 @@ validate      : validates the DocBook document
 clean         : delete all dynamically created files/the "out" directory
 test          : execute all creation tasks one after the other
 
-Additional software
--------------------
+=== Input Formats
+It's also possible to convert files in the Asciidoc format to DocBook
+and than to the different output formats.  Set property
+`main.file.format` to `asciidoc` and change `main.file.suffix` to the
+suffix of the input file - it's necessary because there doesn't seem to
+be way to figure this out using Ant.
+
+=== Examples
+.Convert any DocBook file to PDF without editing build.properties
+This takes advantage of ant's ability to specify properties on the
+commmand line.
+
+`ant -Dmain.file=myfile.xml pdf`
+
+.Convert this Asciidoc file to PDF
+Actually, it doesn't work yet!  The reason is that Asciidoc doesn't ship
+a DocBook 5 backend.  When you run this command, you can take the
+resulting DocBook file (build/README.xml) and tweak it to make compile
+properly.
+
+`ant -Dmain.file=README.adoc -Dmain.file.format=asciidoc -Dmain.file.suffix=adoc pdf`
+
+== Additional software
 Make sure you have a working Java/Ant setup: https://www.java.com/,
 http://ant.apache.org
 
