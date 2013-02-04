@@ -77,6 +77,11 @@
         <delete dir="${output.dir}" />
     </target>
 
+    <target name="cleanepub">
+        <delete dir="${output.dir}/META-INF/" />
+        <delete dir="${output.dir}/OEBPS/" />
+    </target>
+
     <target name="validate" depends="todocbook" unless='novalidation'>
         <!-- validate DocBook file -->
         <java jar="${validate.jar}" fork='true' failonerror='true'>
@@ -115,12 +120,16 @@
         </if>
     </target>
 
-    <target name="epub" depends='todocbook,validate,clean' description="Translate document to EPUB">
+    <target name="epub" depends='epub2' description="Translate document to EPUB" />
+
+    <target name="epub2" depends='cleanepub,todocbook,validate' description="Translate document to EPUB">
         <antcall target="convert">
             <param name="stylesheet" value="${epub.stylesheet}"/>
-            <param name="main.file.output" value="${output.dir}/"/>
+            <param name="main.file.output" value="${output.dir}/${main.file.docbook.name}.epub"/>
         </antcall>
+        <!--create mimetype file-->
         <echo message="application/epub+zip" file="${output.dir}/mimetype"/>
+        <!--build epub file-->
         <zip destfile="${output.dir}/${main.file.docbook.name}.epub" compress="false">
             <fileset dir="${output.dir}" includes="mimetype" />
             <fileset dir="${output.dir}" includes="META-INF/**"/>
@@ -135,11 +144,12 @@
         <!--</zip>-->
     </target>
 
-    <target name="epub3" depends='todocbook,validate,clean' description="Translate document to EPUB3">
+    <target name="epub3" depends='cleanepub,todocbook,validate' description="Translate document to EPUB3">
         <antcall target="convert">
             <param name="stylesheet" value="${epub3.stylesheet}"/>
             <param name="base.dir" value="${output.dir}/OEBPS/"/>
         </antcall>
+        <!--build epub file-->
         <zip destfile="${output.dir}/${main.file.docbook.name}.epub" compress="false">
             <fileset dir="${output.dir}" includes="mimetype" />
             <fileset dir="${output.dir}" includes="META-INF/**"/>
@@ -200,6 +210,8 @@
         <!-- Parmeters:
         main.file.docbook # the DocBook file/document to convert
         main.file.output # full path to the output file
+        base.dir # if specified, main.file.output is ignored - this is useful
+                 # for any chunked output formats like XHTML chunked, epub, aso.
         stylesheet # the stylesheet used to convert the document
         -->
         <if>
@@ -242,15 +254,13 @@
                         <isset property="base.dir" />
                         <then>
                             <!--epub3 workaround - it needs a directory and no output filename!-->
-                            <xslt in="${main.file.docbook}"
-                                style="${stylesheet}" force="true">
+                            <xslt in="${main.file.docbook}" destdir="${base.dir}" style="${stylesheet}" force="true">
                                 <classpath path="${xslt.jar}" />
                                 <param name="base.dir" expression="${base.dir}" />
                             </xslt>
                         </then>
                         <else>
-                            <xslt in="${main.file.docbook}" out="${main.file.output}"
-                                style="${stylesheet}" force="true">
+                            <xslt in="${main.file.docbook}" out="${main.file.output}" style="${stylesheet}" force="true">
                                 <classpath path="${xslt.jar}" />
                             </xslt>
                         </else>
