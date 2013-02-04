@@ -20,7 +20,7 @@ tasks of getting started with THE document within seconds.
    DocBook file.  Platform specific values are stored in the
    build.properties.PLATFORM files.  The one thing you have to customize
    is the filename of your main DocBook file:
-   build.properties -> main.file
+   build.properties -> file
    - Customization of stylesheets is possible, check out
    	 stylesheets/fo/docbook.xsl
 3. Start writing your document
@@ -46,7 +46,7 @@ test          : execute all creation tasks one after the other
 === Input Formats
 It's also possible to convert files in the Asciidoc format to DocBook
 and than to the different output formats.  Set property
-`main.file.format` to `asciidoc` and change `main.file.suffix` to the
+`file.format` to `asciidoc` and change `file.suffix` to the
 suffix of the input file - it's necessary because there doesn't seem to
 be way to figure this out using Ant.
 
@@ -55,7 +55,7 @@ be way to figure this out using Ant.
 This takes advantage of ant's ability to specify properties on the
 commmand line.
 
-`ant -Dmain.file=myfile.xml pdf`
+`ant -Dfile=myfile.xml pdf`
 
 .Convert this Asciidoc file to PDF
 Actually, it doesn't work yet!  The reason is that Asciidoc doesn't ship
@@ -63,7 +63,7 @@ a DocBook 5 backend.  When you run this command, you can take the
 resulting DocBook file (build/README.xml) and tweak it to make compile
 properly.
 
-`ant -Dmain.file=README.adoc -Dmain.file.format=asciidoc -Dmain.file.suffix=adoc pdf`
+`ant -Dfile=README.adoc -Dfile.format=asciidoc -Dfile.suffix=adoc pdf`
 
 == Additional software
 Make sure you have a working Java/Ant setup: https://www.java.com/,

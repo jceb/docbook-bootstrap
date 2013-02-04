@@ -55,7 +55,7 @@
     <!-- none -->
 
     <!-- Filename of main file without suffix -->
-    <basename property='main.file.docbook.name' file='${main.file}' suffix='${main.file.suffix}' />
+    <basename property='file.docbook.name' file='${file}' suffix='${file.suffix}' />
 
     <xmlcatalog id="allcatalogs">
         <catalogpath>
@@ -93,7 +93,7 @@
         <java jar="${validate.jar}" fork='true' failonerror='true'>
             <jvmarg value='${validate.jvmarg}' />
             <arg value='${docbook.rng}' />
-            <arg value='${main.file.docbook}' />
+            <arg value='${file.docbook}' />
         </java>
     </target>
 
@@ -109,8 +109,8 @@
                     <arg line="--noconfig" />
                     <arg line="-c" />
                     <arg line="${fop.config}" />
-                    <arg line="${output.dir}/${main.file.docbook.name}.fo" />
-                    <arg line="${output.dir}/${main.file.docbook.name}.pdf" />
+                    <arg line="${output.dir}/${file.docbook.name}.fo" />
+                    <arg line="${output.dir}/${file.docbook.name}.pdf" />
                 </exec>
             </then>
             <else>
@@ -118,8 +118,8 @@
                     <exec executable="${fop.exe}">
                         <env key="FOP_HYPHENATION_PATH" value="${hyphenation.jar}" />
                         <arg line="--noconfig" />
-                        <arg line="${output.dir}/${main.file.docbook.name}.fo" />
-                        <arg line="${output.dir}/${main.file.docbook.name}.pdf" />
+                        <arg line="${output.dir}/${file.docbook.name}.fo" />
+                        <arg line="${output.dir}/${file.docbook.name}.pdf" />
                     </exec>
                 </then>
             </else>
@@ -131,12 +131,12 @@
     <target name="epub2" depends='cleanepub,todocbook,validate' description="Translate document to EPUB">
         <antcall target="convert">
             <param name="stylesheet" value="${epub.stylesheet}"/>
-            <param name="main.file.output" value="${output.dir}/${main.file.docbook.name}.epub"/>
+            <param name="file.output" value="${output.dir}/${file.docbook.name}.epub"/>
         </antcall>
         <!--create mimetype file-->
         <echo message="application/epub+zip" file="${output.dir}/mimetype"/>
         <!--build epub file-->
-        <zip destfile="${output.dir}/${main.file.docbook.name}.epub" compress="false">
+        <zip destfile="${output.dir}/${file.docbook.name}.epub" compress="false">
             <fileset dir="${output.dir}" includes="mimetype" />
             <fileset dir="${output.dir}" includes="META-INF/**"/>
             <fileset dir="${output.dir}" includes="OEBPS/**"/>
@@ -144,7 +144,7 @@
         <!--currently, updating the epub file using the below statement corrupts
         the epub file.  As long as this doesn't work, compression for epub is
         not supported .. :-/ -->
-        <!--<zip destfile="${output.dir}/${main.file.docbook.name}.epub" update="true" level="9" keepcompression="true">-->
+        <!--<zip destfile="${output.dir}/${file.docbook.name}.epub" update="true" level="9" keepcompression="true">-->
             <!--<fileset dir="${output.dir}" includes="META-INF/**"/>-->
             <!--<fileset dir="${output.dir}" includes="OEBPS/**"/>-->
         <!--</zip>-->
@@ -156,7 +156,7 @@
             <param name="dest.dir" value="${output.dir}/OEBPS/"/>
         </antcall>
         <!--build epub file-->
-        <zip destfile="${output.dir}/${main.file.docbook.name}.epub" compress="false">
+        <zip destfile="${output.dir}/${file.docbook.name}.epub" compress="false">
             <fileset dir="${output.dir}" includes="mimetype" />
             <fileset dir="${output.dir}" includes="META-INF/**"/>
             <fileset dir="${output.dir}" includes="OEBPS/**"/>
@@ -164,7 +164,7 @@
         <!--currently, updating the epub file using the below statement corrupts
         the epub file.  As long as this doesn't work, compression for epub is
         not supported .. :-/ -->
-        <!--<zip destfile="${output.dir}/${main.file.docbook.name}.epub" update="true" level="9" keepcompression="true">-->
+        <!--<zip destfile="${output.dir}/${file.docbook.name}.epub" update="true" level="9" keepcompression="true">-->
             <!--<fileset dir="${output.dir}" includes="META-INF/**"/>-->
             <!--<fileset dir="${output.dir}" includes="OEBPS/**"/>-->
         <!--</zip>-->
@@ -173,7 +173,7 @@
     <target name="xhtml" depends='todocbook,validate' description="Translate document to XHMTL">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtml.stylesheet}"/>
-            <param name="main.file.output" value="${output.dir}/${main.file.docbook.name}.html"/>
+            <param name="file.output" value="${output.dir}/${file.docbook.name}.html"/>
         </antcall>
     </target>
 
@@ -186,7 +186,7 @@
     <target name="xhtml5" depends='todocbook,validate' description="Translate document to XHMTL">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtml5.stylesheet}"/>
-            <param name="main.file.output" value="${output.dir}/${main.file.docbook.name}.xhtml"/>
+            <param name="file.output" value="${output.dir}/${file.docbook.name}.xhtml"/>
         </antcall>
     </target>
 
@@ -200,7 +200,7 @@
     <target name="fo" depends='todocbook,validate' description="Translate document to fo">
         <antcall target="convert">
             <param name="stylesheet" value="${fo.stylesheet}"/>
-            <param name="main.file.output" value="${output.dir}/${main.file.docbook.name}.fo"/>
+            <param name="file.output" value="${output.dir}/${file.docbook.name}.fo"/>
         </antcall>
     </target>
 
@@ -214,9 +214,9 @@
 
     <target name="convert" description="Convert DocBook document into a new format">
         <!-- Parmeters:
-        main.file.docbook # the DocBook file/document to convert
-        main.file.output # full path to the output file
-        dest.dir # if specified, main.file.output is ignored - this is useful
+        file.docbook # the DocBook file/document to convert
+        file.output # full path to the output file
+        dest.dir # if specified, file.output is ignored - this is useful
                  # for any chunked output formats like XHTML chunked, epub, aso.
         stylesheet # the stylesheet used to convert the document
         -->
@@ -236,16 +236,16 @@
                             <arg line="base.dir" />
                             <arg line="${dest.dir}" />
                             <arg line="${stylesheet}" />
-                            <arg line="${main.file.docbook}" />
+                            <arg line="${file.docbook}" />
                         </exec>
                     </then>
                     <else>
                         <exec executable="${xsltproc.exe}">
                             <arg line="--xinclude" />
                             <arg line="--output" />
-                            <arg line="${main.file.output}" />
+                            <arg line="${file.output}" />
                             <arg line="${stylesheet}" />
-                            <arg line="${main.file.docbook}" />
+                            <arg line="${file.docbook}" />
                         </exec>
                     </else>
                 </if>
@@ -260,14 +260,14 @@
                         <isset property="dest.dir" />
                         <then>
                             <!--epub3 workaround - it needs a directory and no output filename!-->
-                            <xslt includes="${main.file.docbook}" destdir="${dest.dir}"
+                            <xslt includes="${file.docbook}" destdir="${dest.dir}"
                                 style="${stylesheet}" force="true">
                                 <classpath path="${xslt.jar}" />
                                 <param name="base.dir" expression="${dest.dir}" />
                             </xslt>
                         </then>
                         <else>
-                            <xslt in="${main.file.docbook}" out="${main.file.output}"
+                            <xslt in="${file.docbook}" out="${file.output}"
                                 style="${stylesheet}" force="true">
                                 <classpath path="${xslt.jar}" />
                             </xslt>
@@ -289,26 +289,26 @@
         free to add more transformations here">
         <if>
             <!-- insert other formats here -->
-            <equals arg1="${main.file.format}" arg2="asciidoc" />
+            <equals arg1="${file.format}" arg2="asciidoc" />
             <then>
-                <antcallback target="convert_asciidoc" return="main.file.docbook" />
+                <antcallback target="convert_asciidoc" return="file.docbook" />
             </then>
             <else>
-                <antcallback target="convert_docbook" return="main.file.docbook" />
+                <antcallback target="convert_docbook" return="file.docbook" />
             </else>
         </if>
     </target>
 
     <target name="convert_asciidoc">
-        <property name="main.file.docbook" value="${output.dir}/${main.file.docbook.name}.xml" />
+        <property name="file.docbook" value="${output.dir}/${file.docbook.name}.xml" />
         <exec executable="${asciidoc.exe}">
             <arg value="--backend=docbook" />
-            <arg value="--out-file=${main.file.docbook}" />
-            <arg value="${main.file}" />
+            <arg value="--out-file=${file.docbook}" />
+            <arg value="${file}" />
         </exec>
     </target>
 
     <target name="convert_docbook">
-        <property name="main.file.docbook" value="${main.file}" />
+        <property name="file.docbook" value="${file}" />
     </target>
 </project>
