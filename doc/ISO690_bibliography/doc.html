@@ -1,0 +1,357 @@
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <title>Bibliography according to ISO 690 and ISO 690-2 standards</title><meta name="generator" content="DocBook XSL Stylesheets V1.72.1-pre"></head><body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF"><div class="article" lang="en"><div class="titlepage"><div><div><h1 class="title"><a name="d4e1"></a>Bibliography according to ISO 690 and ISO 690-2 standards</h1></div><div><div class="author"><h3 class="author"><span class="firstname">Jana</span> <span class="surname">Dvořáková</span></h3></div></div></div><hr></div><div class="toc"><p><b>Table of Contents</b></p><dl><dt><span class="sect1"><a href="#d4e7">1. Introduction</a></span></dt><dt><span class="sect1"><a href="#d4e13">2. Monographs</a></span></dt><dt><span class="sect1"><a href="#d4e69">3. Serials</a></span></dt><dt><span class="sect1"><a href="#d4e120">4. Parts of monographs</a></span></dt><dt><span class="sect1"><a href="#d4e166">5. Contributions to monographs</a></span></dt><dt><span class="sect1"><a href="#d4e221">6. Articles, etc., in serials</a></span></dt><dt><span class="sect1"><a href="#d4e259">7. Patent documents</a></span></dt><dt><span class="sect1"><a href="#d4e309">8. Monographs, databases and computer programs</a></span></dt><dd><dl><dt><span class="sect2"><a href="#d4e311">8.1. Entire document</a></span></dt><dt><span class="sect2"><a href="#d4e377">8.2. Parts of monographs, databases and computer programs</a></span></dt><dt><span class="sect2"><a href="#d4e449">8.3. Contributions to monographs, databases and computer programs</a></span></dt></dl></dd><dt><span class="sect1"><a href="#d4e521">9. Electronic serials</a></span></dt><dd><dl><dt><span class="sect2"><a href="#d4e523">9.1. Entire serial</a></span></dt><dt><span class="sect2"><a href="#d4e576">9.2. Articles and other contributions</a></span></dt></dl></dd><dt><span class="sect1"><a href="#d4e631">10. Electronic bulletin boards, discussion lists and electronic messages</a></span></dt><dd><dl><dt><span class="sect2"><a href="#d4e633">10.1. Entire message system</a></span></dt><dt><span class="sect2"><a href="#d4e674">10.2. Electronic messages</a></span></dt></dl></dd></dl></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e7"></a>1.&nbsp;Introduction</h2></div></div></div><p>
+Examples are adapted from ISO 690 and ISO 690-2 standards.
+</p><p>
+Elements marked with <sup>*</sup> are optional,
+<sup>+</sup> marks mandatory elements for online documents
+and optional for others.
+</p></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e13"></a>2.&nbsp;Monographs</h2></div></div></div><p>
+Non-serial bibliographic item, i.e. an item either complete in one part or complete
+(or intended to be completed) in a finite number of separate parts.
+</p><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Primary responsibility</td><td>LOMINADZE, DG.</td></tr><tr><td>Title</td><td><span class="emphasis"><em>Cyclotron waves in plasma</em></span></td></tr><tr><td><sup>*</sup>Subordinate responsibility</td><td>Translated by AN. Dellis; edited by SM. Hamberger</td></tr><tr><td>Edition</td><td>1st ed.</td></tr><tr><td><sup>*</sup>Place of publication</td><td>Oxford</td></tr><tr><td><sup>*</sup>Publisher</td><td>Pergamon Press</td></tr><tr><td>Year of publication</td><td>1981</td></tr><tr><td><sup>*</sup>Extent</td><td>206 p.</td></tr><tr><td><sup>*</sup>Series</td><td>International series in natural philosophy</td></tr><tr><td><sup>*</sup>Notes</td><td>Translation of: Ciklotronnye volny v plasme</td></tr><tr><td>Standard number</td><td>ISBN 0-08-021680-3</td></tr></tbody></table><div class="example"><a name="d4e62"></a><p class="title"><b>Example&nbsp;1.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="monograph"&gt;
+	&lt;author&gt;
+		&lt;surname&gt;Lominadze&lt;/surname&gt;
+		&lt;firstname&gt;DG.&lt;/firstname&gt;
+	&lt;/author&gt;
+	&lt;title&gt;Cyclotron waves in plasma&lt;/title&gt;
+	&lt;bibliomisc role="secondary"&gt;Translated by AN. Dellis&lt;/bibliomisc&gt;
+	&lt;bibliomisc role="secondary"&gt;edited by SM. Hamberger&lt;/bibliomisc&gt;
+	&lt;edition&gt;1st ed.&lt;/edition&gt;
+	&lt;publisher&gt;
+		&lt;publishername&gt;Pergamon Press&lt;/publishername&gt;
+		&lt;address&gt;&lt;city&gt;Oxford&lt;/city&gt;&lt;/address&gt;
+	&lt;/publisher&gt;
+	&lt;pubdate&gt;1981&lt;/pubdate&gt;
+	&lt;pagenums&gt;206 p.&lt;/pagenums&gt;
+	&lt;bibliomisc role="serie"&gt;International series in natural philosophy&lt;/bibliomisc&gt;
+	&lt;bibliomisc&gt;Translation of: Ciklotronnye volny v plasme&lt;/bibliomisc&gt;
+	&lt;biblioid class="isbn"&gt;0-08-021680-3&lt;/biblioid&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e65"></a><p class="title"><b>Example&nbsp;2.&nbsp;Output according to ISO 690 standard</b></p><div class="example-contents"><p>
+LOMINADZE, DG. <span class="emphasis"><em>Cyclotron waves in plasma</em></span>.
+Translated by AN. Dellis; edited by SM. Hamberger.
+1st ed.
+Oxford: Pergamon Press, 1981.
+206 p.
+International series in natural philosophy.
+Translation of: Ciklotronnye volny v plasme.
+ISBN 0-08-021680-3.
+</p></div></div><br class="example-break"></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e69"></a>3.&nbsp;Serials</h2></div></div></div><p>
+Publication, in any medium, issued in successive parts,
+usually having numeric or chronological designations,
+and intended to be continued indefinitely.
+</p><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Title</td><td><span class="emphasis"><em>Communications equipment manufacturers</em></span></td></tr><tr><td>Responsibility</td><td>Manufacturing and Primary Industries Division, Statistics Canada</td></tr><tr><td>Edition</td><td>Preliminary edition</td></tr><tr><td>Issue designation (date and/or n°)</td><td>1970- </td></tr><tr><td><sup>*</sup>Place of publication</td><td>Ottawa</td></tr><tr><td><sup>*</sup>Publisher</td><td>Statistics Canada</td></tr><tr><td>Year of publication</td><td>1971- </td></tr><tr><td><sup>*</sup>Series</td><td>Annual census of manufacturers</td></tr><tr><td><sup>*</sup>Notes</td><td>Text in English and French</td></tr><tr><td>Standard number</td><td>ISSN 0700-0758</td></tr></tbody></table><div class="example"><a name="d4e113"></a><p class="title"><b>Example&nbsp;3.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="serial"&gt;
+	&lt;title&gt;Communications equipment manufacturers&lt;/title&gt;
+	&lt;bibliomisc role="secondary"&gt;Manufacturing and Primary Industries Division, Statistics Canada&lt;/bibliomisc&gt;
+	&lt;edition&gt;Preliminary edition&lt;/edition&gt;
+	&lt;pubdate role="issuing"&gt;1970-&lt;/pubdate&gt;
+	&lt;publisher&gt;
+		&lt;publishername&gt;Statistics Canada&lt;/publishername&gt;
+		&lt;address&gt;&lt;city&gt;Ottawa&lt;/city&gt;&lt;/address&gt;
+	&lt;/publisher&gt;
+	&lt;pubdate&gt;1971-&lt;/pubdate&gt;
+	&lt;bibliomisc role="serie"&gt;Annual census of manufacturers&lt;/bibliomisc&gt;
+	&lt;bibliomisc&gt;Text in English and French&lt;/bibliomisc&gt;
+	&lt;biblioid class="issn"&gt;0700-0758&lt;/biblioid&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e116"></a><p class="title"><b>Example&nbsp;4.&nbsp;Output according to ISO 690 standard</b></p><div class="example-contents"><p>
+<span class="emphasis"><em>Communications equipment manufacturers</em></span>.
+Manufacturing and Primary Industries Division, Statistics Canada.
+Preliminary edition.
+1970- .
+Ottawa: Statistics Canada, 1971- .
+Annual census of manufacturers.
+Text in English and French.
+ISSN 0700-0758.
+</p></div></div><br class="example-break"></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e120"></a>4.&nbsp;Parts of monographs</h2></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Primary responsibility</td><td>PARKER, TJ. and HASWELL, WD.</td></tr><tr><td>Title of host document</td><td><span class="emphasis"><em>A text-book of zoology</em></span></td></tr><tr><td>Edition</td><td>5th ed.</td></tr><tr><td>Numeration of the part</td><td>vol. 1</td></tr><tr><td><sup>*</sup>Subordinate responsibility</td><td>revised by WD. Lang</td></tr><tr><td><sup>*</sup>Place of publication</td><td>London</td></tr><tr><td><sup>*</sup>Publisher</td><td>Macmillan</td></tr><tr><td>Year of publication</td><td>1930</td></tr><tr><td>Location within host</td><td>Section 12, Phylum Mollusca, p. 663-782</td></tr></tbody></table><div class="example"><a name="d4e159"></a><p class="title"><b>Example&nbsp;5.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="part"&gt;
+	&lt;authorgroup&gt;
+		&lt;author&gt;
+			&lt;surname&gt;Parker&lt;/surname&gt;
+			&lt;firstname&gt;TJ.&lt;/firstname&gt;
+		&lt;/author&gt;
+		&lt;author&gt;
+			&lt;surname&gt;Haswell&lt;/surname&gt;
+			&lt;firstname&gt;WD.&lt;/firstname&gt;
+		&lt;/author&gt;
+	&lt;/authorgroup&gt;
+	&lt;title&gt;A text-book of zoology&lt;/title&gt;
+	&lt;edition&gt;5th ed.&lt;/edition&gt;
+	&lt;volumenum&gt;vol. 1&lt;/volumenum&gt;
+	&lt;bibliomisc role="secondary"&gt;revised by WD. Lang&lt;/bibliomisc&gt;
+	&lt;publisher&gt;
+		&lt;publishername&gt;Macmillan&lt;/publishername&gt;
+		&lt;address&gt;&lt;city&gt;London&lt;/city&gt;&lt;/address&gt;
+	&lt;/publisher&gt;
+	&lt;pubdate&gt;1930&lt;/pubdate&gt;
+	&lt;bibliomisc role="secnum"&gt;Section 12&lt;/bibliomisc&gt;
+	&lt;bibliomisc role="sectitle"&gt;Phylum Mollusca&lt;/bibliomisc&gt;
+	&lt;pagenums&gt;p. 663-782&lt;/pagenums&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e162"></a><p class="title"><b>Example&nbsp;6.&nbsp;Output according to ISO 690 standard</b></p><div class="example-contents"><p>
+PARKER, TJ. and HASWELL, WD.
+<span class="emphasis"><em>A text-book of zoology</em></span>.
+5th ed.,
+vol. 1.
+revised by WD. Lang.
+London: Macmillan, 1930.
+Section 12, Phylum Mollusca, p. 663-782.
+</p></div></div><br class="example-break"></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e166"></a>5.&nbsp;Contributions to monographs</h2></div></div></div><p>
+Contribution is independent unit forming part of a document.
+</p><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>for contribution:</td><td>&nbsp;</td></tr><tr><td>Primary responsibility</td><td>WRIGLEY, EA.</td></tr><tr><td>Title</td><td>Parish registers and the historian</td></tr><tr><td>&nbsp;</td><td>&nbsp;</td></tr><tr><td>for host:</td><td>&nbsp;</td></tr><tr><td>Primary responsibility</td><td>STEEL, DJ.</td></tr><tr><td>Title</td><td><span class="emphasis"><em>National index of parish registers</em></span></td></tr><tr><td>Edition</td><td>&nbsp;</td></tr><tr><td><sup>*</sup>Place of publication</td><td>London</td></tr><tr><td><sup>*</sup>Publisher</td><td>Society of Genealogists</td></tr><tr><td>Year of publication</td><td>1968</td></tr><tr><td>Location within host</td><td>vol. 1, p. 155-167</td></tr></tbody></table><div class="example"><a name="d4e214"></a><p class="title"><b>Example&nbsp;7.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="contribution"&gt;
+	&lt;biblioset relation="part"&gt;
+		&lt;author&gt;
+			&lt;surname&gt;Wrigley&lt;/surname&gt;
+			&lt;firstname&gt;EA.&lt;/firstname&gt;
+		&lt;/author&gt;
+		&lt;title&gt;Parish registers and the historian&lt;/title&gt;
+	&lt;/biblioset&gt;
+	&lt;biblioset relation="book"&gt;
+		&lt;author&gt;
+			&lt;surname&gt;Steel&lt;/surname&gt;
+			&lt;firstname&gt;DJ.&lt;/firstname&gt;
+		&lt;/author&gt;
+		&lt;title&gt;National index of parish registers&lt;/title&gt;
+		&lt;publisher&gt;
+			&lt;publishername&gt;Society of Genealogists&lt;/publishername&gt;
+			&lt;address&gt;&lt;city&gt;London&lt;/city&gt;&lt;/address&gt;
+		&lt;/publisher&gt;
+		&lt;pubdate&gt;1968&lt;/pubdate&gt;
+		&lt;volumenum&gt;vol. 1&lt;/volumenum&gt;
+		&lt;pagenums&gt;p. 155-167&lt;/pagenums&gt;
+	&lt;/biblioset&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e217"></a><p class="title"><b>Example&nbsp;8.&nbsp;Output according to ISO 690 standard</b></p><div class="example-contents"><p>
+WRIGLEY, EA.
+Parish registers and the historian.
+In
+STEEL, DJ.
+<span class="emphasis"><em>National index of parish registers</em></span>.
+London: Society of Genealogists, 1968,
+vol. 1, p. 155-167.
+</p></div></div><br class="example-break"></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e221"></a>6.&nbsp;Articles, etc., in serials</h2></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Primary responsibility</td><td>WEAVER, William</td></tr><tr><td>Title</td><td>The collectors: command performances</td></tr><tr><td><sup>*</sup>Subordinate responsibility</td><td>Photography by Robert Emmett Bright</td></tr><tr><td>Title of host document</td><td><span class="emphasis"><em>Architectural Digest</em></span></td></tr><tr><td>Edition</td><td>&nbsp;</td></tr><tr><td>Location within host:</td><td>&nbsp;</td></tr><tr><td>Year, Issue designation, Pagination of the part</td><td>December 1985, vol. 42, no. 12, p. 126-133</td></tr></tbody></table><div class="example"><a name="d4e252"></a><p class="title"><b>Example&nbsp;9.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="article"&gt;
+	&lt;biblioset relation="article"&gt;
+		&lt;author&gt;
+			&lt;surname&gt;Weaver&lt;/surname&gt;
+			&lt;firstname&gt;William&lt;/firstname&gt;
+		&lt;/author&gt;
+		&lt;title&gt;The collectors&lt;/title&gt;
+		&lt;subtitle&gt;command performances&lt;/subtitle&gt;
+		&lt;bibliomisc role="secondary"&gt;Photography by Robert Emmett Bright&lt;/bibliomisc&gt;
+	&lt;/biblioset&gt;
+	&lt;biblioset relation="journal"&gt;
+		&lt;title&gt;Architectural Digest&lt;/title&gt;
+		&lt;pubdate&gt;December 1985&lt;/pubdate&gt;
+		&lt;volumenum&gt;vol. 42&lt;/volumenum&gt;
+		&lt;issuenum&gt;no. 12&lt;/issuenum&gt;
+		&lt;pagenums&gt;p. 126-133&lt;/pagenums&gt;
+	&lt;/biblioset&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e255"></a><p class="title"><b>Example&nbsp;10.&nbsp;Output according to ISO 690 standard</b></p><div class="example-contents"><p>
+WEAVER, William.
+The collectors: command performances.
+Photography by Robert Emmett Bright.
+<span class="emphasis"><em>Architectural Digest</em></span>.
+December 1985, vol. 42, no. 12, p. 126-133.
+</p></div></div><br class="example-break"></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e259"></a>7.&nbsp;Patent documents</h2></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td><sup>*</sup>Primary responsibility (applicant)</td><td>Carl Zeiss Jena, VEB</td></tr><tr><td><sup>*</sup>Title of the invention</td><td><span class="emphasis"><em>Anordnung zur lichtelektrischen Erfassung der Mitte eines Lichtfeldes</em></span></td></tr><tr><td><sup>*</sup>Subordinate responsibility</td><td>Erfinder: W. FEIST, C. WAHNERT, E. FEISTAUER</td></tr><tr><td><sup>*</sup>Notes</td><td>Int. Cl.<sup>3</sup>: G02 B 27/14</td></tr><tr><td>Identification:</td><td>&nbsp;</td></tr><tr><td>Country or issuing office</td><td>Schweiz</td></tr><tr><td>Kind of patent document</td><td>Patentschrift</td></tr><tr><td>Number</td><td>608 626</td></tr><tr><td>Date of publication of cited document</td><td>1979-01-15</td></tr></tbody></table><div class="example"><a name="d4e300"></a><p class="title"><b>Example&nbsp;11.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="patent"&gt;
+	&lt;corpauthor&gt;Carl Zeiss Jena, VEB&lt;/corpauthor&gt;
+	&lt;title&gt;Anordnung zur lichtelektrischen Erfassung der Mitte eines Lichtfeldes&lt;/title&gt;
+	&lt;bibliomisc role="secondary"&gt;Erfinder: W. FEIST, C. WAHNERT, E. FEISTAUER&lt;/bibliomisc&gt;
+	&lt;bibliomisc&gt;Int. Cl.&lt;superscript&gt;3&lt;/superscript&gt;: G02 B 27/14&lt;/bibliomisc&gt;
+	&lt;address&gt;
+		&lt;country&gt;Schweiz&lt;/country&gt;
+	&lt;/address&gt;
+	&lt;bibliomisc role="patenttype"&gt;Patentschrift&lt;/bibliomisc&gt;
+	&lt;biblioid class="other" otherclass="patentnum"&gt;608 626&lt;/biblioid&gt;
+	&lt;pubdate&gt;1979-01-15&lt;/pubdate&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e303"></a><p class="title"><b>Example&nbsp;12.&nbsp;Output according to ISO 690 standard</b></p><div class="example-contents"><p>
+CARL ZEISS JENA, VEB.
+<span class="emphasis"><em>Anordnung zur lichtelektrischen Erfassung der Mitte eines Lichtfeldes</em></span>.
+Erfinder: W. FEIST, C. WAHNERT, E. FEISTAUER.
+Int. Cl.<sup>3</sup>: G02 B 27/14.
+<span class="emphasis"><em>Schweiz
+Patentschrift</em></span>,
+608 626.
+1979-01-15.
+</p></div></div><br class="example-break"></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e309"></a>8.&nbsp;Monographs, databases and computer programs</h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e311"></a>8.1.&nbsp;Entire document</h3></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Primary responsibility</td><td>CARROLL, Lewis</td></tr><tr><td>Title</td><td><span class="emphasis"><em>Alice's Adventures in Wonderland</em></span></td></tr><tr><td>Type of medium</td><td>[online]</td></tr><tr><td><sup>*</sup>Subordinate responsibility</td><td>&nbsp;</td></tr><tr><td>Edition</td><td>Textinfo ed. 2.1</td></tr><tr><td>Place of publication</td><td>[Dortmund, Germany]</td></tr><tr><td>Publisher</td><td>Windspiel</td></tr><tr><td>Date of publication</td><td>November 1994</td></tr><tr><td>Date of update/revision</td><td>&nbsp;</td></tr><tr><td><sup>+</sup>Date of citation</td><td>[cited 10 February 1995]</td></tr><tr><td><sup>*</sup>Series</td><td>&nbsp;</td></tr><tr><td><sup>*</sup>Notes</td><td>&nbsp;</td></tr><tr><td><sup>+</sup>Availability and access</td><td>Available from World Wide Web: &lt;http://germany.eu.net/books/carroll/alice/html&gt;</td></tr><tr><td>&nbsp;</td><td>Also available in PostScript and ASCII versions from Internet: &lt;ftp://ftp.Germany.EU.net/pub/books/carroll/&gt;</td></tr><tr><td>Standard number</td><td>&nbsp;</td></tr></tbody></table><div class="example"><a name="d4e370"></a><p class="title"><b>Example&nbsp;13.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="monograph"&gt;
+	&lt;author&gt;
+		&lt;surname&gt;Carroll&lt;/surname&gt;
+		&lt;firstname&gt;Lewis&lt;/firstname&gt;
+	&lt;/author&gt;
+	&lt;title&gt;Alice&amp;apos;s Adventures in Wonderland&lt;/title&gt;
+	&lt;bibliomisc role="medium"&gt;online&lt;/bibliomisc&gt;
+	&lt;edition&gt;Textinfo ed. 2.1&lt;/edition&gt;
+	&lt;publisher&gt;
+		&lt;publishername&gt;Windspiel&lt;/publishername&gt;
+		&lt;address&gt;&lt;city&gt;[Dortmund, Germany]&lt;/city&gt;&lt;/address&gt;
+	&lt;/publisher&gt;
+	&lt;pubdate&gt;November 1994&lt;/pubdate&gt;
+	&lt;date role="cit"&gt;10 February 1995&lt;/date&gt;
+	&lt;biblioid class="uri"&gt;&lt;ulink url="http://germany.eu.net/books/carroll/alice/html"/&gt;&lt;/biblioid&gt;
+	&lt;biblioid class="uri"&gt;in PostScript and ASCII versions from Internet&lt;ulink url="ftp://ftp.Germany.EU.net/pub/books/carroll/"/&gt;&lt;/biblioid&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e373"></a><p class="title"><b>Example&nbsp;14.&nbsp;Output according to ISO 690-2 standard</b></p><div class="example-contents"><p>
+CARROLL, Lewis.
+<span class="emphasis"><em>Alice's Adventures in Wonderland</em></span> [online].
+Textinfo ed. 2.1.
+[Dortmund, Germany]: Windspiel, November 1994 [cited 10 February 1995].
+Available from World Wide Web: &lt;http://germany.eu.net/books/carroll/alice/html&gt;.
+Also available in PostScript and ASCII versions from Internet: &lt;ftp://ftp.Germany.EU.net/pub/books/carroll/&gt;.
+</p></div></div><br class="example-break"></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e377"></a>8.2.&nbsp;Parts of monographs, databases and computer programs</h3></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Primary responsibility of host document</td><td>CARROLL, Lewis</td></tr><tr><td>Title of host document</td><td><span class="emphasis"><em>Alice's Adventures in Wonderland</em></span></td></tr><tr><td>Type of medium</td><td>[online]</td></tr><tr><td><sup>*</sup>Subordinate responsibility of host document</td><td>&nbsp;</td></tr><tr><td>Edition</td><td>Textinfo ed. 2.2</td></tr><tr><td>Place of publication</td><td>[Dortmund, Germany]</td></tr><tr><td>Publisher</td><td>Windspiel</td></tr><tr><td>Date of publication</td><td>November 1994</td></tr><tr><td>Date of update/revision</td><td>&nbsp;</td></tr><tr><td><sup>+</sup>Date of citation</td><td>[cited 30 March 1995]</td></tr><tr><td>Chapter or equivalent designation (of part)</td><td>Chapter VII</td></tr><tr><td>Title (of part)</td><td>Mad Tea-Party</td></tr><tr><td><sup>*</sup>Numeration within host document</td><td>&nbsp;</td></tr><tr><td>Location within host document</td><td>&nbsp;</td></tr><tr><td><sup>*</sup>Notes</td><td>&nbsp;</td></tr><tr><td><sup>+</sup>Availability and access</td><td>Available from World Wide Web: &lt;http://germany.eu.net/books/carroll/alice_10.html#SEC13&gt;</td></tr><tr><td>Standard number</td><td>&nbsp;</td></tr></tbody></table><div class="example"><a name="d4e442"></a><p class="title"><b>Example&nbsp;15.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="part"&gt;
+	&lt;author&gt;
+		&lt;surname&gt;Carroll&lt;/surname&gt;
+		&lt;firstname&gt;Lewis&lt;/firstname&gt;
+	&lt;/author&gt;
+	&lt;title&gt;Alice&amp;apos;s Adventures in Wonderland&lt;/title&gt;
+	&lt;bibliomisc role="medium"&gt;online&lt;/bibliomisc&gt;
+	&lt;edition&gt;Textinfo ed. 2.2&lt;/edition&gt;
+	&lt;publisher&gt;
+		&lt;publishername&gt;Windspiel&lt;/publishername&gt;
+		&lt;address&gt;&lt;city&gt;[Dortmund, Germany]&lt;/city&gt;&lt;/address&gt;
+	&lt;/publisher&gt;
+	&lt;pubdate&gt;November 1994&lt;/pubdate&gt;
+	&lt;date role="cit"&gt;30 March 1995&lt;/date&gt;
+	&lt;bibliomisc role="secnum"&gt;Chapter VII&lt;/bibliomisc&gt;
+	&lt;bibliomisc role="sectitle"&gt;Mad Tea-Party&lt;/bibliomisc&gt;
+	&lt;biblioid class="uri"&gt;&lt;ulink url="http://germany.eu.net/books/carroll/alice_10.html#SEC13"/&gt;&lt;/biblioid&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e445"></a><p class="title"><b>Example&nbsp;16.&nbsp;Output according to ISO 690-2 standard</b></p><div class="example-contents"><p>
+CARROLL, Lewis.
+<span class="emphasis"><em>Alice's Adventures in Wonderland</em></span> [online].
+Textinfo ed. 2.2.
+[Dortmund, Germany]: Windspiel, November 1994 [cited 30 March 1995].
+Chapter VII, Mad Tea-Party.
+Available from World Wide Web: &lt;http://germany.eu.net/books/carroll/alice_10.html#SEC13&gt;.
+</p></div></div><br class="example-break"></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e449"></a>8.3.&nbsp;Contributions to monographs, databases and computer programs</h3></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Primary responsibility (of contribution)</td><td>MCCONNELL, W. H.</td></tr><tr><td>Title (of contribution)</td><td>Constitutional History</td></tr><tr><td>Primary responsibility of host document</td><td>&nbsp;</td></tr><tr><td>Title of host document</td><td><span class="emphasis"><em>The Canadian Encyclopedia</em></span></td></tr><tr><td>Type of medium</td><td>[CD-ROM]</td></tr><tr><td><sup>*</sup>Subordinate responsibility of host document</td><td>&nbsp;</td></tr><tr><td>Edition</td><td>Macintosh version 1.1</td></tr><tr><td>Place of publication</td><td>Toronto</td></tr><tr><td>Publisher</td><td>McClelland &amp; Stewart</td></tr><tr><td>Date of publication</td><td>c1993</td></tr><tr><td>Date of update/revision</td><td>&nbsp;</td></tr><tr><td><sup>+</sup>Date of citation</td><td>&nbsp;</td></tr><tr><td><sup>*</sup>Numeration within host document</td><td>&nbsp;</td></tr><tr><td>Location within host document</td><td>&nbsp;</td></tr><tr><td><sup>*</sup>Notes</td><td>&nbsp;</td></tr><tr><td><sup>+</sup>Availability and access</td><td>&nbsp;</td></tr><tr><td>Standard number</td><td>ISBN 0-7710-1932-7</td></tr></tbody></table><div class="example"><a name="d4e514"></a><p class="title"><b>Example&nbsp;17.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="contribution"&gt;
+	&lt;biblioset relation="part"&gt;
+		&lt;author&gt;
+			&lt;surname&gt;McConnell&lt;/surname&gt;
+			&lt;firstname&gt;W. H.&lt;/firstname&gt;
+		&lt;/author&gt;
+		&lt;title&gt;Constitutional History&lt;/title&gt;
+	&lt;/biblioset&gt;
+	&lt;biblioset relation="book"&gt;
+		&lt;title&gt;The Canadian Encyclopedia&lt;/title&gt;
+		&lt;bibliomisc role="medium"&gt;CD-ROM&lt;/bibliomisc&gt;
+		&lt;edition&gt;Macintosh version 1.1&lt;/edition&gt;
+		&lt;publisher&gt;
+			&lt;publishername&gt;McClelland &amp;amp; Stewart&lt;/publishername&gt;
+			&lt;address&gt;&lt;city&gt;Toronto&lt;/city&gt;&lt;/address&gt;
+		&lt;/publisher&gt;
+		&lt;pubdate&gt;c1993&lt;/pubdate&gt;
+		&lt;biblioid class="isbn"&gt;0-7710-1932-7&lt;/biblioid&gt;
+	&lt;/biblioset&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e517"></a><p class="title"><b>Example&nbsp;18.&nbsp;Output according to ISO 690-2 standard</b></p><div class="example-contents"><p>
+MCCONNELL, W. H.
+Constitutional History.
+In
+<span class="emphasis"><em>The Canadian Encyclopedia</em></span> [CD-ROM].
+Macintosh version 1.1.
+Toronto: McClelland &amp; Stewart, c1993.
+ISBN 0-7710-1932-7.
+</p></div></div><br class="example-break"></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e521"></a>9.&nbsp;Electronic serials</h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e523"></a>9.1.&nbsp;Entire serial</h3></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Title</td><td><span class="emphasis"><em>Journal of Technology Education</em></span></td></tr><tr><td>Type of medium</td><td>[online]</td></tr><tr><td>Edition</td><td>&nbsp;</td></tr><tr><td>Place of publication</td><td>Blacksburg (Va.)</td></tr><tr><td>Publisher</td><td>Virginia Polytechnic Institute and State University</td></tr><tr><td>Date of publication</td><td>1989-</td></tr><tr><td><sup>+</sup>Date of citation</td><td>[cited 15 March 1995]</td></tr><tr><td><sup>*</sup>Series</td><td>&nbsp;</td></tr><tr><td><sup>*</sup>Notes</td><td>Semi-annual</td></tr><tr><td><sup>+</sup>Availability and access</td><td>Available from Internet: &lt;gopher://borg.lib.vt.edu:edu:70/1/jte&gt;</td></tr><tr><td>Standard number</td><td>ISSN 1045-1064</td></tr></tbody></table><div class="example"><a name="d4e569"></a><p class="title"><b>Example&nbsp;19.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="serial"&gt;
+	&lt;title&gt;Journal of Technology Education&lt;/title&gt;
+	&lt;bibliomisc role="medium"&gt;online&lt;/bibliomisc&gt;
+	&lt;publisher&gt;
+		&lt;publishername&gt;Virginia Polytechnic Institute and State University&lt;/publishername&gt;
+		&lt;address&gt;&lt;city&gt;Blacksburg (Va.)&lt;/city&gt;&lt;/address&gt;
+	&lt;/publisher&gt;
+	&lt;pubdate&gt;1989-&lt;/pubdate&gt;
+	&lt;date role="cit"&gt;15 March 1995&lt;/date&gt;
+	&lt;bibliomisc&gt;Semi-annual&lt;/bibliomisc&gt;
+	&lt;biblioid class="uri"&gt;&lt;ulink url="gopher://borg.lib.vt.edu:edu:70/1/jte"/&gt;&lt;/biblioid&gt;
+	&lt;biblioid class="issn"&gt;1045-1064&lt;/biblioid&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e572"></a><p class="title"><b>Example&nbsp;20.&nbsp;Output according to ISO 690-2 standard</b></p><div class="example-contents"><p>
+<span class="emphasis"><em>Journal of Technology Education</em></span> [online].
+Blacksburg (Va.): Virginia Polytechnic Institute and State University, 1989- [cited 15 March 1995].
+Semi-annual.
+Available from Internet: &lt;gopher://borg.lib.vt.edu:edu:70/1/jte&gt;.
+ISSN 1045-1064.
+</p></div></div><br class="example-break"></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e576"></a>9.2.&nbsp;Articles and other contributions</h3></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Primary responsibility of contribution</td><td>PRICE-WILKIN, John</td></tr><tr><td>Title of contribution</td><td>Using the World-Wide Web to Deliver Complex Electronic Documents: Implications for Libraries</td></tr><tr><td>Title Serials</td><td><span class="emphasis"><em>The Public-Access Computer Systems Review</em></span></td></tr><tr><td>Type of medium</td><td>[online]</td></tr><tr><td>Edition</td><td>&nbsp;</td></tr><tr><td>Number designation</td><td>1994, vol. 5, no. 3</td></tr><tr><td>Date of update/revision</td><td>&nbsp;</td></tr><tr><td><sup>+</sup>Date of citation</td><td>[cited 1994-07-28]</td></tr><tr><td>Location within host document</td><td>pp. 5-21</td></tr><tr><td><sup>*</sup>Notes</td><td>&nbsp;</td></tr><tr><td><sup>+</sup>Availability and access</td><td>Available from Internet: &lt;gopher://info.lib.uh.edu:70/00/articles/e-journals/uhlibrary/pacsreview/v5/n3/pricewil.5n3&gt;</td></tr><tr><td>Standard number</td><td>ISSN 1048-6542</td></tr></tbody></table><div class="example"><a name="d4e624"></a><p class="title"><b>Example&nbsp;21.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="article"&gt;
+	&lt;biblioset relation="article"&gt;
+		&lt;author&gt;
+			&lt;surname&gt;Price-Wilkin&lt;/surname&gt;
+			&lt;firstname&gt;John&lt;/firstname&gt;
+		&lt;/author&gt;
+		&lt;title&gt;Using the World-Wide Web to Deliver Complex Electronic Documents&lt;/title&gt;
+		&lt;subtitle&gt;Implications for Libraries&lt;/subtitle&gt;
+	&lt;/biblioset&gt;
+	&lt;biblioset relation="journal"&gt;
+		&lt;title&gt;The Public-Access Computer Systems Review&lt;/title&gt;
+		&lt;bibliomisc role="medium"&gt;online&lt;/bibliomisc&gt;
+		&lt;pubdate&gt;1994&lt;/pubdate&gt;
+		&lt;date role="cit"&gt;1994-07-28&lt;/date&gt;
+		&lt;volumenum&gt;vol. 5&lt;/volumenum&gt;
+		&lt;issuenum&gt;no. 3&lt;/issuenum&gt;
+		&lt;pagenums&gt;pp. 5-21&lt;/pagenums&gt;
+		&lt;biblioid class="uri"&gt;&lt;ulink url="gopher://info.lib.uh.edu:70/00/articles/e-journals/uhlibrary/pacsreview/v5/n3/pricewil.5n3"/&gt;&lt;/biblioid&gt;
+		&lt;biblioid class="issn"&gt;1048-6542&lt;/biblioid&gt;
+	&lt;/biblioset&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e627"></a><p class="title"><b>Example&nbsp;22.&nbsp;Output according to ISO 690-2 standard</b></p><div class="example-contents"><p>
+PRICE-WILKIN, John.
+Using the World-Wide Web to Deliver Complex Electronic Documents: Implications for Libraries.
+<span class="emphasis"><em>The Public-Access Computer Systems Review</em></span> [online].
+1994, vol. 5, no. 3 [cited 1994-07-28], pp. 5-21.
+Available from Internet: &lt;gopher://info.lib.uh.edu:70/00/articles/e-journals/uhlibrary/pacsreview/v5/n3/pricewil.5n3&gt;.
+ISSN 1048-6542.
+</p></div></div><br class="example-break"></div></div><div class="sect1" lang="en"><div class="titlepage"><div><div><h2 class="title" style="clear: both"><a name="d4e631"></a>10.&nbsp;Electronic bulletin boards, discussion lists and electronic messages</h2></div></div></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e633"></a>10.1.&nbsp;Entire message system</h3></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Title</td><td><span class="emphasis"><em>PACS-L (Public Access Computer Systems Forum)</em></span></td></tr><tr><td>Type of medium</td><td>[online]</td></tr><tr><td>Place of publication</td><td>Houston (Tex.)</td></tr><tr><td>Publisher</td><td>University of Houston Libraries</td></tr><tr><td>Date of publication</td><td>June 1989-</td></tr><tr><td>Date of citation</td><td>[cited 17 May 1995]</td></tr><tr><td><sup>*</sup>Notes</td><td>&nbsp;</td></tr><tr><td>Availability and access</td><td>Available from Internet: &lt;listserv@unhupvm1.uh.edu&gt;</td></tr></tbody></table><div class="example"><a name="d4e667"></a><p class="title"><b>Example&nbsp;23.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="messagesystem"&gt;
+	&lt;title&gt;PACS-L (Public Access Computer Systems Forum)&lt;/title&gt;
+	&lt;bibliomisc role="medium"&gt;online&lt;/bibliomisc&gt;
+	&lt;publisher&gt;
+		&lt;publishername&gt;University of Houston Libraries&lt;/publishername&gt;
+		&lt;address&gt;&lt;city&gt;Houston (Tex.)&lt;/city&gt;&lt;/address&gt;
+	&lt;/publisher&gt;
+	&lt;pubdate&gt;June 1989-&lt;/pubdate&gt;
+	&lt;date role="cit"&gt;17 May 1995&lt;/date&gt;
+	&lt;biblioid class="uri"&gt;&lt;ulink url="listserv@unhupvm1.uh.edu"/&gt;&lt;/biblioid&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e670"></a><p class="title"><b>Example&nbsp;24.&nbsp;Output according to ISO 690-2 standard</b></p><div class="example-contents"><p>
+<span class="emphasis"><em>PACS-L (Public Access Computer Systems Forum)</em></span> [online].
+Houston (Tex.): University of Houston Libraries, June 1989- [cited 17 May 1995].
+Available from Internet: &lt;listserv@unhupvm1.uh.edu&gt;.
+</p></div></div><br class="example-break"></div><div class="sect2" lang="en"><div class="titlepage"><div><div><h3 class="title"><a name="d4e674"></a>10.2.&nbsp;Electronic messages</h3></div></div></div><table><thead><tr><td>Element</td><td>Example</td></tr></thead><tbody><tr><td>Primary responsibility of message</td><td>PARKER, Elliot</td></tr><tr><td>Title of message</td><td>Re: Citing Electronic Journals</td></tr><tr><td>Title of host message system</td><td><span class="emphasis"><em>PACS-L (Public Access Computer Systems Forum)</em></span></td></tr><tr><td>Type of medium</td><td>[online]</td></tr><tr><td><sup>*</sup>Subordinate responsibility/applicant(s)</td><td>&nbsp;</td></tr><tr><td>Place of publication</td><td>Houston (Tex.)</td></tr><tr><td>Publisher</td><td>University of Houston Libraries</td></tr><tr><td>Date of publication</td><td>24 November 1989; 13:29:35 CST</td></tr><tr><td>Date of citation</td><td>[cited 1 January 1995; 16:15 EST]</td></tr><tr><td><sup>*</sup>Numeration within host message system</td><td>&nbsp;</td></tr><tr><td>Location within host message system</td><td>&nbsp;</td></tr><tr><td>Availability and access</td><td>Available from Internet: &lt;telnet://brsuser@a.cni.org&gt;</td></tr><tr><td><sup>*</sup>Notes</td><td>&nbsp;</td></tr></tbody></table><div class="example"><a name="d4e725"></a><p class="title"><b>Example&nbsp;25.&nbsp;DocBook source code</b></p><div class="example-contents"><pre class="programlisting">
+&lt;biblioentry role="message"&gt;
+	&lt;biblioset relation="part"&gt;
+		&lt;author&gt;
+			&lt;surname&gt;Parker&lt;/surname&gt;
+			&lt;firstname&gt;Elliot&lt;/firstname&gt;
+		&lt;/author&gt;
+		&lt;title&gt;Re: Citing Electronic Journals&lt;/title&gt;
+	&lt;/biblioset&gt;
+	&lt;biblioset relation="book"&gt;
+		&lt;title&gt;PACS-L (Public Access Computer Systems Forum)&lt;/title&gt;
+		&lt;bibliomisc role="medium"&gt;online&lt;/bibliomisc&gt;
+		&lt;publisher&gt;
+			&lt;publishername&gt;University of Houston Libraries&lt;/publishername&gt;
+			&lt;address&gt;&lt;city&gt;Houston (Tex.)&lt;/city&gt;&lt;/address&gt;
+		&lt;/publisher&gt;
+		&lt;pubdate&gt;24 November 1989; 13:29:35 CST&lt;/pubdate&gt;
+		&lt;date role="cit"&gt;1 January 1995; 16:15 EST&lt;/date&gt;
+		&lt;biblioid class="uri"&gt;&lt;ulink url="telnet://brsuser@a.cni.org"/&gt;&lt;/biblioid&gt;
+	&lt;/biblioset&gt;
+&lt;/biblioentry&gt;
+</pre></div></div><br class="example-break"><div class="example"><a name="d4e728"></a><p class="title"><b>Example&nbsp;26.&nbsp;Output according to ISO 690-2 standard</b></p><div class="example-contents"><p>
+PARKER, Elliot.
+Re: Citing Electronic Journals.
+In
+<span class="emphasis"><em>PACS-L (Public Access Computer Systems Forum)</em></span> [online].
+Houston (Tex.): University of Houston Libraries, 24 November 1989; 13:29:35 CST
+[cited 1 January 1995; 16:15 EST].
+Available from Internet: &lt;telnet://brsuser@a.cni.org&gt;.
+</p></div></div><br class="example-break"></div></div></div></body></html>
