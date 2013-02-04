@@ -69,7 +69,13 @@
     <target name="default" depends='pdf'>
     </target>
 
-    <target name="test" depends="pdf,epub,epub3,xhtml,xhtmlchunk,xhtml5,xhtml5chunk">
+    <target name="test" depends="test-nochunk,test-chunk">
+    </target>
+
+    <target name="test-nochunk" depends="pdf,xhtml">
+    </target>
+
+    <target name="test-chunk" depends="epub,epub3,xhtmlchunk,xhtml5,xhtml5chunk">
     </target>
 
     <target name="clean">
