@@ -147,7 +147,7 @@
     <target name="epub3" depends='cleanepub,todocbook,validate' description="Translate document to EPUB3">
         <antcall target="convert">
             <param name="stylesheet" value="${epub3.stylesheet}"/>
-            <param name="base.dir" value="${output.dir}/OEBPS/"/>
+            <param name="dest.dir" value="${output.dir}/OEBPS/"/>
         </antcall>
         <!--build epub file-->
         <zip destfile="${output.dir}/${main.file.docbook.name}.epub" compress="false">
@@ -174,7 +174,7 @@
     <target name="xhtmlchunk" depends='todocbook,validate' description="Translate document to XHMTL chunked output">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtmlchunk.stylesheet}"/>
-            <param name="base.dir" value="${output.dir}/"/>
+            <param name="dest.dir" value="${output.dir}/"/>
         </antcall>
     </target>
     <target name="xhtml5" depends='todocbook,validate' description="Translate document to XHMTL">
@@ -187,7 +187,7 @@
     <target name="xhtml5chunk" depends='todocbook,validate' description="Translate document to XHMTL chunked output">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtml5chunk.stylesheet}"/>
-            <param name="base.dir" value="${output.dir}/"/>
+            <param name="dest.dir" value="${output.dir}/"/>
         </antcall>
     </target>
 
@@ -210,7 +210,7 @@
         <!-- Parmeters:
         main.file.docbook # the DocBook file/document to convert
         main.file.output # full path to the output file
-        base.dir # if specified, main.file.output is ignored - this is useful
+        dest.dir # if specified, main.file.output is ignored - this is useful
                  # for any chunked output formats like XHTML chunked, epub, aso.
         stylesheet # the stylesheet used to convert the document
         -->
@@ -221,14 +221,14 @@
             </and>
             <then>
                 <if>
-                    <isset property="base.dir" />
+                    <isset property="dest.dir" />
                     <then>
                         <!--epub3 workaround - it needs a directory and no output filename!-->
                         <exec executable="${xsltproc.exe}">
                             <arg line="--xinclude" />
                             <arg line="--stringparam" />
                             <arg line="base.dir" />
-                            <arg line="${base.dir}" />
+                            <arg line="${dest.dir}" />
                             <arg line="${stylesheet}" />
                             <arg line="${main.file.docbook}" />
                         </exec>
@@ -251,16 +251,18 @@
                 </and>
                 <then>
                     <if>
-                        <isset property="base.dir" />
+                        <isset property="dest.dir" />
                         <then>
                             <!--epub3 workaround - it needs a directory and no output filename!-->
-                            <xslt in="${main.file.docbook}" destdir="${base.dir}" style="${stylesheet}" force="true">
+                            <xslt in="${main.file.docbook}"  includes="${main.file.docbook}"
+                                destdir="${dest.dir}" style="${stylesheet}" force="true">
                                 <classpath path="${xslt.jar}" />
-                                <param name="base.dir" expression="${base.dir}" />
+                                <param name="base.dir" expression="${dest.dir}" />
                             </xslt>
                         </then>
                         <else>
-                            <xslt in="${main.file.docbook}" out="${main.file.output}" style="${stylesheet}" force="true">
+                            <xslt in="${main.file.docbook}" out="${main.file.output}"
+                                style="${stylesheet}" force="true">
                                 <classpath path="${xslt.jar}" />
                             </xslt>
                         </else>
