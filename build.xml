@@ -254,8 +254,8 @@
                         <isset property="dest.dir" />
                         <then>
                             <!--epub3 workaround - it needs a directory and no output filename!-->
-                            <xslt in="${main.file.docbook}"  includes="${main.file.docbook}"
-                                destdir="${dest.dir}" style="${stylesheet}" force="true">
+                            <xslt includes="${main.file.docbook}" destdir="${dest.dir}"
+                                style="${stylesheet}" force="true">
                                 <classpath path="${xslt.jar}" />
                                 <param name="base.dir" expression="${dest.dir}" />
                             </xslt>
