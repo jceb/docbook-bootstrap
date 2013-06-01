@@ -85,6 +85,7 @@ FILENAME has to be replaced by the font's filename:
  java -cp lib/commons-io-1.3.1.jar:lib/commons-logging-1.0.4.jar:build/fop.jar:lib/avalon-framework-cvs-20020806.jar:lib/xml-apis.jar:lib/xercesImpl-2.2.1.jar:lib/xalan-2.4.1.jar org.apache.fop.fonts.apps.TTFReader FILENAME.ttf FILENAME.xml
 
 The following discussions might be of interest to you:
+
 * Discussion at http://www.mail-archive.com/fop-user@xml.apache.org/msg13631.html
 * More information at http://xmlgraphics.apache.org/fop/0.94/fonts.html#register
 
