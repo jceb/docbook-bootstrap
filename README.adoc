@@ -1,4 +1,5 @@
 = DocBook Bootstrap
+
 == Purpose
 Setting up a DocBook build environment seems to be extra difficult and
 cumbersome.  The goal of this project is to create a platform
@@ -13,8 +14,9 @@ tasks of getting started with THE document within seconds.
 - Make building DocBook documents a breeze
 
 == Setup
-0. Get all the additional software (see section Additional Software
-   Needed).  Hopefully, you've to do this just once (in a while).
+0. Get all the additional software (see section
+   link:additional_software[Additional Software Needed]).  Hopefully,
+   you've to do this just once (in a while).
 1. Make a copy of the `template` folder and put it where you want to
    create your next document/project.  Adjust the `Makefile` as needed.
 3. Start writing your document!
@@ -65,13 +67,6 @@ properly.
 
  ant -Dfile=README.adoc -Dfile.format=asciidoc -Dfile.suffix=adoc pdf
 
-== Additional Software Needed!
-Make sure you have a working Java/Ant setup: https://www.java.com/ and
-http://ant.apache.org
-
-*In addition you need to download the software listed in file
-lib/README.*
-
 == Customization
 
 === Include custom Fonts
@@ -115,13 +110,22 @@ There are even more font family parameters that can be set:
  <xsl:param name='monospace.font.family'>monospace</xsl:param>
  <xsl:param name='symbol.font.family'>Symbol,ZapfDingbats</xsl:param>
 
-==== More to come
+=== More to come
 ...
+
+[[additional_software]]
+== Additional Software Needed!
+Make sure you have a working Java/Ant setup: https://www.java.com/ and
+http://ant.apache.org
+
+*In addition you need to download the software listed in file
+lib/README.*
 
 == Licensing and Copyright
 
+----
   Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
-  
+
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
   distributed with this work for additional information
@@ -129,14 +133,15 @@ There are even more font family parameters that can be set:
   to you under the Apache License, Version 2.0 (the
   "License"); you may not use this file except in compliance
   with the License.  You may obtain a copy of the License at
-  
+
   http://www.apache.org/licenses/LICENSE-2.0
-  
+
   Unless required by applicable law or agreed to in writing,
   software distributed under the License is distributed on an
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
   KIND, either express or implied.  See the License for the
   specific language governing permissions and limitations
   under the License.
+----
 
 // vi: ft=asciidoc:tw=72:sw=2:ts=4
