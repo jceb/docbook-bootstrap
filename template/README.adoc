@@ -1,0 +1,7 @@
+= DocBook Bootstrap Template
+
+Make a copy of this folder and put it where you want to create your next
+document/project.  Adjust the `Makefile` as needed.  Some documentation
+is provided in the Makefile.
+
+// vi: ft=asciidoc:tw=72:sw=2:ts=4

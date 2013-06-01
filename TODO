@@ -4,3 +4,4 @@
 - find good stylesheets for pdf and xhtml output
 - try compiling a larger project with this build file
 - add usage target that prints usage information
+- convert template/Makefile to a build.xml

@@ -13,17 +13,17 @@ tasks of getting started with THE document within seconds.
 - Make building DocBook documents a breeze
 
 == Setup
-0. Get all the additional software (see section Additional Software).
-   Hopefully, you've to do this just once (in a while).
-1. Copy a DocBook template from templates into the root directory
-2. The file build.properties holds the general settings for building a
-   DocBook file.  Platform specific values are stored in the
-   build.properties.PLATFORM files.  The one thing you have to customize
-   is the filename of your main DocBook file:
-   build.properties -> file
-   - Customization of stylesheets is possible, check out
-   	 stylesheets/fo/docbook.xsl
-3. Start writing your document
+0. Get all the additional software (see section Additional Software
+   Needed).  Hopefully, you've to do this just once (in a while).
+1. Make a copy of the `template` folder and put it where you want to
+   create your next document/project.  Adjust the `Makefile` as needed.
+3. Start writing your document!
+4. Do you need more customization?  Ok, here you go:  The file
+   build.properties holds the general settings for building a DocBook
+   file.  Platform specific values are stored in the
+   build.properties.PLATFORM files.  Customization of stylesheets is
+   possible.  Check out the included stylesheet for some ideas:
+   `stylesheets/fo/docbook.xsl`
 
 == Usage
 
@@ -65,11 +65,12 @@ properly.
 
 `ant -Dfile=README.adoc -Dfile.format=asciidoc -Dfile.suffix=adoc pdf`
 
-== Additional software
-Make sure you have a working Java/Ant setup: https://www.java.com/,
+== Additional Software Needed!
+Make sure you have a working Java/Ant setup: https://www.java.com/ and
 http://ant.apache.org
 
-In addition you need the software listed in file lib/README.
+*In addition you need to download the software listed in file
+lib/README.*
 
 == Licensing and Copyright
 
