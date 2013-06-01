@@ -55,7 +55,7 @@ be way to figure this out using Ant.
 This takes advantage of ant's ability to specify properties on the
 commmand line.
 
-`ant -Dfile=myfile.xml pdf`
+ ant -Dfile=myfile.xml pdf
 
 .Convert this Asciidoc file to PDF
 Actually, it doesn't work yet!  The reason is that Asciidoc doesn't ship
@@ -63,7 +63,7 @@ a DocBook 5 backend.  When you run this command, you can take the
 resulting DocBook file (build/README.xml) and tweak it to make compile
 properly.
 
-`ant -Dfile=README.adoc -Dfile.format=asciidoc -Dfile.suffix=adoc pdf`
+ ant -Dfile=README.adoc -Dfile.format=asciidoc -Dfile.suffix=adoc pdf
 
 == Additional Software Needed!
 Make sure you have a working Java/Ant setup: https://www.java.com/ and
@@ -72,10 +72,55 @@ http://ant.apache.org
 *In addition you need to download the software listed in file
 lib/README.*
 
+== Customization
+
+=== Include custom Fonts
+It is possible to include custom fonts into fop-generated
+documents.  Follow these steps:
+
+.Generate XML description for the custom True Type Font
+Execute the following command in the fop folder `lib/fop`.  The constant
+FILENAME has to be replaced by the font's filename:
+
+ java -cp lib/commons-io-1.3.1.jar:lib/commons-logging-1.0.4.jar:build/fop.jar:lib/avalon-framework-cvs-20020806.jar:lib/xml-apis.jar:lib/xercesImpl-2.2.1.jar:lib/xalan-2.4.1.jar org.apache.fop.fonts.apps.TTFReader FILENAME.ttf FILENAME.xml
+
+The following discussions might be of interest to you:
+* Discussion at http://www.mail-archive.com/fop-user@xml.apache.org/msg13631.html
+* More information at http://xmlgraphics.apache.org/fop/0.94/fonts.html#register
+
+.Include font in fop.xconf
+Add the custom font to the fonts section.  Here is an example for the
+ukai font:
+
+ <fonts>
+ ...
+ <font metrics-url="lib/fonts/ukai.xml" kerning="yes" embed-url="lib/fonts/ukai.ttf">
+   <font-triplet name="ARPLZenKaiUni" style="normal" weight="normal"/>
+   <font-triplet name="ARPLZenKaiUni" style="normal" weight="bold"/>
+   <font-triplet name="ARPLZenKaiUni" style="italic" weight="normal"/>
+   <font-triplet name="ARPLZenKaiUni" style="italic" weight="bold"/>
+ </font>
+ ...
+ </fonts>
+
+.Include font in stylesheet
+Add the font to the fo-stylesheet (`stylesheets/fo/docbook.xsl`):
+
+ <xsl:param name='title.font.family'>sans-serif,ARPLZenKaiUni</xsl:param>
+ <xsl:param name='body.font.family'>serif,ARPLZenKaiUni</xsl:param>
+
+There are even more font family parameters that can be set:
+
+ <xsl:param name='monospace.font.family'>monospace</xsl:param>
+ <xsl:param name='symbol.font.family'>Symbol,ZapfDingbats</xsl:param>
+
+==== More to come
+...
+
 == Licensing and Copyright
 
   Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
-
+  
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
   distributed with this work for additional information
@@ -83,9 +128,9 @@ lib/README.*
   to you under the Apache License, Version 2.0 (the
   "License"); you may not use this file except in compliance
   with the License.  You may obtain a copy of the License at
-
+  
   http://www.apache.org/licenses/LICENSE-2.0
-
+  
   Unless required by applicable law or agreed to in writing,
   software distributed under the License is distributed on an
   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY

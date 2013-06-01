@@ -1,5 +1,6 @@
 <?xml version='1.0'?>
-<!-- vi: ft=xslt:tw=80:sw=4:ts=4:et
+<!--
+vi: ft=xslt:tw=80:sw=4:ts=4:et
 -->
 <!--
   Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
@@ -21,8 +22,7 @@
   specific language governing permissions and limitations
   under the License.
 -->
-<xsl:stylesheet
-    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
     <!--<param name='docbookxsl.dir' select='.' />-->
 
@@ -41,8 +41,8 @@
     <!--<xsl:param name='double.sided' select='1' />-->
 
     <!-- ########## Font Options ######### -->
-	<xsl:param name='title.font.family'>sans-serif</xsl:param>
-	<xsl:param name='body.font.family'>serif</xsl:param>
+    <xsl:param name='title.font.family'>sans-serif</xsl:param>
+    <xsl:param name='body.font.family'>serif</xsl:param>
     <!--<xsl:param name='title.font.family'>sans-serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param>-->
     <!--<xsl:param name='body.font.family'>serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param>-->
     <!--<xsl:param name='monospace.font.family'>monospace</xsl:param>-->
@@ -52,8 +52,8 @@
     <!--<xsl:param name='footnote.font.size'>9</xsl:param>-->
 
     <!--<xsl:attribute-set name="section.title.properties">-->
-        <!--<xsl:attribute name="font-family">Garamond</xsl:attribute>-->
-        <!--<xsl:attribute name="font-weight">bold</xsl:attribute>-->
+    <!--<xsl:attribute name="font-family">Garamond</xsl:attribute>-->
+    <!--<xsl:attribute name="font-weight">bold</xsl:attribute>-->
     <!--</xsl:attribute-set>-->
 
     <!-- ########## Bibliography Style ########## -->

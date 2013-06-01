@@ -97,25 +97,25 @@ the location of this file.
         <!--
         <font metrics-url="lib/fonts/ukai.xml" kerning="yes" embed-url="lib/fonts/ukai.ttf">
           <font-triplet name="ARPLZenKaiUni" style="normal" weight="normal"/>
-		  <font-triplet name="ARPLZenKaiUni" style="normal" weight="bold"/>
-		  <font-triplet name="ARPLZenKaiUni" style="italic" weight="normal"/>
-		  <font-triplet name="ARPLZenKaiUni" style="italic" weight="bold"/>
+          <font-triplet name="ARPLZenKaiUni" style="normal" weight="bold"/>
+          <font-triplet name="ARPLZenKaiUni" style="italic" weight="normal"/>
+          <font-triplet name="ARPLZenKaiUni" style="italic" weight="bold"/>
         </font>
         -->
         <!--
         <font metrics-url="lib/fonts/uming.xml" kerning="yes" embed-url="lib/fonts/uming.ttf">
           <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="normal"/>
-		  <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="bold"/>
-		  <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="normal"/>
-		  <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="bold"/>
+          <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="bold"/>
+          <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="normal"/>
+          <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="bold"/>
         </font>
         -->
         <!--
         <font metrics-url="lib/fonts/mssong.xml" kerning="yes" embed-url="lib/fonts/mssong.ttf">
           <font-triplet name="MSSong" style="normal" weight="normal"/>
-		  <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="bold"/>
-		  <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="normal"/>
-		  <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="bold"/>
+          <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="bold"/>
+          <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="normal"/>
+          <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="bold"/>
         </font>
         -->
       </fonts>
