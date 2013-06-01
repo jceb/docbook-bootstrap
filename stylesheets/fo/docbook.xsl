@@ -33,7 +33,7 @@
 
     <!-- ########## ToC/LoT/Index Generation ########## -->
     <!-- Table of Contents, enabled or disabled -->
-    <xsl:param name='generate.toc'></xsl:param>
+    <!-- <xsl:param name='generate.toc'></xsl:param> -->
 
     <!-- ########## Pagination and General Styles ########## -->
     <xsl:param name='paper.type'>A4</xsl:param>
@@ -48,7 +48,7 @@
     <!--<xsl:param name='monospace.font.family'>monospace</xsl:param>-->
     <!--<xsl:param name='symbol.font.family'>Symbol,ZapfDingbats</xsl:param>-->
     <!-- Font size -->
-    <!--<xsl:param name='body.font.master'>12</xsl:param>-->
+    <xsl:param name='body.font.master'>11</xsl:param>
     <!--<xsl:param name='footnote.font.size'>9</xsl:param>-->
 
     <!--<xsl:attribute-set name="section.title.properties">-->
