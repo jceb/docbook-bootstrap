@@ -1,14 +1,19 @@
 #!/usr/bin/make
 
-# Adjust these variables
+# Adjust these variables to fit your environment
 PATH_TO_DBOOTSTRAP=..
 INPUT_FILE=article.xml
 OUPUT_DIR=build
-# you might want to specify some more options like
+
+# you might want to specify some more ant options like additional/overridden
+# properties
 PROJECT_OPTIONS=
 
-default: $(INPUT_FILE)
-	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile=$(PWD)/$< -Doutput.dir=$(PWD)/$(OUPUT_DIR) $(PROJECT_OPTIONS) $@
+all: default
+
+# withouth this rule, the wildcard rule below would break the makefile
+$(INPUT_FILE):
+	test -f $@
 
 # Targets like pdf, epub, epub3, xhtml, xhtmlchunk, xhtml5, xhtml5chunk,
 # validate, clean and test all work, you just have to type them.  Default target
