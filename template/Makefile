@@ -21,3 +21,5 @@ $(INPUT_FILE):
 # is pdf or whatever you have specified to be the default
 %: $(INPUT_FILE)
 	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile=$(PWD)/$< -Doutput.dir=$(PWD)/$(OUPUT_DIR) $(PROJECT_OPTIONS) $@
+
+.PHONY: Makefile
