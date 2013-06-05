@@ -24,12 +24,15 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
 -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
-    <!--<param name='docbookxsl.dir' select='.' />-->
+    <!--<param name='docbookxsl.dir'>.</xsl:param>-->
 
     <!-- ########## Import the fo-Stylesheet ########## -->
     <xsl:import href="../../lib/docbook-xsl/fo/docbook.xsl"/>
 
     <!--<param name='fop.extensions' expression='1' />-->
+
+    <!-- Parameters can be found here:
+    http://www.sagehill.net/docbookxsl/PrintOutput.html -->
 
     <!-- ########## ToC/LoT/Index Generation ########## -->
     <!-- Table of Contents, enabled or disabled -->
@@ -38,7 +41,7 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
     <!-- ########## Pagination and General Styles ########## -->
     <xsl:param name='paper.type'>A4</xsl:param>
     <xsl:param name='page.orientation'>portrait</xsl:param>
-    <!--<xsl:param name='double.sided' select='1' />-->
+    <!--<xsl:param name='double.sided'>1</xsl:param>-->
 
     <!-- ########## Font Options ######### -->
     <xsl:param name='title.font.family'>sans-serif</xsl:param>
@@ -60,5 +63,5 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
     <!--<xsl:param name="bibliography.style">iso690</xsl:param>-->
 
     <!-- ########## Add Customization Layer ########## -->
-    <!--<xsl:param name="local.l10n.xml" select="document('../common/mygentextmods.xml')"/>-->
+    <!--<xsl:param name="local.l10n.xml">document('../common/mygentextmods.xml')</xsl:param>-->
 </xsl:stylesheet>
