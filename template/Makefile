@@ -1,9 +1,9 @@
 #!/usr/bin/make
 
 # Adjust these variables to fit your environment
-PATH_TO_DBOOTSTRAP=..
-INPUT_FILE=article.xml
-OUPUT_DIR=build
+PATH_TO_DBOOTSTRAP= ..
+INPUT_FILE= article.xml
+OUPUT_DIR= build
 
 # you might want to specify some more ant options like additional/overridden
 # properties, i.e. a custom FO stylesheet -Dfo.stylesheet=$(PWD)/docbook.xsl
