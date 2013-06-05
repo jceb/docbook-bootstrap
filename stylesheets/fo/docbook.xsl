@@ -32,7 +32,10 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
     <!--<param name='fop.extensions' expression='1' />-->
 
     <!-- Parameters can be found here:
-    http://www.sagehill.net/docbookxsl/PrintOutput.html -->
+    - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html
+    - Print output http://www.sagehill.net/docbookxsl/PrintOutput.html
+    - General http://www.sagehill.net/docbookxsl/GeneralCustoms.html
+      -->
 
     <!-- ########## ToC/LoT/Index Generation ########## -->
     <!-- Table of Contents, enabled or disabled -->
