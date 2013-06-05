@@ -7,11 +7,11 @@ independent, easy to depoly environment that brings you to the core
 tasks of getting started with THE document within seconds.
 
 .Objectives
-- Incorate all the wisdom and hints from
+* Incorate all the wisdom and hints from
   http://www.docbook.org/tdg51/en/html/
-- Be platform independent -> embrace the Java eco-system as much as
+* Be platform independent -> embrace the Java eco-system as much as
   possible
-- Make building DocBook documents a breeze
+* Make building DocBook documents a breeze
 
 == Setup
 0. Get all the additional software (see section
@@ -34,16 +34,16 @@ Run the following tasks the create the desired output
 format, e.g. "ant pdf".  All output is stored it the directory "build",
 it's customizable throught the variable "output.dir":
 
-pdf           : create PDF output (default task)
-epub          : create EPUB output
-epub3         : create EPUB3 output
-xhtml         : create XHTML output
-xhtmlchunk    : create chunked XHTML output
-xhtml5        : create XHTML5 output
-xhtml5chunk   : create chunked XHTML5 output
-validate      : validates the DocBook document
-clean         : delete all dynamically created files/the "out" directory
-test          : execute all creation tasks one after the other
+* pdf           : create PDF output (default task)
+* epub          : create EPUB output
+* epub3         : create EPUB3 output
+* xhtml         : create XHTML output
+* xhtmlchunk    : create chunked XHTML output
+* xhtml5        : create XHTML5 output
+* xhtml5chunk   : create chunked XHTML5 output
+* validate      : validates the DocBook document
+* clean         : delete all dynamically created files/the "out" directory
+* test          : execute all creation tasks one after the other
 
 === Input Formats
 It's also possible to convert files in the Asciidoc format to DocBook
