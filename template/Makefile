@@ -6,10 +6,11 @@ INPUT_FILE=article.xml
 OUPUT_DIR=build
 
 # you might want to specify some more ant options like additional/overridden
-# properties
+# properties, i.e. a custom FO stylesheet -Dfo.stylesheet=$(PWD)/docbook.xsl
 PROJECT_OPTIONS=
 
-all: default
+# trigger the ant default target
+default:
 
 # withouth this rule, the wildcard rule below would break the makefile
 $(INPUT_FILE):
