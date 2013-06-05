@@ -14,10 +14,10 @@ tasks of getting started with THE document within seconds.
 * Make building DocBook documents a breeze
 
 == Setup
-0. Get all the additional software (see section
-   link:additional_software[Additional Software Needed]).  Hopefully,
+1. Get all the additional software (see section
+   <<additional_software,Additional Software Needed>>).  Hopefully,
    you've to do this just once (in a while).
-1. Make a copy of the `template` folder and put it where you want to
+2. Make a copy of the `template` folder and put it where you want to
    create your next document/project.  Adjust the `Makefile` as needed.
 3. Start writing your document!
 4. Do you need more customization?  Ok, here you go:  The file
@@ -118,8 +118,7 @@ There are even more font family parameters that can be set:
 Make sure you have a working Java/Ant setup: https://www.java.com/ and
 http://ant.apache.org
 
-*In addition you need to download the software listed in file
-lib/README.*
+IMPORTANT: *You also need to download the software listed in file link:lib/README[].*
 
 == Licensing and Copyright
 
