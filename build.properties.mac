@@ -24,4 +24,4 @@ fop.exe = lib/fop/fop
 fop.config = fop.xconf
 
 # Asciidoc
-asciidoc.exe = /usr/bin/asciidoc
+asciidoc.exe = asciidoctor

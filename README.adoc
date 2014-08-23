@@ -46,9 +46,10 @@ it's customizable throught the variable "output.dir":
 * test          : execute all creation tasks one after the other
 
 === Input Formats
-It's also possible to convert files in the Asciidoc format to DocBook
-and than to the different output formats.  Set property
-`file.format` to `asciidoc` and change `file.suffix` to the
+It's also possible to convert files in the AsciiDoc format to DocBook
+and than to the different output formats.  See
+<<additional_software,Additional Software Needed>> for more information.
+Set property `file.format` to `asciidoc` and change `file.suffix` to the
 suffix of the input file - it's necessary because there doesn't seem to
 be way to figure this out using Ant.
 
@@ -59,8 +60,8 @@ commmand line.
 
  ant -Dfile=myfile.xml pdf
 
-.Convert this Asciidoc file to PDF
-Actually, it doesn't work yet!  The reason is that Asciidoc doesn't ship
+.Convert this AsciiDoc file to PDF
+Actually, it doesn't work yet!  The reason is that AsciiDoc doesn't ship
 a DocBook 5 backend.  When you run this command, you can take the
 resulting DocBook file (build/README.xml) and tweak it to make compile
 properly.
@@ -115,8 +116,9 @@ There are even more font family parameters that can be set:
 
 [[additional_software]]
 == Additional Software Needed!
-Make sure you have a working Java/Ant setup: https://www.java.com/ and
-http://ant.apache.org
+* Make sure you have a working https://www.java.com/[Java] and
+  http://ant.apache.org[Ant] setup
+* For AsciiDoc input http://ascidoctor.org[Asciidoctor] is required
 
 IMPORTANT: *You also need to download the software listed in file link:lib/README[].*
 

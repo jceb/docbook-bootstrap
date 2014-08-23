@@ -27,4 +27,4 @@ fop.config = fop.xconf
 xsltproc.exe = xsltproc
 
 # Asciidoc
-asciidoc.exe = /usr/bin/asciidoc
+asciidoc.exe = asciidoctor
