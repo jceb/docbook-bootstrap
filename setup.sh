@@ -10,6 +10,14 @@ java -version &> /dev/null || echo "Unable to locate java.  Please make sure it'
 
 mkdir -p lib/fonts
 cd lib
+cat > fonts/compile.sh << END
+#!/bin/sh
+cd ../lib/fog
+for font in ../fonts/*.ttf; do
+  java -cp lib/commons-io-1.3.1.jar:lib/commons-logging-1.0.4.jar:build/fop.jar:lib/avalon-framework-cvs-20020806.jar:lib/xml-apis.jar:lib/xercesImpl-2.2.1.jar:lib/xalan-2.4.1.jar org.apache.fop.fonts.apps.TTFReader "${font}" "${font%.ttf}.xml"
+done
+END
+chmod a+x fonts/compile.sh
 
 mkdir -p ISO690_bibliography
 wget -O ISO690_bibliography/doc.html "http://markmail.org/download.xqy?id=n2qumyhk2togibuf&number=1"
