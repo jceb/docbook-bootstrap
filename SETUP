@@ -1,6 +1,16 @@
 This document lists all the libraries you need to successfully convert a
 DocBook document into PDF and a lot of end-user formats.
 
+Run setup.sh to download all required libraries.
+
+
+ISO690_bibliography: http://wiki.docbook.org/ISO690Bibliography or if not
+reachable, here: http://markmail.org/message/n2qumyhk2togibuf
+Dockumentation of ISO690 for docbook.
+
+ant: http://ant.apache.org/
+Apache Ant is a Java library and command-line tool that help building software.
+
 ant-contrib: https://github.com/srstclair/ant-contrib and http://ant-contrib.sourceforge.net/
 The ant contrib library provides a lot of convenience tasks for
 controlling the work flow with the build.xml.  I'm working on removing
@@ -26,16 +36,13 @@ Stylesheets for transforming DocBook data into the various output
 formats.  This is the project that does the hard work of producing
 usable output for the user!
 
-
 This is how my lib directory looks like.  I recommend creating symlinks
 for being independent of the version that's included in the directory
 name:
 drwxr-xr-x  2 jceb users 4096 Feb  3 14:46 ISO690_bibliography/
--rw-r--r--  1 jceb users 1277 Feb  3 14:40 README
 lrwxrwxrwx  1 jceb users   17 Feb  1 17:00 ant-contrib -> ant-contrib-1.0b3/
 drwxr-xr-x  4 jceb users 4096 Feb  1 17:00 ant-contrib-1.0b3/
-lrwxrwxrwx  1 jceb users   18 Feb  1 15:24 apache-ant -> apache-ant-1.8.4-1/
-drwxr-xr-x  4 jceb users 4096 May 28  2012 apache-ant-1.8.4-1/
+lrwxrwxrwx  1 jceb users   18 Feb  1 15:24 apache-ant/
 lrwxrwxrwx  1 jceb users   18 Feb  2 21:31 docbook-xsl -> docbook-xsl-1.78.0/
 drwxr-xr-x 30 jceb users 4096 Feb  2 21:30 docbook-xsl-1.78.0/
 drwxr-xr-x  2 jceb users 4096 Feb  3 14:47 docbook.rng/
@@ -44,7 +51,5 @@ lrwxrwxrwx  1 jceb users    7 Feb  2 20:44 fop -> fop-1.1/
 drwxr-xr-x  8 jceb users 4096 Feb  3 14:15 fop-1.1/
 lrwxrwxrwx  1 jceb users   13 Feb  3 13:29 jing -> jing-20091111/
 drwxr-xr-x  6 jceb users 4096 Nov 11  2009 jing-20091111/
-lrwxrwxrwx  1 jceb users   27 Feb  3 14:15 offo-hyphenation-binary -> offo-hyphenation-binary-2.0/
-drwxrwxr-x  4 jceb users 4096 Oct 29  2010 offo-hyphenation-binary-2.0/
+lrwxrwxrwx  1 jceb users   27 Feb  3 14:15 offo-hyphenation-binary/
 drwxr-xr-x  5 jceb users 4096 Feb  3 22:20 saxon9/
-

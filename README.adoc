@@ -21,9 +21,9 @@ tasks of getting started with THE document within seconds.
    create your next document/project.  Adjust the `Makefile` as needed.
 3. Start writing your document!
 4. Do you need more customization?  Ok, here you go:  The file
-   build.properties holds the general settings for building a DocBook
+   `build.properties` holds the general settings for building a DocBook
    file.  Platform specific values are stored in the
-   build.properties.PLATFORM files.  Customization of stylesheets is
+   `build.properties.PLATFORM` files.  Customization of stylesheets is
    possible.  Check out the included stylesheet for some ideas:
    `stylesheets/fo/docbook.xsl`
 
@@ -34,16 +34,16 @@ Run the following tasks the create the desired output
 format, e.g. "ant pdf".  All output is stored it the directory "build",
 it's customizable throught the variable "output.dir":
 
-* pdf           : create PDF output (default task)
-* epub          : create EPUB output
-* epub3         : create EPUB3 output
-* xhtml         : create XHTML output
-* xhtmlchunk    : create chunked XHTML output
-* xhtml5        : create XHTML5 output
-* xhtml5chunk   : create chunked XHTML5 output
-* validate      : validates the DocBook document
-* clean         : delete all dynamically created files/the "out" directory
-* test          : execute all creation tasks one after the other
+* `pdf`           : create PDF output (default task)
+* `epub`          : create EPUB output
+* `epub3`         : create EPUB3 output
+* `xhtml`         : create XHTML output
+* `xhtmlchunk`    : create chunked XHTML output
+* `xhtml5`        : create XHTML5 output
+* `xhtml5chunk`   : create chunked XHTML5 output
+* `validate`      : validates the DocBook document
+* `clean`         : delete all dynamically created files/the "out" directory
+* `test`          : execute all creation tasks one after the other
 
 === Input Formats
 It's also possible to convert files in the AsciiDoc format to DocBook
@@ -116,16 +116,19 @@ There are even more font family parameters that can be set:
 
 [[additional_software]]
 == Additional Software Needed!
-* Make sure you have a working https://www.java.com/[Java] and
-  http://ant.apache.org[Ant] setup
-* For AsciiDoc input http://ascidoctor.org[Asciidoctor] is required
+* Make sure you have a working https://www.java.com/[Java] setup
+* For AsciiDoc input http://ascidoctor.org[Asciidoctor] needs to be
+  installed
 
-IMPORTANT: *You also need to download the software listed in file link:lib/README[].*
+IMPORTANT: *You also need to download the software listed in file link:SETUP[].*
+
+* If you are running Linux or Mac OS X, executing `setup.sh` will
+  download all dependencies
 
 == Licensing and Copyright
 
 ----
-  Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
+  Copyright (C) 2013,2014 Jan Christoph Ebersbach <jceb@e-jc.de>
 
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
