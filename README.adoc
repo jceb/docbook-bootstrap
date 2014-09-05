@@ -15,8 +15,8 @@ tasks of getting started with THE document within seconds.
 
 == Setup
 1. Get all the additional software (see section
-   <<additional_software,Additional Software Needed>>).  Hopefully,
-   you've to do this just once (in a while).
+   <<additional-software-needed,Additional Software Needed!>>).
+   Hopefully, you've to do this just once (in a while).
 2. Make a copy of the `template` folder and put it where you want to
    create your next document/project.  Adjust the `Makefile` as needed.
 3. Start writing your document!
