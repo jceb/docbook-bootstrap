@@ -3,7 +3,10 @@
 
 set -e
 
-java -version > /dev/null || (echo "Unable to locate java.  Please make sure it's installed." && exit 1)
+echo 'Downloading docbook-bootstrap dependencies.'
+echo
+
+java -version &> /dev/null || echo "Unable to locate java.  Please make sure it's installed." && exit 1
 
 mkdir -p lib
 cd lib
