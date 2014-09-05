@@ -8,7 +8,7 @@ echo
 
 java -version &> /dev/null || echo "Unable to locate java.  Please make sure it's installed." && exit 1
 
-mkdir -p lib
+mkdir -p lib/fonts
 cd lib
 
 mkdir -p ISO690_bibliography

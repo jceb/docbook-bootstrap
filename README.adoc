@@ -74,18 +74,23 @@ properly.
 It is possible to include custom fonts into fop-generated
 documents.  Follow these steps:
 
+.Include True Type Fonts
+Copy all required True Type Fonts in the directory `lib/fonts`.
+
 .Generate XML description for the custom True Type Font
-Execute the following command in the fop folder `lib/fop`.  The constant
-FILENAME has to be replaced by the font's filename:
+Execute the following command in the fop folder `lib/fop` to generate an
+XML description for each font:
 
- java -cp lib/commons-io-1.3.1.jar:lib/commons-logging-1.0.4.jar:build/fop.jar:lib/avalon-framework-cvs-20020806.jar:lib/xml-apis.jar:lib/xercesImpl-2.2.1.jar:lib/xalan-2.4.1.jar org.apache.fop.fonts.apps.TTFReader FILENAME.ttf FILENAME.xml
+ for font in ../fonts/*.ttf; do
+   java -cp lib/commons-io-1.3.1.jar:lib/commons-logging-1.0.4.jar:build/fop.jar:lib/avalon-framework-cvs-20020806.jar:lib/xml-apis.jar:lib/xercesImpl-2.2.1.jar:lib/xalan-2.4.1.jar org.apache.fop.fonts.apps.TTFReader "${font}" "${font%.ttf}.xml"
+ done
 
-The following discussions might be of interest to you:
+The following discussions might also be of interest to you:
 
 * Discussion at http://www.mail-archive.com/fop-user@xml.apache.org/msg13631.html
 * More information at http://xmlgraphics.apache.org/fop/0.94/fonts.html#register
 
-.Include font in fop.xconf
+.Include fonts in fop.xconf
 Add the custom font to the fonts section.  Here is an example for the
 ukai font:
 
@@ -100,7 +105,7 @@ ukai font:
  ...
  </fonts>
 
-.Include font in stylesheet
+.Include fonts in stylesheet
 Add the font to the fo-stylesheet (`stylesheets/fo/docbook.xsl`):
 
  <xsl:param name='title.font.family'>sans-serif,ARPLZenKaiUni</xsl:param>
