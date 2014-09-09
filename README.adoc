@@ -19,6 +19,8 @@ tasks of getting started with THE document within seconds.
    Hopefully, you've to do this just once (in a while).
 2. Make a copy of the `template` folder and put it where you want to
    create your next document/project.  Adjust the `Makefile` as needed.
+   (The document can also be passed as an argument to make: `make
+   in=FILE`)
 3. Start writing your document!
 4. Do you need more customization?  Ok, here you go:  The file
    `build.properties` holds the general settings for building a DocBook

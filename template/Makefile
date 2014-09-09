@@ -1,25 +1,43 @@
-#!/usr/bin/make
+#!/usr/bin/make -f
 
 # Adjust these variables to fit your environment
-PATH_TO_DBOOTSTRAP= ..
-INPUT_FILE= article.xml
-OUPUT_DIR= build
+# PATH_TO_DBOOTSTRAP="../docbook-bootstrap"
+PATH_TO_DBOOTSTRAP=..
+OUPUT_DIR=build
+
+# change in to the main file of the project
+# it can also be passed to make as an argument:
+# make in=FILE
+ifndef
+in=article.xml
+endif
 
 # you might want to specify some more ant options like additional/overridden
 # properties, i.e. a custom FO stylesheet -Dfo.stylesheet=$(PWD)/docbook.xsl
+# PROJECT_OPTIONS="-Dfo.stylesheet=$(PWD)/docbook.xsl"
 PROJECT_OPTIONS=
+
+#######################################
+# DON'T CHANGE ANYTHING BELOW THIS LINE
+#######################################
 
 # trigger the ant default target
 default:
 
 # withouth this rule, the wildcard rule below would break the makefile
-$(INPUT_FILE):
+$(in):
 	test -f $@
 
+FORMAT=docbook
+SUFFIX=$(suffix $(in))
+ifeq ($(SUFFIX), .adoc)
+ FORMAT=asciidoc
+endif
+
 # Targets like pdf, epub, epub3, xhtml, xhtmlchunk, xhtml5, xhtml5chunk,
-# validate, clean and test all work, you just have to type them.  Default target
-# is pdf or whatever you have specified to be the default
-%: $(INPUT_FILE)
-	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile=$(PWD)/$< -Doutput.dir=$(PWD)/$(OUPUT_DIR) $(PROJECT_OPTIONS) $@
+# validate, clean and test all work, you just have to type them.  The default
+# target is pdf or whatever you have specified to be the default
+%: $(in)
+	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile=$(PWD)/$< -Dfile.format=$(FORMAT) -Dfile.suffix=$(SUFFIX) -Doutput.dir=$(PWD)/$(OUPUT_DIR) $(PROJECT_OPTIONS) $@
 
 .PHONY: Makefile
