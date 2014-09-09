@@ -10,11 +10,10 @@ which java &> /dev/null || (echo "Unable to locate java.  Please make sure it's 
 
 mkdir -p lib/fonts
 cd lib
-cat > fonts/compile.sh << END
+cat > fonts/compile.sh <<"END"
 #!/bin/sh
-cd ../lib/fog
-for font in ../fonts/*.ttf; do
-  java -cp lib/commons-io-1.3.1.jar:lib/commons-logging-1.0.4.jar:build/fop.jar:lib/avalon-framework-cvs-20020806.jar:lib/xml-apis.jar:lib/xercesImpl-2.2.1.jar:lib/xalan-2.4.1.jar org.apache.fop.fonts.apps.TTFReader "${font}" "${font%.ttf}.xml"
+for font in *.ttf; do
+	java -cp "../fop/build/fop.jar:../fop/lib/avalon-framework-4.2.0.jar:../fop/lib/batik-all-1.7.jar:../fop/lib/commons-io-1.3.1.jar:../fop/lib/commons-logging-1.0.4.jar:../fop/lib/serializer-2.7.0.jar:../fop/lib/xalan-2.7.0.jar:../fop/lib/xercesImpl-2.7.1.jar:../fop/lib/xml-apis-1.3.04.jar:../fop/lib/xml-apis-ext-1.3.04.jar:../fop/lib/xmlgraphics-commons-1.5.jar" org.apache.fop.fonts.apps.TTFReader "${font}" "${font%.ttf}.xml"
 done
 END
 chmod a+x fonts/compile.sh
