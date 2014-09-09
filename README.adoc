@@ -124,7 +124,8 @@ There are even more font family parameters that can be set:
 
 [[additional_software]]
 == Additional Software Needed!
-* Make sure you have a working https://www.java.com/[Java] setup
+* Make sure you have a working https://www.java.com/[Java] and
+  http://ant.apache.org/[Ant] setup
 * For AsciiDoc input http://ascidoctor.org[Asciidoctor] needs to be
   installed
 
