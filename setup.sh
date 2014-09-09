@@ -22,7 +22,7 @@ mkdir -p ISO690_bibliography
 wget -O ISO690_bibliography/doc.html "http://markmail.org/download.xqy?id=n2qumyhk2togibuf&number=1"
 
 [ -e ant-contrib ] && rm -rf ant-contrib
-wget -O ant-contrib-1.0b3-src.tar.gz 'http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-src.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fant-contrib%2Ffiles%2Fant-contrib%2F1.0b3%2F&ts=1409909120&use_mirror=sunet'
+wget -O ant-contrib-1.0b3-src.tar.gz 'http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fant-contrib%2Ffiles%2Fant-contrib%2F1.0b3%2F&ts=1410288260&use_mirror=kent'
 tar xzf ant-contrib-1.0b3-src.tar.gz
 rm ant-contrib-1.0b3-src.tar.gz
 
