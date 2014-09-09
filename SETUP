@@ -42,7 +42,6 @@ name:
 drwxr-xr-x  2 jceb users 4096 Feb  3 14:46 ISO690_bibliography/
 lrwxrwxrwx  1 jceb users   17 Feb  1 17:00 ant-contrib -> ant-contrib-1.0b3/
 drwxr-xr-x  4 jceb users 4096 Feb  1 17:00 ant-contrib-1.0b3/
-lrwxrwxrwx  1 jceb users   18 Feb  1 15:24 apache-ant/
 lrwxrwxrwx  1 jceb users   18 Feb  2 21:31 docbook-xsl -> docbook-xsl-1.78.0/
 drwxr-xr-x 30 jceb users 4096 Feb  2 21:30 docbook-xsl-1.78.0/
 drwxr-xr-x  2 jceb users 4096 Feb  3 14:47 docbook.rng/

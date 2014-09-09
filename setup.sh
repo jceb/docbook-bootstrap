@@ -22,13 +22,6 @@ chmod a+x fonts/compile.sh
 mkdir -p ISO690_bibliography
 wget -O ISO690_bibliography/doc.html "http://markmail.org/download.xqy?id=n2qumyhk2togibuf&number=1"
 
-[ -e apache-ant-1.9.4 ] && rm -rf apache-ant-1.9.4
-[ -e apache-ant ] && rm apache-ant
-wget 'http://mirror.nexcess.net/apache//ant/binaries/apache-ant-1.9.4-bin.tar.gz'
-tar xzf apache-ant-1.9.4-bin.tar.gz
-rm apache-ant-1.9.4-bin.tar.gz
-ln -s apache-ant-1.9.4 apache-ant
-
 [ -e ant-contrib ] && rm -rf ant-contrib
 wget -O ant-contrib-1.0b3-src.tar.gz 'http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-src.tar.gz?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fant-contrib%2Ffiles%2Fant-contrib%2F1.0b3%2F&ts=1409909120&use_mirror=sunet'
 tar xzf ant-contrib-1.0b3-src.tar.gz
