@@ -6,7 +6,7 @@ set -e
 echo 'Downloading docbook-bootstrap dependencies.'
 echo
 
-java -version &> /dev/null || echo "Unable to locate java.  Please make sure it's installed." && exit 1
+which java &> /dev/null || (echo "Unable to locate java.  Please make sure it's installed." && exit 1)
 
 mkdir -p lib/fonts
 cd lib
