@@ -67,7 +67,7 @@ ln -s jing-20091111 jing
 wget -O docbook-xsl-1.78.1.zip 'http://downloads.sourceforge.net/project/docbook/docbook-xsl/1.78.1/docbook-xsl-1.78.1.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fdocbook%2Ffiles%2Fdocbook-xsl%2F1.78.1%2F&ts=1409909425&use_mirror=cznic'
 unzip docbook-xsl-1.78.1.zip
 rm docbook-xsl-1.78.1.zip
-ln -s docbook-xsl-1.78 docbook-xsl
+ln -s docbook-xsl-1.78.1 docbook-xsl
 
 mkdir -p docbook.rng
 wget -O docbook.rng/docbook.rng 'http://www.docbook.org/xml/5.0/rng/docbook.rng'
