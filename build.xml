@@ -78,7 +78,7 @@
         </java>
     </target>
 
-    <target name="test" depends="test-nochunk,test-chunk">
+    <target name="test" depends="test-nochunk,test-chunk" description="Run tests">
     </target>
 
     <target name="test-nochunk" depends="pdf,xhtml">
@@ -87,7 +87,7 @@
     <target name="test-chunk" depends="epub,epub3,xhtmlchunk,xhtml5,xhtml5chunk">
     </target>
 
-    <target name="clean">
+    <target name="clean" description="Cleanup output directory">
         <!-- delete output directory -->
         <delete dir="${output.dir}" />
     </target>
@@ -97,7 +97,7 @@
         <delete dir="${output.dir}/OEBPS/" />
     </target>
 
-    <target name="validate" depends="todocbook" unless='novalidation'>
+    <target name="validate" depends="todocbook" unless='novalidation' description="Validate resulting DocBook file (happens implicitly)">
         <!-- validate DocBook file -->
         <java jar="${validate.jar}" fork='true' failonerror='true'>
             <jvmarg value='${validate.jvmarg}' />
@@ -106,7 +106,7 @@
         </java>
     </target>
 
-    <target name="pdf" depends='fo' description="Create PDF output">
+    <target name="pdf" depends='fo' description="Convert document to PDF">
         <if>
             <and>
                 <isset property="fop.config" />
@@ -135,9 +135,9 @@
         </if>
     </target>
 
-    <target name="epub" depends='epub2' description="Translate document to EPUB" />
+    <target name="epub" depends='epub2' description="Convert document to EPUB2" />
 
-    <target name="epub2" depends='cleanepub,todocbook,validate' description="Translate document to EPUB">
+    <target name="epub2" depends='cleanepub,todocbook,validate' description="Convert document to EPUB2">
         <antcall target="convert">
             <param name="stylesheet" value="${epub.stylesheet}"/>
             <param name="file.output" value="${output.dir}/${file.docbook.name}.epub"/>
@@ -159,7 +159,7 @@
         <!--</zip>-->
     </target>
 
-    <target name="epub3" depends='cleanepub,todocbook,validate' description="Translate document to EPUB3">
+    <target name="epub3" depends='cleanepub,todocbook,validate' description="Convert document to EPUB3">
         <antcall target="convert">
             <param name="stylesheet" value="${epub3.stylesheet}"/>
             <param name="dest.dir" value="${output.dir}/OEBPS/"/>
@@ -179,42 +179,42 @@
         <!--</zip>-->
     </target>
 
-    <target name="man" depends='todocbook,validate' description="Translate document to manpage">
+    <target name="man" depends='todocbook,validate' description="Convert document to manpage">
         <antcall target="convert">
             <param name="stylesheet" value="${manpage.stylesheet}"/>
             <param name="file.output" value="${output.dir}/${file.docbook.name}.X"/>
         </antcall>
     </target>
 
-    <target name="html" depends='todocbook,validate' description="Translate document to HMTL">
+    <target name="html" depends='todocbook,validate' description="Convert document to HMTL">
         <antcall target="convert">
             <param name="stylesheet" value="${html.stylesheet}"/>
             <param name="file.output" value="${output.dir}/${file.docbook.name}.html"/>
         </antcall>
     </target>
 
-    <target name="xhtml" depends='todocbook,validate' description="Translate document to XHMTL">
+    <target name="xhtml" depends='todocbook,validate' description="Convert document to XHMTL">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtml.stylesheet}"/>
             <param name="file.output" value="${output.dir}/${file.docbook.name}.html"/>
         </antcall>
     </target>
 
-    <target name="xhtmlchunk" depends='todocbook,validate' description="Translate document to XHMTL chunked output">
+    <target name="xhtmlchunk" depends='todocbook,validate' description="Convert document to XHMTL chunked output">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtmlchunk.stylesheet}"/>
             <param name="dest.dir" value="${output.dir}/"/>
         </antcall>
     </target>
 
-    <target name="xhtml5" depends='todocbook,validate' description="Translate document to XHMTL">
+    <target name="xhtml5" depends='todocbook,validate' description="Convert document to XHMTL5">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtml5.stylesheet}"/>
             <param name="file.output" value="${output.dir}/${file.docbook.name}.xhtml"/>
         </antcall>
     </target>
 
-    <target name="xhtml5chunk" depends='todocbook,validate' description="Translate document to XHMTL chunked output">
+    <target name="xhtml5chunk" depends='todocbook,validate' description="Convert document to XHMTL5 chunked output">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtml5chunk.stylesheet}"/>
             <param name="dest.dir" value="${output.dir}/"/>
@@ -222,7 +222,7 @@
     </target>
 
     <target name="fo" depends='todocbook,validate'>
-        <!-- Translate document to fo -->
+        <!-- Convert document to fo -->
         <antcall target="convert">
             <param name="stylesheet" value="${fo.stylesheet}"/>
             <param name="file.output" value="${output.dir}/${file.docbook.name}.fo"/>
