@@ -32,7 +32,7 @@ rm ant-contrib-1.0b3-src.tar.gz
 wget 'http://mirror.sdunix.com/apache/xmlgraphics/fop/binaries/fop-1.1-bin.tar.gz'
 tar xzf fop-1.1-bin.tar.gz
 rm fop-1.1-bin.tar.gz
-ln -s fop-1.1 fop
+ln -sf fop-1.1 fop
 
 [ -e offo-hyphenation-binary ] && rm -rf offo-hyphenation-binary
 wget -O offo-hyphenation-binary.zip 'http://downloads.sourceforge.net/project/offo/offo-hyphenation/2.1/offo-hyphenation-binary.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Foffo%2F&ts=1409909292&use_mirror=softlayer-ams'
@@ -44,7 +44,7 @@ wget -O SaxonHE9-5-1-7J.zip 'http://downloads.sourceforge.net/project/saxon/Saxo
 mkdir saxon9
 cd saxon9
 unzip ../SaxonHE9-5-1-7J.zip
-ln -s saxon9he.jar saxon9.jar
+ln -sf saxon9he.jar saxon9.jar
 cd ..
 rm SaxonHE9-5-1-7J.zip
 
@@ -53,14 +53,14 @@ rm SaxonHE9-5-1-7J.zip
 wget 'https://jing-trang.googlecode.com/files/jing-20091111.zip'
 unzip jing-20091111.zip
 rm jing-20091111.zip
-ln -s jing-20091111 jing
+ln -sf jing-20091111 jing
 
 [ -e docbook-xsl-1.78.1 ] && rm -rf docbook-xsl-1.78.1
 [ -e docbook-xsl ] && rm docbook-xsl
 wget -O docbook-xsl-1.78.1.zip 'http://downloads.sourceforge.net/project/docbook/docbook-xsl/1.78.1/docbook-xsl-1.78.1.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fdocbook%2Ffiles%2Fdocbook-xsl%2F1.78.1%2F&ts=1409909425&use_mirror=cznic'
 unzip docbook-xsl-1.78.1.zip
 rm docbook-xsl-1.78.1.zip
-ln -s docbook-xsl-1.78.1 docbook-xsl
+ln -sf docbook-xsl-1.78.1 docbook-xsl
 
 mkdir -p docbook.rng
 wget -O docbook.rng/docbook.rng 'http://www.docbook.org/xml/5.0/rng/docbook.rng'
