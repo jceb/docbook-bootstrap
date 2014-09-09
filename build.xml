@@ -66,8 +66,16 @@
     <!-- ############## -->
     <!-- Public Targets -->
     <!-- ############## -->
-    <target name="default">
+    <target name="default" description="Execute target depending on output format: ${output.format}">
         <antcall target='${output.format}' />
+    </target>
+
+    <target name="help" description="Print help information">
+        <java classname="org.apache.tools.ant.Main">
+            <arg value="-projecthelp" />
+            <arg value="-buildfile" />
+            <arg value="${ant.file}" />
+        </java>
     </target>
 
     <target name="test" depends="test-nochunk,test-chunk">
@@ -171,6 +179,20 @@
         <!--</zip>-->
     </target>
 
+    <target name="man" depends='todocbook,validate' description="Translate document to manpage">
+        <antcall target="convert">
+            <param name="stylesheet" value="${manpage.stylesheet}"/>
+            <param name="file.output" value="${output.dir}/${file.docbook.name}.X"/>
+        </antcall>
+    </target>
+
+    <target name="html" depends='todocbook,validate' description="Translate document to HMTL">
+        <antcall target="convert">
+            <param name="stylesheet" value="${html.stylesheet}"/>
+            <param name="file.output" value="${output.dir}/${file.docbook.name}.html"/>
+        </antcall>
+    </target>
+
     <target name="xhtml" depends='todocbook,validate' description="Translate document to XHMTL">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtml.stylesheet}"/>
@@ -184,6 +206,7 @@
             <param name="dest.dir" value="${output.dir}/"/>
         </antcall>
     </target>
+
     <target name="xhtml5" depends='todocbook,validate' description="Translate document to XHMTL">
         <antcall target="convert">
             <param name="stylesheet" value="${xhtml5.stylesheet}"/>
@@ -198,7 +221,8 @@
         </antcall>
     </target>
 
-    <target name="fo" depends='todocbook,validate' description="Translate document to fo">
+    <target name="fo" depends='todocbook,validate'>
+        <!-- Translate document to fo -->
         <antcall target="convert">
             <param name="stylesheet" value="${fo.stylesheet}"/>
             <param name="file.output" value="${output.dir}/${file.docbook.name}.fo"/>
@@ -209,12 +233,14 @@
     <!-- ########################################## -->
     <!-- Private Targets (don't call them directly) -->
     <!-- ########################################## -->
-    <target name="output" description="Create output directory structure">
+    <target name="output">
+        <!-- Create output directory structure -->
         <mkdir dir='${output.dir}' />
     </target>
 
-    <target name="convert" description="Convert DocBook document into a new format">
-        <!-- Parmeters:
+    <target name="convert">
+        <!-- Convert DocBook document into a new format
+             Parmeters:
         file.docbook # the DocBook file/document to convert
         file.output # full path to the output file
         dest.dir # if specified, file.output is ignored - this is useful
@@ -285,9 +311,9 @@
     <!-- ################# -->
     <!-- Format conversion -->
     <!-- ################# -->
-    <target name="todocbook" depends="output" description="Transforms different
-        file formats to docbook so that they can be processed later on.  Feel
-        free to add more transformations here">
+    <target name="todocbook" depends="output">
+        <!-- Transforms different file formats to docbook so that they can be
+             processed later on.  Feel free to add more transformations here -->
         <if>
             <!-- insert other formats here -->
             <equals arg1="${file.format}" arg2="asciidoc" />
