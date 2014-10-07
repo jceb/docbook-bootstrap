@@ -1,0 +1,58 @@
+#!/bin/sh
+set -e
+set -u
+
+basedir="$(dirname "$(readlink -e "${0}")")"
+
+if [ $# -lt 1 ]; then
+	_tmpdir="template"
+	echo -n "Enter target directory [${_tmpdir}]: "
+	read targetdir
+	if [ -z "${targetdir}" ]; then
+		targetdir="${_tmpdir}"
+	fi
+else
+	targetdir="${1}"
+fi
+
+echo -n "Enter file format [DOCBOOK|asciidoc]: "
+read format
+if [ -z "${format}" ]; then
+	format="xml"
+fi
+case "${format}" in
+	docbook | dbk )
+		format="xml"
+		;;
+	asciidoc | adoc | ad )
+		format="adoc"
+		;;
+	markdown | mkd | md )
+		format="md"
+		;;
+	* )
+		echo "Unknown format, using docbook." 1>&2
+		format="xml"
+		;;
+esac
+
+if [ -e "${targetdir}" ]; then
+	echo "File or directory already exists: ${targetdir}" 1>&2
+	exit 1
+fi
+cp -r "${basedir}/template" "${targetdir}"
+
+targetname="$(basename "${targetdir}")"
+sed -i -e "s#^PATH_TO_DBOOTSTRAP=.*#PATH_TO_DBOOTSTRAP='${basedir}'#" \
+	-e "s#^in=.*#in=${targetname}.${format}#" \
+	"${targetdir}/Makefile"
+
+rm "${targetdir}/README.adoc"
+if [ "${format}" = "xml" ]; then
+	mv "${targetdir}/article.xml" "${targetdir}/${targetname}.${format}"
+else
+	rm "${targetdir}/article.xml"
+	touch "${targetdir}/${targetname}.${format}"
+fi
+
+echo "Clone is ready at '${targetdir}'"
