@@ -21,35 +21,36 @@
   specific language governing permissions and limitations
   under the License.
 -->
-
 <!-- if you are compiling with SaxonHE, make sure to remove the docbook namespace -->
 <!-- from this document! http://stackoverflow.com/questions/2141278/exslt-org-extensions -->
-<!-- Otherwise, if you have a license of SaxonPE, you can use it as well -->
+<!-- If you have a license of SaxonPE you don't have to make any modifications -->
 <article xml:lang="en" version='5.0'
 	xmlns='http://docbook.org/ns/docbook'
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
 	class='whitepaper'>
-	<!--class='faq|journalarticle|productsheet|specification|techreport|whitepaper'-->
+	<!--class='faq|journalarticle|productsheet|specification|techreport|whitepaper'
+	See http://docbook.org/tdg5/en/html/article.html
+	-->
 	<info>
-		<title></title>
+		<title>TITLE</title>
 		<!--<subtitle>My Article</subtitle>-->
 		<!--<titleabbrev>Abbr title</titleabbrev>-->
 		<author>
 			<personname>
-				<!--<honorific>Dr</honorific>-->
+				<!--<honorific>DR</honorific>-->
 				<firstname>FIRSTNAME</firstname>
 				<surname>LASTNAME</surname>
 			</personname>
 			<address>
 				<email>EMAIL</email>
-				<phone>PHONE</phone>
+				<!-- <phone>PHONE</phone> -->
 				<!--<fax>FAX</fax>-->
-				<street>STREET</street>
-				<postcode>ZIP</postcode>
-				<city>CITY</city>
-				<state>STATE</state>
-				<country>COUNTRY</country>
+				<!-- <street>STREET</street> -->
+				<!-- <postcode>ZIP</postcode> -->
+				<!-- <city>CITY</city> -->
+				<!-- <state>STATE</state> -->
+				<!-- <country>COUNTRY</country> -->
 			</address>
 		</author>
 		<!--<artpagenums>33-40</artpagenums>-->
@@ -61,7 +62,7 @@
 	<!--Include section from a file on your harddrive-->
 	<!--<xi:include href="section.xml" />-->
 	<section xml:id='section1'>
-		<title>TITLE</title>
+		<title>SECTION 1</title>
 		<para>
 			<!-- Image inclusion -->
 			<!--<mediaobject>-->

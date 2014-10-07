@@ -56,6 +56,7 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
     <!-- Font size -->
     <xsl:param name='body.font.master'>11</xsl:param>
     <!--<xsl:param name='footnote.font.size'>9</xsl:param>-->
+    <xsl:param name='line-height'>1.3</xsl:param>
 
     <!--<xsl:attribute-set name="section.title.properties">-->
     <!--<xsl:attribute name="font-family">Garamond</xsl:attribute>-->
@@ -63,7 +64,7 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
     <!--</xsl:attribute-set>-->
 
     <!-- ########## Bibliography Style ########## -->
-    <!--<xsl:param name="bibliography.style">iso690</xsl:param>-->
+    <xsl:param name="bibliography.style">iso690</xsl:param>
 
     <!-- ########## Add Customization Layer ########## -->
     <!--<xsl:param name="local.l10n.xml">document('../common/mygentextmods.xml')</xsl:param>-->
