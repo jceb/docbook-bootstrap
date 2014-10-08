@@ -22,7 +22,9 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
   specific language governing permissions and limitations
   under the License.
 -->
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
+    xmlns:fo="http://www.w3.org/1999/XSL/Format"
+    version="1.0">
 
     <!--<param name='docbookxsl.dir'>.</xsl:param>-->
 
@@ -64,6 +66,7 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
     <!--</xsl:attribute-set>-->
 
     <!-- ########## Bibliography Style ########## -->
+    <!-- See also http://www.sagehill.net/docbookxsl/CustomBiblio.html -->
     <xsl:param name="bibliography.style">iso690</xsl:param>
 
     <!-- ########## Add Customization Layer ########## -->

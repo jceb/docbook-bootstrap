@@ -21,9 +21,10 @@
   specific language governing permissions and limitations
   under the License.
 -->
+
 <!-- if you are compiling with SaxonHE, make sure to remove the docbook namespace -->
 <!-- from this document! http://stackoverflow.com/questions/2141278/exslt-org-extensions -->
-<!-- If you have a license of SaxonPE you don't have to make any modifications -->
+<!-- Otherwise, if you have a license of SaxonPE, you can use it as well -->
 <article xml:lang="en" version='5.0'
 	xmlns='http://docbook.org/ns/docbook'
 	xmlns:xi="http://www.w3.org/2001/XInclude"
@@ -72,29 +73,42 @@
 			<!--</mediaobject>-->
 	</para>
 	</section>
-	<!--<bibliography>-->
-		<!--<title></title>-->
-		<!--<biblioentry xml:id="" xreflabel="">-->
-			<!--<abbrev></abbrev>-->
-			<!--<orgname></orgname>-->
-			<!--<authorgroup>-->
-				<!--<author><personname>-->
-						<!--<firstname></firstname><surname></surname>-->
-				<!--</personname></author>-->
-			<!--</authorgroup>-->
-			<!--<copyright><year></year>-->
-				<!--<holder></holder></copyright>-->
-			<!--<editor><personname>-->
-					<!--<firstname></firstname><surname></surname>-->
-			<!--</personname></editor>-->
-			<!--<biblioid class="isbn"></biblioid>-->
-			<!--<publisher>-->
-				<!--<publishername></publishername>-->
-			<!--</publisher>-->
-			<!--<title></title>-->
-			<!--<bibliosource class="uri">-->
-				<!--<link xlink:href="" />-->
-			<!--</bibliosource>-->
-		<!--</biblioentry>-->
-	<!--</bibliography>-->
+	<!-- <bibliography> -->
+	<!-- 	<title>Bibliography</title> -->
+	<!-- 	Other useful entries in a bibliography might be: bibliomixed, bibliodiv -->
+	<!-- 	See also http://docbook.org/tdg5/en/html/bibliography.html -->
+	<!-- 	<bibliodiv label="Books"> -->
+	<!-- 		<title>Books:</title> -->
+	<!-- 		<biblioentry xml:id="XYZ" xreflabel="XYZ"> -->
+	<!-- 			See also http://docbook.org/tdg5/en/html/biblioentry.html -->
+	<!-- 			See also ROOT/docbook-bootstrap/lib/ISO690_bibliography/doc.html -->
+	<!-- 			<abbrev></abbrev> -->
+	<!-- 			<orgname></orgname> -->
+	<!-- 			<authorgroup> -->
+	<!-- 				<author> -->
+	<!-- 					<personname> -->
+	<!-- 						<firstname></firstname> -->
+	<!-- 						<othername></othername> -->
+	<!-- 						<surname></surname> -->
+	<!-- 					</personname> -->
+	<!-- 				</author> -->
+	<!-- 			</authorgroup> -->
+	<!-- 			<title></title> -->
+	<!-- 			<pubdate></pubdate> -->
+	<!-- 			<edition></edition> -->
+	<!-- 			<volumenum></volumenum> -->
+	<!-- 			<issuenum></issuenum> -->
+	<!-- 			<pagenums></pagenums> -->
+	<!-- 			<publisher> -->
+	<!-- 				<publishername></publishername> -->
+	<!-- 				<address><city></city></address> -->
+	<!-- 			</publisher> -->
+	<!-- 			<biblioid class="isbn"></biblioid> -->
+	<!-- 			<bibliomisc role="secondary">revised by WD. Lang</bibliomisc> -->
+	<!-- 			<bibliosource class="uri"> -->
+	<!-- 				<link xlink:href="" /> -->
+	<!-- 			</bibliosource> -->
+	<!-- 		</biblioentry> -->
+	<!-- 	</bibliodiv> -->
+	<!-- </bibliography> -->
 </article>
