@@ -1,9 +1,8 @@
 <?xml version='1.0'?>
+<!-- vi: ft=xslt:tw=80:sw=4:ts=4:et
+     -->
 <!--
-vi: ft=xslt:tw=80:sw=4:ts=4:et
--->
-<!--
-  Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
+  Copyright (C) 2013,2014 Jan Christoph Ebersbach <jceb@e-jc.de>
 
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
@@ -26,18 +25,20 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
     version="1.0">
 
-    <!--<param name='docbookxsl.dir'>.</xsl:param>-->
+    <!-- <param name='docbookxsl.dir'>.</xsl:param> -->
 
     <!-- ########## Import the fo-Stylesheet ########## -->
-    <xsl:import href="../../lib/docbook-xsl/fo/docbook.xsl"/>
+    <xsl:import href="../../lib/docbook-xsl/fo/docbook.xsl" />
+    <!-- Use APA style bibliography entries - "bibliography.style" must be -->
+    <!-- set to "iso690" -->
+    <xsl:import href="apa.xsl" />
 
     <!--<param name='fop.extensions' expression='1' />-->
 
-    <!-- Parameters can be found here:
-    - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html
-    - Print output http://www.sagehill.net/docbookxsl/PrintOutput.html
-    - General http://www.sagehill.net/docbookxsl/GeneralCustoms.html
-      -->
+    <!-- Parameters can be found here: -->
+    <!-- - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html -->
+    <!-- - Print output http://www.sagehill.net/docbookxsl/PrintOutput.html -->
+    <!-- - General http://www.sagehill.net/docbookxsl/GeneralCustoms.html -->
 
     <!-- ########## ToC/LoT/Index Generation ########## -->
     <!-- Table of Contents, enabled or disabled -->
@@ -46,29 +47,29 @@ vi: ft=xslt:tw=80:sw=4:ts=4:et
     <!-- ########## Pagination and General Styles ########## -->
     <xsl:param name='paper.type'>A4</xsl:param>
     <xsl:param name='page.orientation'>portrait</xsl:param>
-    <!--<xsl:param name='double.sided'>1</xsl:param>-->
+    <!-- <xsl:param name='double.sided'>1</xsl:param> -->
 
     <!-- ########## Font Options ######### -->
     <xsl:param name='title.font.family'>sans-serif</xsl:param>
     <xsl:param name='body.font.family'>serif</xsl:param>
-    <!--<xsl:param name='title.font.family'>sans-serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param>-->
-    <!--<xsl:param name='body.font.family'>serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param>-->
-    <!--<xsl:param name='monospace.font.family'>monospace</xsl:param>-->
-    <!--<xsl:param name='symbol.font.family'>Symbol,ZapfDingbats</xsl:param>-->
+    <!-- <xsl:param name='title.font.family'>sans-serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
+    <!-- <xsl:param name='body.font.family'>serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
+    <!-- <xsl:param name='monospace.font.family'>monospace</xsl:param> -->
+    <!-- <xsl:param name='symbol.font.family'>Symbol,ZapfDingbats</xsl:param> -->
     <!-- Font size -->
     <xsl:param name='body.font.master'>11</xsl:param>
     <!--<xsl:param name='footnote.font.size'>9</xsl:param>-->
     <xsl:param name='line-height'>1.3</xsl:param>
 
-    <!--<xsl:attribute-set name="section.title.properties">-->
-    <!--<xsl:attribute name="font-family">Garamond</xsl:attribute>-->
-    <!--<xsl:attribute name="font-weight">bold</xsl:attribute>-->
-    <!--</xsl:attribute-set>-->
+    <!-- <xsl:attribute-set name="section.title.properties"> -->
+    <!-- <xsl:attribute name="font-family">Garamond</xsl:attribute> -->
+    <!-- <xsl:attribute name="font-weight">bold</xsl:attribute> -->
+    <!-- </xsl:attribute-set> -->
 
     <!-- ########## Bibliography Style ########## -->
     <!-- See also http://www.sagehill.net/docbookxsl/CustomBiblio.html -->
     <xsl:param name="bibliography.style">iso690</xsl:param>
 
     <!-- ########## Add Customization Layer ########## -->
-    <!--<xsl:param name="local.l10n.xml">document('../common/mygentextmods.xml')</xsl:param>-->
+    <!-- <xsl:param name="local.l10n.xml">document('../common/mygentextmods.xml')</xsl:param> -->
 </xsl:stylesheet>
