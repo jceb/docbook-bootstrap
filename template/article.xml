@@ -62,12 +62,12 @@
 	<section xml:id='section1'>
 		<title>SECTION 1</title>
 		<para>
-			Image inclusion
-			<mediaobject>
-				<imageobject>
-					<imagedata fileref="figures/example.svg" format="svg" />
-				</imageobject>
-			</mediaobject>
+			<!-- Image inclusion -->
+			<!-- <mediaobject> -->
+			<!-- 	<imageobject> -->
+			<!-- 		<imagedata fileref="figures/example.svg" format="svg" /> -->
+			<!-- 	</imageobject> -->
+			<!-- </mediaobject> -->
 	</para>
 	</section>
 	<!-- <bibliography> -->
