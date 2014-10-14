@@ -2,7 +2,10 @@
 
 # Adjust these variables to fit your environment
 # PATH_TO_DBOOTSTRAP="../docbook-bootstrap"
-PATH_TO_DBOOTSTRAP=..
+PATH_TO_DBOOTSTRAP=$(DOCBOOK_BOOTSTRAP_PATH)
+ifndef
+PATH_TO_DBOOTSTRAP=x
+endif
 OUPUT_DIR=build
 
 # change in to the main file of the project

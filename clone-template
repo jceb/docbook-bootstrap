@@ -43,7 +43,7 @@ fi
 cp -r "${basedir}/template" "${targetdir}"
 
 targetname="$(basename "${targetdir}")"
-sed -i -e "s#^PATH_TO_DBOOTSTRAP=.*#PATH_TO_DBOOTSTRAP='${basedir}'#" \
+sed -i -e "s#^PATH_TO_DBOOTSTRAP=x\$#PATH_TO_DBOOTSTRAP='${basedir}'#" \
 	-e "s#^in=.*#in=${targetname}.${format}#" \
 	"${targetdir}/Makefile"
 
@@ -55,4 +55,8 @@ else
 	touch "${targetdir}/${targetname}.${format}"
 fi
 
+if [ -z "${DOCBOOK_BOOTSTRAP_PATH}" ]; then
+	echo "Add the following line to your .bashrc to locate docbook-bootstrap:"
+	echo -e "\texport DOCBOOK_BOOTSTRAP_PATH='${basedir}'"
+fi
 echo "Clone is ready at '${targetdir}'"
