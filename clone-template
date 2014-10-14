@@ -55,8 +55,12 @@ else
 	touch "${targetdir}/${targetname}.${format}"
 fi
 
+set +u
 if [ -z "${DOCBOOK_BOOTSTRAP_PATH}" ]; then
+	set -u
 	echo "Add the following line to your .bashrc to locate docbook-bootstrap:"
 	echo -e "\texport DOCBOOK_BOOTSTRAP_PATH='${basedir}'"
 fi
+set -u
+
 echo "Clone is ready at '${targetdir}'"
