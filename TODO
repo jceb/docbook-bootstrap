@@ -5,3 +5,4 @@
 - try compiling a larger project with this build file
 - add usage target that prints usage information
 - convert template/Makefile to a build.xml
+- look into Apache Camel (https://camel.apache.org/xmljson.html) and JSON-lib (http://json-lib.sourceforge.net/usage.html) for converting CSL bibliography entries (http://wiki.code4lib.org/index.php/Citation_Style_Language) to docbook
