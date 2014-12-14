@@ -1,0 +1,2 @@
+#!/bin/sh
+xsltproc "$(dirname "$(readlink -f "$0")")"/bibliontology2docbook.xsl "$@" | xmllint --pretty 1 -
