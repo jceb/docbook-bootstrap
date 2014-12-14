@@ -38,7 +38,11 @@
 	<xsl:template match="record">
 		<!-- create a specific bibliography entry -->
 		<biblioentry>
+			<xsl:attribute name="xml:id">REFLABEL</xsl:attribute>
+			<xsl:attribute name="xreflabel">REFLABEL</xsl:attribute>
+			<abbrev>REFLABEL</abbrev>
 			<xsl:apply-templates select="titles/title"/>
+			<xsl:apply-templates select="titles/short-title"/>
 			<xsl:apply-templates select="contributors/authors"/>
 			<xsl:apply-templates select="pages"/>
 			<xsl:apply-templates select="dates"/>
@@ -83,12 +87,16 @@
 		<title><xsl:value-of select="."/></title>
 	</xsl:template>
 
+	<xsl:template match="titles/short-title">
+		<titleabbrev><xsl:value-of select="."/></titleabbrev>
+	</xsl:template>
+
 	<xsl:template match="pages">
 		<pagenums><xsl:value-of select="."/></pagenums>
 	</xsl:template>
 
 	<xsl:template match="edition">
-		<pagenums><xsl:value-of select="."/></pagenums>
+		<edition><xsl:value-of select="."/></edition>
 	</xsl:template>
 
 	<xsl:template match="contributors/authors">
