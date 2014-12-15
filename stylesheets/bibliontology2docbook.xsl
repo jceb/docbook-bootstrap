@@ -58,7 +58,7 @@
 			<xsl:apply-templates select="bibo:edition"/>
 			<xsl:apply-templates select="dcterms:publisher"/>
 			<xsl:apply-templates select="bibo:isbn10 | bibo:isbn13"/>
-			<!-- <xsl:apply-templates select="access-date"/> -->
+			<xsl:call-template name="access-date"/>
 			<xsl:apply-templates select="bibo:uri"/>
 		</biblioentry>
 	</xsl:template>
@@ -137,7 +137,11 @@
 		<pubdate><xsl:value-of select="."/></pubdate>
 	</xsl:template>
 
-	<!-- <xsl:template match="access-date"> -->
-		<!-- 	<bibliomisc role="access"><xsl:value-of select="."/></bibliomisc> -->
-		<!-- </xsl:template> -->
+	<xsl:template name="access-date">
+		<xsl:apply-templates select="//z:UserItem/res:resource[@rdf:resource = current()/@rdf:about]/../z:accessDate"/>
+	</xsl:template>
+
+	<xsl:template match="z:accessDate">
+		<bibliomisc role="access"><xsl:value-of select="."/></bibliomisc>
+	</xsl:template>
 </xsl:stylesheet>
