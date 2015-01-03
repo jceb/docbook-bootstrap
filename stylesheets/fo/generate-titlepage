@@ -1,0 +1,8 @@
+#!/bin/sh
+# Copy titlepage the template and generate a stylesheet from it
+# Changes to the titlepage can be in file titlepage.templates.xml
+dir="$(readlink -f "$(dirname $0)")"
+if [ ! -e "${dir}/titlepage.templates.xml" ]; then
+    cp "${dir}/ ../../lib/docbook-xsl/fo/titlepage.templates.xml" "${dir}/titlepage.templates.xml"
+fi
+xsltproc "${dir}/../../lib/docbook-xsl/template/titlepage.xsl" "${dir}/titlepage.templates.xml" > "${dir}/titlepage.xsl"

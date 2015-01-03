@@ -327,6 +327,94 @@
     <xsl:value-of select="concat(substring(string(.), 1, 1), '.')" />
 </xsl:template>
 
+<xsl:template name="biblioentry.label">
+    <xsl:param name="node" select="."/>
+
+    <xsl:choose>
+        <xsl:when test="$bibliography.numbered != 0">
+            <xsl:text>[</xsl:text>
+            <xsl:number from="bibliography" count="biblioentry|bibliomixed"
+                level="any" format="1"/>
+            <xsl:text>] </xsl:text>
+        </xsl:when>
+        <xsl:when test="local-name($node/child::*[1]) = 'abbrev'">
+            <!-- nop -->
+            <!-- <xsl:text>[</xsl:text> -->
+            <!-- <xsl:apply-templates select="$node/abbrev[1]"/> -->
+            <!-- <xsl:text>] </xsl:text> -->
+        </xsl:when>
+        <xsl:when test="$node/@xreflabel">
+            <xsl:text>[</xsl:text>
+            <xsl:value-of select="$node/@xreflabel"/>
+            <xsl:text>] </xsl:text>
+        </xsl:when>
+        <xsl:when test="$node/@id or $node/@xml:id">
+            <xsl:text>[</xsl:text>
+            <xsl:value-of select="($node/@id|$node/@xml:id)[1]"/>
+            <xsl:text>] </xsl:text>
+        </xsl:when>
+        <xsl:otherwise><!-- nop --></xsl:otherwise>
+    </xsl:choose>
+</xsl:template>
+
+<!-- <xsl:template match="biblioid[@class='uri']|bibliomisc[@role='access']" mode="iso690.mode"> -->
+<!--   <xsl:param name="firstacc" select="1"/> -->
+<!--   <xsl:param name="access"> -->
+<!--     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'access'"/></xsl:call-template> -->
+<!--   </xsl:param> -->
+<!--   <xsl:param name="acctoo"> -->
+<!--     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'acctoo'"/></xsl:call-template> -->
+<!--   </xsl:param> -->
+<!--   <xsl:param name="onwww"> -->
+<!--     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'onwww'"/></xsl:call-template> -->
+<!--   </xsl:param> -->
+<!--   <xsl:param name="oninet"> -->
+<!--     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'oninet'"/></xsl:call-template> -->
+<!--   </xsl:param> -->
+<!--   <xsl:param name="access.end"> -->
+<!--     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'access.end'"/></xsl:call-template> -->
+<!--   </xsl:param> -->
+<!--   <xsl:param name="access.sep"> -->
+<!--     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'access.sep'"/></xsl:call-template> -->
+<!--   </xsl:param> -->
+<!--   <xsl:choose> -->
+<!--     <xsl:when test="$firstacc=1"> -->
+<!--       <xsl:value-of select="$access"/> -->
+<!--     </xsl:when> -->
+<!--     <xsl:otherwise> -->
+<!--       <xsl:value-of select="$acctoo"/> -->
+<!--     </xsl:otherwise> -->
+<!--   </xsl:choose> -->
+<!--   <xsl:choose> -->
+<!--       <xsl:when test="./link/@xlink:href != ''"> -->
+<!--       <xsl:choose> -->
+<!--         <xsl:when test="(starts-with(./link/@xlink:href,'http://')or(starts-with(./link/@xlink:href,'https://')))"> -->
+<!--           <xsl:value-of select="$onwww"/> -->
+<!--           <xsl:value-of select="$access.end"/> -->
+<!--           <xsl:apply-templates mode="iso690.mode" select="./link/@xlink:href"/> -->
+<!--         </xsl:when> -->
+<!--         <xsl:otherwise> -->
+<!--           <xsl:value-of select="$oninet"/> -->
+<!--           <xsl:value-of select="$access.end"/> -->
+<!--           <xsl:apply-templates mode="iso690.mode" select="./ulink"/> -->
+<!--         </xsl:otherwise> -->
+<!--       </xsl:choose> -->
+<!--     </xsl:when> -->
+<!--     <xsl:when test="(./ulink)and(string(./ulink)!=string(.))"> -->
+<!--       <xsl:value-of select="text()[1]"/> -->
+<!--       <xsl:call-template name="iso690.endsep"> -->
+<!--         <xsl:with-param name="text" select="text()[1]"/> -->
+<!--         <xsl:with-param name="sep" select="$access.end"/> -->
+<!--       </xsl:call-template> -->
+<!--       <xsl:apply-templates mode="iso690.mode" select="./ulink"/> -->
+<!--     </xsl:when> -->
+<!--     <xsl:otherwise> -->
+<!--       <xsl:apply-templates mode="iso690.mode"/> -->
+<!--     </xsl:otherwise> -->
+<!--   </xsl:choose> -->
+<!--   <xsl:value-of select="$access.sep"/> -->
+<!-- </xsl:template> -->
+
 <!-- MONOGRAPHS -->
 <xsl:template name="iso690.monogr">
   <!-- Primary responsibility -->

@@ -33,6 +33,9 @@
     <!-- set to "iso690" -->
     <xsl:import href="apa.xsl" />
 
+    <!-- custom title page -->
+    <xsl:import href="titlepage.xsl" />
+
     <!--<param name='fop.extensions' expression='1' />-->
 
     <!-- Parameters can be found here: -->
@@ -42,12 +45,72 @@
 
     <!-- ########## ToC/LoT/Index Generation ########## -->
     <!-- Table of Contents, enabled or disabled -->
-    <!-- <xsl:param name='generate.toc'></xsl:param> -->
+    <xsl:param name='generate.toc'></xsl:param>
 
     <!-- ########## Pagination and General Styles ########## -->
     <xsl:param name='paper.type'>A4</xsl:param>
     <xsl:param name='page.orientation'>portrait</xsl:param>
     <!-- <xsl:param name='double.sided'>1</xsl:param> -->
+
+    <!-- Hypenation -->
+    <xsl:template name="set.flow.properties">
+        <!-- See http://www.sagehill.net/docbookxsl/PrintCustomEx.html#Hyphenation -->
+        <!-- <xsl:param name="element" select="local-name(.)"/> -->
+        <!-- <xsl:param name="master-reference" select="''"/> -->
+
+        <!-- <xsl:choose> -->
+        <!--     <xsl:when test="starts-with($master-reference, 'index') or -->
+        <!--         starts-with($master-reference, 'titlepage') or -->
+        <!--         starts-with($master-reference, 'lot') or -->
+        <!--         starts-with($master-reference, 'front')"> -->
+        <!--         <xsl:attribute name="hyphenate">false</xsl:attribute> -->
+        <!--     </xsl:when> -->
+        <!--     <xsl:otherwise> -->
+        <!--         <xsl:attribute name="hyphenate"> -->
+        <!--             <xsl:value-of select="$hyphenate"/> -->
+        <!--         </xsl:attribute> -->
+        <!--     </xsl:otherwise> -->
+        <!-- </xsl:choose> -->
+        <xsl:attribute name="hyphenate">false</xsl:attribute>
+    </xsl:template>
+
+    <!-- Author: include address/otheraddr -->
+    <xsl:template match="author" mode="titlepage.mode">
+        <fo:block>
+            <xsl:call-template name="anchor"/>
+            <xsl:choose>
+                <xsl:when test="orgname">
+                    <xsl:apply-templates/>
+                </xsl:when>
+                <xsl:otherwise>
+                    <xsl:call-template name="person.name"/>
+                    <xsl:if test="affiliation/orgname">
+                        <xsl:text>, </xsl:text>
+                        <xsl:apply-templates select="affiliation/orgname" mode="titlepage.mode"/>
+                    </xsl:if>
+                    <xsl:if test="email|affiliation/address/email">
+                        <xsl:text> </xsl:text>
+                        <xsl:apply-templates select="(email|affiliation/address/email)[1]"/>
+                    </xsl:if>
+                    <xsl:if test="address/otheraddr">
+                        <xsl:text> </xsl:text>
+                        <xsl:apply-templates select="address/otheraddr"/>
+                    </xsl:if>
+                </xsl:otherwise>
+            </xsl:choose>
+        </fo:block>
+    </xsl:template>
+
+    <xsl:template match="address/otheraddr"
+        mode="titlepage.mode" priority="2">
+        <fo:block>
+            <xsl:call-template name="gentext">
+                <xsl:with-param name="key" select="'address/otheraddr'"/>
+            </xsl:call-template>
+            <xsl:text> </xsl:text>
+            <xsl:apply-templates mode="titlepage.mode"/>
+        </fo:block>
+    </xsl:template>
 
     <!-- ########## Font Options ######### -->
     <xsl:param name='title.font.family'>sans-serif</xsl:param>

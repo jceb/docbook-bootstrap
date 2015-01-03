@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- vi: ft=docbk:tw=80:sw=4:ts=4:noet
+<!-- vi: ft=docbk:tw=0:sw=4:ts=4:noet:wrap:smc=10000:spell:spelllang=en
 -->
 <!-- Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
 
@@ -43,8 +43,8 @@
 				<firstname>FIRSTNAME</firstname>
 				<surname>LASTNAME</surname>
 			</personname>
+			<email>EMAIL</email>
 			<address>
-				<email>EMAIL</email>
 				<!-- <phone>PHONE</phone> -->
 				<!-- <fax>FAX</fax> -->
 				<!-- <street>STREET</street> -->
@@ -52,13 +52,14 @@
 				<!-- <city>CITY</city> -->
 				<!-- <state>STATE</state> -->
 				<!-- <country>COUNTRY</country> -->
+				<!-- <otheraddr>OTHER INFORMATION</otheraddr> -->
 			</address>
 		</author>
 		<!-- <artpagenums>33-40</artpagenums> -->
 		<!-- <volumenum>13</volumenum> -->
 		<!-- <issuenum>3</issuenum> -->
 		<!-- <publisher><publishername>publisher</publishername></publisher> -->
-		<!-- <pudate>1994</pudate> -->
+		<!-- <pubdate>1994</pubdate> -->
 	</info>
 	<!-- Include section from a file on your harddrive -->
 	<!-- <xi:include href="section.xml" /> -->
@@ -66,11 +67,13 @@
 		<title>SECTION 1</title>
 		<para>
 			<!-- Include an image -->
-			<!-- <mediaobject> -->
-			<!-- 	<imageobject> -->
-			<!-- 		<imagedata fileref="figures/example.svg" format="svg" /> -->
-			<!-- 	</imageobject> -->
-			<!-- </mediaobject> -->
+			<!-- <figure> -->
+			<!-- 	<mediaobject> -->
+			<!-- 		<imageobject> -->
+			<!-- 			<imagedata fileref="figures/example.svg" format="svg" /> -->
+			<!-- 		</imageobject> -->
+			<!-- 	</mediaobject> -->
+			<!-- </figure> -->
 
 			<!-- itemized list -->
 			<!-- <itemizedlist> -->
@@ -78,7 +81,7 @@
 			<!-- 	<listitem><para>item 2</para></listitem> -->
 			<!-- </itemizedlist> -->
 
-		Some text, a citation: <citation>ABBREV</citation>, a cross reference <xref linkend="anchor" endterm="anchortext"/> with auto generated text and a link making arbitrary text a <link linkend="anchor">link</link>.
+		<!-- Some text, a citation: <citation>ABBREV</citation>, a cross reference <xref linkend="anchor" endterm="anchortext"/> with auto generated text and a link making arbitrary text a <link linkend="anchor">link</link>. -->
 		</para>
 	</section>
 	<!-- <bibliography> -->

@@ -40,11 +40,11 @@
 
 	<xsl:template match="rdf:RDF">
 		<bibliography>
-			<xsl:apply-templates select="bibo:Book | bibo:Article | bibo:Webpage | sioct:BlogPost"/>
+			<xsl:apply-templates select="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost"/>
 		</bibliography>
 	</xsl:template>
 
-	<xsl:template match="bibo:Book | bibo:Article | bibo:Webpage | sioct:BlogPost">
+	<xsl:template match="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost">
 		<biblioentry>
 			<!-- <xsl:apply-templates select="*"/> -->
 			<xsl:attribute name="xml:id">REFLABEL</xsl:attribute>
@@ -54,6 +54,7 @@
 			<xsl:apply-templates select="bibo:shortTitle"/>
 			<xsl:apply-templates select="bibo:authorList"/>
 			<xsl:apply-templates select="bibo:numPages"/>
+			<xsl:apply-templates select="bibo:pages"/>
 			<xsl:apply-templates select="dcterms:date"/>
 			<xsl:apply-templates select="bibo:edition"/>
 			<xsl:apply-templates select="dcterms:publisher"/>
@@ -80,11 +81,11 @@
 	</xsl:template>
 
 	<xsl:template match="bibo:uri">
-		<bibliosource class="uri">
+		<biblioid class="uri">
 			<link>
 				<xsl:attribute name="xlink:href"><xsl:value-of select="."/></xsl:attribute>
 			</link>
-		</bibliosource>
+		</biblioid>
 	</xsl:template>
 
 
@@ -109,7 +110,7 @@
 		<address><city><xsl:value-of select="."/></city></address>
 	</xsl:template>
 
-	<xsl:template match="bibo:numPages">
+	<xsl:template match="bibo:numPages | bibo:pages">
 		<pagenums><xsl:value-of select="."/></pagenums>
 	</xsl:template>
 
@@ -123,7 +124,7 @@
 		</authorgroup>
 	</xsl:template>
 
-	<xsl:key name="pid" match="foaf:Person" use="@rdf:nodeID"/> 
+	<xsl:key name="pid" match="foaf:Person" use="@rdf:nodeID"/>
 	<xsl:template match="foaf:Person">
 		<author>
 			<personname>

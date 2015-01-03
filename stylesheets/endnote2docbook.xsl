@@ -55,11 +55,11 @@
 	</xsl:template>
 
 	<xsl:template match="urls/web-urls/url">
-		<bibliosource class="uri">
+		<biblioid class="uri">
 			<link>
 				<xsl:attribute name="xlink:href"><xsl:value-of select="."/></xsl:attribute>
 			</link>
-		</bibliosource>
+		</biblioid>
 	</xsl:template>
 
 	<xsl:template match="isbn">
