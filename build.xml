@@ -256,7 +256,7 @@
                 <if>
                     <isset property="dest.dir" />
                     <then>
-                        <!--epub3 workaround - it needs a directory and no output filename!-->
+                        <!-- epub3 workaround - it needs a directory and no output filename! -->
                         <exec executable="${xsltproc.exe}">
                             <arg line="--xinclude" />
                             <arg line="--stringparam" />
@@ -286,7 +286,7 @@
                     <if>
                         <isset property="dest.dir" />
                         <then>
-                            <!--epub3 workaround - it needs a directory and no output filename!-->
+                            <!-- epub3 workaround - it needs a directory and no output filename! -->
                             <xslt includes="${file.docbook}" destdir="${dest.dir}"
                                 style="${stylesheet}" force="true">
                                 <classpath path="${xslt.jar}" />
