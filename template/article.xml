@@ -30,6 +30,7 @@
 	xmlns='http://docbook.org/ns/docbook'
 	xmlns:xi="http://www.w3.org/2001/XInclude"
 	xmlns:xlink="http://www.w3.org/1999/xlink"
+	xmlns:mml="http://www.w3.org/1998/Math/MathML"
 	class='whitepaper'>
 	<!-- class='faq|journalarticle|productsheet|specification|techreport|whitepaper' -->
 	<!-- See http://docbook.org/tdg5/en/html/article.html -->
