@@ -61,5 +61,13 @@ unzip docbook-xsl-1.78.1.zip
 rm docbook-xsl-1.78.1.zip
 ln -sf docbook-xsl-1.78.1 docbook-xsl
 
+[ -e jeuclid-fop-3.1.9 ] && rm -rf jeuclid-fop-3.1.9
+[ -e jeuclid-fop ] && rm jeuclid-fop
+wget -O jeuclid-fop-3.1.9.zip 'http://downloads.sourceforge.net/project/jeuclid/3.1.x/3.1.9/jeuclid-fop-3.1.9-distribution.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fjeuclid%2Ffiles%2F3.1.x%2F3.1.9%2F&ts=1422986063&use_mirror=softlayer-ams'
+unzip jeuclid-fop-3.1.9.zip
+rm jeuclid-fop-3.1.9.zip
+ln -sf jeuclid-fop-3.1.9 jeuclid-fop
+ln -s $PWD/jeuclid-fop/*.jar fop/lib/
+
 mkdir -p docbook.rng
 wget -O docbook.rng/docbook.rng 'http://www.docbook.org/xml/5.0/rng/docbook.rng'
