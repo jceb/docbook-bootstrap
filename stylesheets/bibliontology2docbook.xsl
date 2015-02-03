@@ -40,11 +40,11 @@
 
 	<xsl:template match="rdf:RDF">
 		<bibliography>
-			<xsl:apply-templates select="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost"/>
+			<xsl:apply-templates select="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle"/>
 		</bibliography>
 	</xsl:template>
 
-	<xsl:template match="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost">
+	<xsl:template match="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle">
 		<biblioentry>
 			<!-- <xsl:apply-templates select="*"/> -->
 			<xsl:attribute name="xml:id">REFLABEL</xsl:attribute>
