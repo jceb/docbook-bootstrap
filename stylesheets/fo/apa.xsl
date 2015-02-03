@@ -135,22 +135,22 @@
       <xsl:apply-templates mode="iso690.mode" select="./publisher/publishername|./publishername">
         <xsl:with-param name="sep" select="$endsep"/>
       </xsl:apply-templates>
-      <xsl:if test="not(./pubdate[not(@role='issuing')]|./copyright/year)">
-        <xsl:call-template name="iso690.data">
-          <xsl:with-param name="sep" select="$endsep"/>
-        </xsl:call-template>
-      </xsl:if>
+      <!-- <xsl:if test="not(./pubdate[not(@role='issuing')]|./copyright/year)"> -->
+      <!--   <xsl:call-template name="iso690.data"> -->
+      <!--     <xsl:with-param name="sep" select="$endsep"/> -->
+      <!--   </xsl:call-template> -->
+      <!-- </xsl:if> -->
     </xsl:when>
-    <xsl:when test="($onlydate=1)or(./pubdate[not(@role='issuing')]|./copyright/year)">
-      <xsl:apply-templates mode="iso690.mode" select="./pubdate[not(@role='issuing')]|./copyright/year">
-        <xsl:with-param name="sep" select="$endsep"/>
-      </xsl:apply-templates>
-      <xsl:if test="$onlydate=1">
-        <xsl:call-template name="iso690.location">
-          <xsl:with-param name="onlypages" select="1"/>
-        </xsl:call-template>
-      </xsl:if>
-    </xsl:when>
+    <!-- <xsl:when test="($onlydate=1)or(./pubdate[not(@role='issuing')]|./copyright/year)"> -->
+    <!--   <xsl:apply-templates mode="iso690.mode" select="./pubdate[not(@role='issuing')]|./copyright/year"> -->
+    <!--     <xsl:with-param name="sep" select="$endsep"/> -->
+    <!--   </xsl:apply-templates> -->
+    <!--   <xsl:if test="$onlydate=1"> -->
+    <!--     <xsl:call-template name="iso690.location"> -->
+    <!--       <xsl:with-param name="onlypages" select="1"/> -->
+    <!--     </xsl:call-template> -->
+    <!--   </xsl:if> -->
+    <!-- </xsl:when> -->
     <xsl:when test="(./publisher/publishername|./publishername)and(./publisher/address/city)and($onlydate=0)">
       <xsl:apply-templates mode="iso690.mode" select="./publisher/address/city">
         <xsl:with-param name="sep" select="$placesep"/>
@@ -159,11 +159,11 @@
         <xsl:with-param name="sep" select="$endsep"/>
       </xsl:apply-templates>
     </xsl:when>
-    <xsl:when test="not(./pubdate[not(@role='issuing')]|./copyright/year)">
-      <xsl:call-template name="iso690.data">
-        <xsl:with-param name="sep" select="$endsep"/>
-      </xsl:call-template>
-    </xsl:when>
+    <!-- <xsl:when test="not(./pubdate[not(@role='issuing')]|./copyright/year)"> -->
+    <!--   <xsl:call-template name="iso690.data"> -->
+    <!--     <xsl:with-param name="sep" select="$endsep"/> -->
+    <!--   </xsl:call-template> -->
+    <!-- </xsl:when> -->
   </xsl:choose>
 </xsl:template>
 
@@ -182,7 +182,7 @@
 
 <xsl:template name="iso690.author.list">
   <xsl:param name="person.list"
-             select="author|corpauthor|editor"/>
+             select="author|corpauthor|orgname|editor"/>
   <xsl:param name="person.count" select="count($person.list)"/>
   <xsl:param name="count" select="1"/>
   <xsl:param name="group" select="./authorgroup[@role='many']"/>
@@ -250,6 +250,9 @@
                 <xsl:when test="name($person.list[position()=$count])='corpauthor'">
                   <xsl:text> </xsl:text>
                 </xsl:when>
+                <xsl:when test="name($person.list[position()=$count])='orname'">
+                  <xsl:text> </xsl:text>
+                </xsl:when>
                 <xsl:otherwise>
                   <xsl:text> </xsl:text>
                 </xsl:otherwise>
@@ -308,9 +311,12 @@
     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'lastfirst.sep'"/></xsl:call-template>
   </xsl:param>
   <xsl:choose>
-    <xsl:when test="name($node)!='corpauthor'">
+	  <xsl:when test="$node/orgname">
+		<xsl:value-of select="$node//orgname[1]" />
+    </xsl:when>
+	<xsl:when test="$node//surname">
       <xsl:apply-templates mode="iso690.mode" select="$node//surname[1]"/>
-      <xsl:if test="$node//surname and $node//firstname">
+      <xsl:if test="$node//firstname">
         <xsl:value-of select="$lastfirst.sep"/>
       </xsl:if>
       <xsl:apply-templates mode="iso690.mode" select="$node//firstname[1]"/>
