@@ -21,6 +21,12 @@
   specific language governing permissions and limitations
   under the License.
 -->
+
+<!-- Parameters can be found here: -->
+<!-- - FO output http://docbook.sourceforge.net/release/xsl/1.78.1/doc/fo/index.html -->
+<!-- - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html -->
+<!-- - Print output http://www.sagehill.net/docbookxsl/PrintOutput.html -->
+<!-- - General http://www.sagehill.net/docbookxsl/GeneralCustoms.html -->
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
     xmlns:fo="http://www.w3.org/1999/XSL/Format"
     version="1.0">
@@ -38,19 +44,15 @@
 
     <!--<param name='fop.extensions' expression='1' />-->
 
-    <!-- Parameters can be found here: -->
-    <!-- - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html -->
-    <!-- - Print output http://www.sagehill.net/docbookxsl/PrintOutput.html -->
-    <!-- - General http://www.sagehill.net/docbookxsl/GeneralCustoms.html -->
-
     <!-- ########## ToC/LoT/Index Generation ########## -->
     <!-- Table of Contents, enabled or disabled -->
-    <xsl:param name='generate.toc'></xsl:param>
+    <!-- <xsl:param name='generate.toc'></xsl:param> -->
 
     <!-- ########## Pagination and General Styles ########## -->
     <xsl:param name='paper.type'>A4</xsl:param>
     <xsl:param name='page.orientation'>portrait</xsl:param>
     <!-- <xsl:param name='double.sided'>1</xsl:param> -->
+    <xsl:param name="header.column.widths">1 3 1</xsl:param>
 
     <!-- Hypenation -->
     <xsl:template name="set.flow.properties">
@@ -101,6 +103,14 @@
         </fo:block>
     </xsl:template>
 
+    <!-- indent first line: http://www.oxygenxml.com/forum/topic8795.html -->
+    <xsl:attribute-set name="normal.para.spacing">
+        <xsl:attribute name="text-indent">24pt</xsl:attribute>
+        <xsl:attribute name="space-before.optimum">1em</xsl:attribute>
+        <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
+        <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
+    </xsl:attribute-set>
+
     <xsl:template match="address/otheraddr"
         mode="titlepage.mode" priority="2">
         <fo:block>
@@ -114,7 +124,7 @@
 
     <!-- ########## Font Options ######### -->
     <xsl:param name='title.font.family'>sans-serif</xsl:param>
-    <xsl:param name='body.font.family'>serif</xsl:param>
+    <xsl:param name='body.font.family'>sans-serif</xsl:param>
     <!-- <xsl:param name='title.font.family'>sans-serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
     <!-- <xsl:param name='body.font.family'>serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
     <!-- <xsl:param name='monospace.font.family'>monospace</xsl:param> -->
