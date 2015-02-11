@@ -42,7 +42,7 @@
     <!-- custom title page -->
     <xsl:import href="titlepage.xsl" />
 
-    <!--<param name='fop.extensions' expression='1' />-->
+    <xsl:param name="fop1.extensions" select="1" />
 
     <!-- ########## ToC/LoT/Index Generation ########## -->
     <!-- Table of Contents, enabled or disabled -->
