@@ -48,6 +48,11 @@
     <!-- Table of Contents, enabled or disabled -->
     <!-- <xsl:param name='generate.toc'></xsl:param> -->
 
+    <!-- ########## Automatic labeling ########## -->
+    <xsl:param name='section.autolabel'>1</xsl:param>
+    <!-- <xsl:param name='section.autolabel.max.depth'>1</xsl:param> -->
+    <!-- <xsl:param name='section.label.includes.component.label'>1</xsl:param> -->
+
     <!-- ########## Pagination and General Styles ########## -->
     <xsl:param name='paper.type'>A4</xsl:param>
     <xsl:param name='page.orientation'>portrait</xsl:param>
