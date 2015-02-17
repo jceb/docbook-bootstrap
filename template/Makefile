@@ -35,6 +35,23 @@ FORMAT=docbook
 SUFFIX=$(suffix $(in))
 ifeq ($(SUFFIX), .adoc)
  FORMAT=asciidoc
+else
+ifeq ($(SUFFIX), .mkd)
+ FORMAT=markdown
+else
+ifeq ($(SUFFIX), .md)
+ FORMAT=markdown
+else
+ifeq ($(SUFFIX), .tex)
+ FORMAT=latex
+else
+ # use the file extension as file type - see `pandoc --help` for supported input
+ # formats, i.e. docx, epub, haddock, html, json, opml, org, rst, t2t, textile,
+ # twiki and several markdown dialects
+ FORMAT=$(subst .,,$(SUFFIX))
+endif
+endif
+endif
 endif
 
 # Targets like pdf, epub, epub3, xhtml, xhtmlchunk, xhtml5, xhtml5chunk,

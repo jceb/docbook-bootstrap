@@ -100,6 +100,8 @@
     <target name="validate" depends="todocbook" unless='novalidation' description="Validate resulting DocBook file (happens implicitly)">
         <!-- validate DocBook file -->
         <java jar="${validate.jar}" fork='true' failonerror='true'>
+            <jvmarg value="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration" />
+            <jvmarg value="-Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl" />
             <jvmarg value='${validate.jvmarg}' />
             <arg value='${docbook.rng}' />
             <arg value='${file.docbook}' />
@@ -316,26 +318,66 @@
              processed later on.  Feel free to add more transformations here -->
         <if>
             <!-- insert other formats here -->
-            <equals arg1="${file.format}" arg2="asciidoc" />
+            <equals arg1="${file.format}" arg2="docbook" />
             <then>
-                <antcallback target="convert_asciidoc" return="file.docbook" />
+                <antcallback target="convert_docbook5" return="file.docbook" />
             </then>
             <else>
-                <antcallback target="convert_docbook" return="file.docbook" />
+                <if>
+                    <equals arg1="${file.format}" arg2="asciidoc" />
+                    <then>
+                        <antcallback target="convert_asciidoc" return="file.docbook" />
+                    </then>
+                    <else>
+                        <antcallback target="convert_pandoc" return="file.docbook" />
+                    </else>
+                </if>
             </else>
         </if>
     </target>
 
     <target name="convert_asciidoc">
-        <property name="file.docbook" value="${output.dir}/${file.docbook.name}.xml" />
+        <!-- convert file format to docbook 4.5 -->
+        <property name="file.docbook4" value="${output.dir}/db4-${file.docbook.name}.xml" />
         <exec executable="${asciidoc.exe}">
             <arg value="--backend=docbook" />
-            <arg value="--out-file=${file.docbook}" />
+            <arg value="--out-file=${file.docbook4}" />
             <arg value="${file}" />
         </exec>
+        <!-- upgrade docbook 4.5 to 5 -->
+        <property name="file.docbook" value="${output.dir}/${file.docbook.name}.xml" />
+        <antcall target="convert_docbook4" />
     </target>
 
-    <target name="convert_docbook">
+    <target name="convert_pandoc">
+        <!-- convert file format to docbook 4.5 -->
+        <property name="file.docbook4" value="${output.dir}/db4-${file.docbook.name}.xml" />
+        <exec executable="${pandoc.exe}">
+            <arg value="--from=${file.format}" />
+            <arg value="--to=docbook" />
+            <arg value="--output=${file.docbook4}" />
+            <arg value="--standalone" />
+            <arg value="${file}" />
+        </exec>
+        <!-- upgrade docbook 4.5 to 5 -->
+        <property name="file.docbook" value="${output.dir}/${file.docbook.name}.xml" />
+        <antcall target="convert_docbook4" />
+    </target>
+
+    <target name="convert_docbook4">
+        <!-- Convert DocBook document into a new format
+             Parmeters:
+        file.docbook4 # the DocBook 4.5 source file
+        file.docbook # the DocBook 5 target file
+        -->
+        <antcall target="convert">
+            <param name="file.output" value="${file.docbook}" />
+            <param name="stylesheet" value="lib/db4-upgrade.xsl" />
+            <param name="file.docbook" value="${file.docbook4}" />
+        </antcall>
+    </target>
+
+    <target name="convert_docbook5">
         <property name="file.docbook" value="${file}" />
     </target>
 </project>

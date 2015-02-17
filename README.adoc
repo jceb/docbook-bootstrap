@@ -7,34 +7,46 @@ independent, easy to depoly environment that brings you to the core
 tasks of getting started with THE document within seconds.
 
 .Objectives
-* Incorate all the wisdom and hints from
+* Incorate all wisdom and hints from
   http://www.docbook.org/tdg51/en/html/
 * Be platform independent -> embrace the Java eco-system as much as
   possible
-* Make building DocBook documents a breeze
+* Make using DocBook a breeze
 
-== Setup
+== Setup and Usage
+
+image::https://github.com/jceb/docbook-bootstrap/blob/master/examples/clone-template.gif[Set up docbook project]
+
 1. Get all the additional software (see section
-   <<additional-software-needed,Additional Software Needed!>>).
+   <<additional-software-needed,Additional Software Needed>>).
    Hopefully, you've to do this just once (in a while).
 2. Make a copy of the `template` folder and put it where you want to
-   create your next document/project.  Adjust the `Makefile` as needed.
-   (The document can also be passed as an argument to make: `make
-   in=FILE`)
+   create your next document/project.
+   * The `clone-template` script will do the work under Linux and
+     MacOSX.
+   * For Windows adjust the `Makefile` as needed.  (The document can
+     also be passed as an argument to make: `make in=FILE`)
+   * Many <<input_formats,input formats>> are supported
 3. Start writing your document!
-4. Do you need more customization?  Ok, here you go:  The file
+4. Run `make` to convert the document to PDF.  It will be stored in the
+   `build` directory.
+   * Additional <<output_formats,outupt formats>> are supported
+   * Example: `make html` to create HTML output
+   * Example2: `make help` to get a list of supported output formats
+5. Do you need more customization?  Ok, here you go:  The file
    `build.properties` holds the general settings for building a DocBook
    file.  Platform specific values are stored in the
    `build.properties.PLATFORM` files.  Customization of stylesheets is
    possible.  Check out the included stylesheet for some ideas:
    `stylesheets/fo/docbook.xsl`
 
-== Usage
+== Details
 
-=== Build Tasks
+[[output_formats]]
+=== Output Formats / Build Tasks
 Run the following tasks the create the desired output
-format, e.g. "ant pdf".  All output is stored it the directory "build",
-it's customizable throught the variable "output.dir":
+format, e.g. `ant pdf`.  All output is stored it the directory `build`,
+it's customizable throught the variable `output.dir`:
 
 * `pdf`           : create PDF output (default task)
 * `epub`          : create EPUB output
@@ -47,13 +59,19 @@ it's customizable throught the variable "output.dir":
 * `clean`         : delete all dynamically created files/the "out" directory
 * `test`          : execute all creation tasks one after the other
 
+[[input_formats]]
 === Input Formats
-It's also possible to convert files in the AsciiDoc format to DocBook
-and than to the different output formats.  See
-<<additional_software,Additional Software Needed>> for more information.
-Set property `file.format` to `asciidoc` and change `file.suffix` to the
-suffix of the input file - it's necessary because there doesn't seem to
-be way to figure this out using Ant.
+* http://asciidoc.org/[AsciiDoc]
+* http://docbook.org/[DocBook]
+* http://daringfireball.net/projects/markdown/[Markdown]
+* http://orgmode.org[Org mode]
+* http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html[reStructuredText]
+* and many more through http://pandoc.org/[Pandoc]
+
+See section <<additional_software,Additional Software Needed>> for more
+information.  Set property `file.format` to `asciidoc` and change
+`file.suffix` to the suffix of the input file - it's necessary because
+there doesn't seem to be way to figure this out using Ant.
 
 === Examples
 .Convert any DocBook file to PDF without editing build.properties
@@ -130,6 +148,8 @@ There are even more font family parameters that can be set:
   http://ant.apache.org/[Ant] setup
 * For AsciiDoc input http://ascidoctor.org[Asciidoctor] needs to be
   installed
+* For any other input form http://pandoc.org/[Pandoc] needs to be
+  installed
 
 IMPORTANT: *You also need to download the software listed in file link:SETUP[].*
 
@@ -139,7 +159,7 @@ IMPORTANT: *You also need to download the software listed in file link:SETUP[].*
 == Licensing and Copyright
 
 ----
-  Copyright (C) 2013,2014 Jan Christoph Ebersbach <jceb@e-jc.de>
+  Copyright (C) 2013-2015 Jan Christoph Ebersbach <jceb@e-jc.de>
 
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file

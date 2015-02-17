@@ -28,3 +28,6 @@ xsltproc.exe = xsltproc
 
 # Asciidoc
 asciidoc.exe = asciidoctor
+
+# Pandoc
+pandoc.exe = pandoc

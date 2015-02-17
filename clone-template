@@ -12,10 +12,25 @@ if [ $# -lt 1 ]; then
 		targetdir="${_tmpdir}"
 	fi
 else
+	if [ "${1}" = '-h' ] || [ "${1}" = '--help' ]; then
+		echo "USAGE: $(basename "${0}") [TARGETDIRECTORY]"
+		echo " Clone docbook-bootstrap template directory and set up a new docbook project directory"
+		exit
+	fi
 	targetdir="${1}"
 fi
 
-echo -n "Enter file format [DOCBOOK|asciidoc]: "
+echo "Supported file formats:"
+for i in \
+	"Asciidoc:\t\tasciidoc | adoc | ad" \
+	"DocBook:\t\tdocbook | dbk" \
+	"Markdown:\t\tmarkdown | mkd | md" \
+	"Org mode:\t\torg" \
+	"reStructuredText:\trst" \
+	; do
+	echo -e "  ${i}"
+done
+echo -n "Enter file format [docbook]: "
 read format
 if [ -z "${format}" ]; then
 	format="xml"
@@ -30,9 +45,15 @@ case "${format}" in
 	markdown | mkd | md )
 		format="md"
 		;;
+	rst )
+		format="rst"
+		;;
+	org )
+		format="org"
+		;;
 	* )
-		echo "Unknown format, using docbook." 1>&2
-		format="xml"
+		echo "Unknown format.  Exiting." 1>&2
+		exit 1
 		;;
 esac
 
