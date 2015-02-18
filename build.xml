@@ -345,7 +345,7 @@
             <arg value="${file}" />
         </exec>
         <!-- upgrade docbook 4.5 to 5 -->
-        <property name="file.docbook" value="${output.dir}/${file.docbook.name}.xml" />
+        <property name="file.docbook" value="${output.dir}/../${file.docbook.name}.xml" />
         <antcall target="convert_docbook4" />
     </target>
 
@@ -360,7 +360,7 @@
             <arg value="${file}" />
         </exec>
         <!-- upgrade docbook 4.5 to 5 -->
-        <property name="file.docbook" value="${output.dir}/${file.docbook.name}.xml" />
+        <property name="file.docbook" value="${output.dir}/../${file.docbook.name}.xml" />
         <antcall target="convert_docbook4" />
     </target>
 
