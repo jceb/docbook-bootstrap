@@ -3,6 +3,9 @@
 
 set -e
 
+dir="$(readlink -f "$(dirname $0)")"
+cd "${dir}"
+
 echo 'Downloading docbook-bootstrap dependencies.'
 echo
 
