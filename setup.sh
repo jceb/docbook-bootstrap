@@ -75,4 +75,5 @@ wget -O docbook.rng/docbook.rng 'http://www.docbook.org/xml/5.0/rng/docbook.rng'
 wget -O db4-upgrade.xsl 'https://docbook.svn.sourceforge.net/svnroot/docbook/trunk/docbook/relaxng/tools/db4-upgrade.xsl'
 
 # finally, generate a titlepage template
+cd ..
 stylesheets/fo/generate-titlepage
