@@ -27,6 +27,14 @@ PROJECT_OPTIONS=
 # trigger the ant default target
 default:
 
+# start watchman to autobuild project
+watch:
+	watchman watch .
+	watchman -- trigger . build '*$(suffix $(in))' '*.svg' '*.png' -- sh -c make
+
+stopwatch:
+	watchman watch-del .
+
 # withouth this rule, the wildcard rule below would break the makefile
 $(in):
 	test -f $@
