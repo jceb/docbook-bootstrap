@@ -58,6 +58,7 @@
 			<xsl:apply-templates select="dcterms:date"/>
 			<xsl:apply-templates select="bibo:edition"/>
 			<xsl:apply-templates select="dcterms:publisher"/>
+			<xsl:apply-templates select="dcterms:isPartOf/bibo:Issue"/>
 			<xsl:apply-templates select="bibo:isbn10 | bibo:isbn13"/>
 			<xsl:call-template name="access-date"/>
 			<xsl:apply-templates select="bibo:uri"/>
@@ -88,9 +89,22 @@
 		</biblioid>
 	</xsl:template>
 
-
 	<xsl:template match="bibo:isbn10 | bibo:isbn13">
 		<biblioid class="isbn"><xsl:value-of select="."/></biblioid>
+	</xsl:template>
+
+	<xsl:template match="bibo:volume">
+		<volumenum><xsl:value-of select="."/></volumenum>
+	</xsl:template>
+
+	<xsl:template match="bibo:issue">
+		<issuenum><xsl:value-of select="."/></issuenum>
+	</xsl:template>
+
+	<xsl:template match="bibo:Issue">
+			<xsl:apply-templates select="bibo:volume"/>
+			<xsl:apply-templates select="bibo:issue"/>
+			<xsl:apply-templates select="dcterms:date"/>
 	</xsl:template>
 
 	<xsl:template match="dcterms:publisher">

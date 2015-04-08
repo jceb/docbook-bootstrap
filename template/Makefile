@@ -39,7 +39,6 @@ stopwatch:
 $(in):
 	test -f $@
 
-FORMAT=docbook
 SUFFIX=$(suffix $(in))
 ifeq ($(SUFFIX), .adoc)
  FORMAT=asciidoc
@@ -53,10 +52,14 @@ else
 ifeq ($(SUFFIX), .tex)
  FORMAT=latex
 else
+ifeq ($(SUFFIX), .xml)
+ FORMAT=docbook
+else
  # use the file extension as file type - see `pandoc --help` for supported input
  # formats, i.e. docx, epub, haddock, html, json, opml, org, rst, t2t, textile,
  # twiki and several markdown dialects
  FORMAT=$(subst .,,$(SUFFIX))
+endif
 endif
 endif
 endif
