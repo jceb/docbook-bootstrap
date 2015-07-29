@@ -29,8 +29,7 @@ default:
 
 # start watchman to autobuild project
 watch:
-	watchman watch .
-	watchman -- trigger . build '*$(suffix $(in))' '*.svg' '*.png' -- sh -c make
+	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make"], "expression": ["anyof", ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
 
 stopwatch:
 	watchman watch-del .
