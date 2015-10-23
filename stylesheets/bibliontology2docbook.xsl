@@ -40,16 +40,20 @@
 
 	<xsl:template match="rdf:RDF">
 		<bibliography>
-			<xsl:apply-templates select="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle"/>
+			<xsl:apply-templates select="z:UserItem/res:resource | bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle"/>
 		</bibliography>
+	</xsl:template>
+
+	<xsl:template match="z:UserItem/res:resource">
+		<xsl:apply-templates select="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle"/>
 	</xsl:template>
 
 	<xsl:template match="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle">
 		<biblioentry>
 			<!-- <xsl:apply-templates select="*"/> -->
-			<xsl:attribute name="xml:id">REFLABEL</xsl:attribute>
-			<xsl:attribute name="xreflabel">REFLABEL</xsl:attribute>
-			<abbrev>REFLABEL</abbrev>
+			<xsl:attribute name="xml:id">xxx</xsl:attribute>
+			<xsl:attribute name="xreflabel">xxx</xsl:attribute>
+			<abbrev>xxx</abbrev>
 			<xsl:apply-templates select="dcterms:title"/>
 			<xsl:apply-templates select="bibo:shortTitle"/>
 			<xsl:apply-templates select="bibo:authorList"/>
@@ -59,6 +63,7 @@
 			<xsl:apply-templates select="bibo:edition"/>
 			<xsl:apply-templates select="dcterms:publisher"/>
 			<xsl:apply-templates select="dcterms:isPartOf/bibo:Issue"/>
+			<xsl:apply-templates select="dcterms:isPartOf/bibo:Series"/>
 			<xsl:apply-templates select="bibo:isbn10 | bibo:isbn13"/>
 			<xsl:call-template name="access-date"/>
 			<xsl:apply-templates select="bibo:uri"/>
@@ -102,9 +107,13 @@
 	</xsl:template>
 
 	<xsl:template match="bibo:Issue">
-			<xsl:apply-templates select="bibo:volume"/>
-			<xsl:apply-templates select="bibo:issue"/>
-			<xsl:apply-templates select="dcterms:date"/>
+		<xsl:apply-templates select="bibo:volume"/>
+		<xsl:apply-templates select="bibo:issue"/>
+		<xsl:apply-templates select="dcterms:date"/>
+	</xsl:template>
+
+	<xsl:template match="bibo:Series">
+		<edition><xsl:value-of select="dcterms:title"/>, <xsl:value-of select="bibo:number"/></edition>
 	</xsl:template>
 
 	<xsl:template match="dcterms:publisher">
