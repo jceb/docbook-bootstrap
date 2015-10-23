@@ -58,6 +58,7 @@
     <xsl:param name='page.orientation'>portrait</xsl:param>
     <!-- <xsl:param name='double.sided'>1</xsl:param> -->
     <xsl:param name="header.column.widths">1 3 1</xsl:param>
+    <!-- <xsl:param name="body.margin.top">0.7in</xsl:param> -->
 
     <!-- Hypenation -->
     <xsl:template name="set.flow.properties">
