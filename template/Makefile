@@ -29,10 +29,18 @@ default:
 
 # start watchman to autobuild project
 watch:
-	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make"], "expression": ["anyof", ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
+	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make"], "expression": ["anyof", ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
 
 stopwatch:
 	watchman watch-del .
+
+# Expand dbootstrap.dir variable in xslt stylesheet .. since it's not
+# possible/allowed for xslt to do it
+docbook.xsl: .docbook.xsl
+	sed -e 's|{$$dbootstrap.dir}|$(PATH_TO_DBOOTSTRAP)|' "$<" > "$@"
+
+.docbook.xsl:
+	test -f $@
 
 # withouth this rule, the wildcard rule below would break the makefile
 $(in):
@@ -67,7 +75,7 @@ endif
 # Targets like pdf, epub, epub3, xhtml, xhtmlchunk, xhtml5, xhtml5chunk,
 # validate, clean and test all work, you just have to type them.  The default
 # target is pdf or whatever you have specified to be the default
-%: $(in)
-	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile=$(PWD)/$< -Dfile.format=$(FORMAT) -Dfile.suffix=$(SUFFIX) -Doutput.dir=$(PWD)/$(OUPUT_DIR) $(PROJECT_OPTIONS) $@
+%: $(in) docbook.xsl
+	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile="$(PWD)/$<" -Dfo.stylesheet="$(PWD)/docbook.xsl" -Ddbootstrap.dir="$(PATH_TO_DBOOTSTRAP)" -Dfile.format="$(FORMAT)" -Dfile.suffix="$(SUFFIX)" -Doutput.dir="$(PWD)/$(OUPUT_DIR)" $(PROJECT_OPTIONS) $@
 
 .PHONY: Makefile

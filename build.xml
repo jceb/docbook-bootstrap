@@ -262,6 +262,9 @@
                         <exec executable="${xsltproc.exe}">
                             <arg line="--xinclude" />
                             <arg line="--stringparam" />
+                            <arg line="dbootstrap.dir" />
+                            <arg line="${dbootstrap.dir}" />
+                            <arg line="--stringparam" />
                             <arg line="base.dir" />
                             <arg line="${dest.dir}" />
                             <arg line="${stylesheet}" />
@@ -271,6 +274,9 @@
                     <else>
                         <exec executable="${xsltproc.exe}">
                             <arg line="--xinclude" />
+                            <arg line="--stringparam" />
+                            <arg line="dbootstrap.dir" />
+                            <arg line="${dbootstrap.dir}" />
                             <arg line="--output" />
                             <arg line="${file.output}" />
                             <arg line="${stylesheet}" />
