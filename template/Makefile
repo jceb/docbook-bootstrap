@@ -16,8 +16,8 @@ in=article.xml
 endif
 
 # you might want to specify some more ant options like additional/overridden
-# properties, i.e. a custom FO stylesheet -Dfo.stylesheet=$(PWD)/docbook.xsl
-# PROJECT_OPTIONS="-Dfo.stylesheet=$(PWD)/docbook.xsl"
+# properties, i.e. a custom doctype -Dfile.doctype=book for Asciidoc
+# PROJECT_OPTIONS="-Dfile.doctype=book"
 PROJECT_OPTIONS=
 
 #######################################
