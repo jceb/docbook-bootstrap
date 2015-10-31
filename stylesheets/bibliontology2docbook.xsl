@@ -3,7 +3,7 @@
 <!-- vi: ft=xslt:tw=80:sw=4:ts=4:noet
 -->
 <!--
-  Copyright (C) 2013 Jan Christoph Ebersbach <jceb@e-jc.de>
+  Copyright (C) 2013-2015 Jan Christoph Ebersbach <jceb@e-jc.de>
 
   Licensed to the Apache Software Foundation (ASF) under one
   or more contributor license agreements.  See the NOTICE file
@@ -64,6 +64,7 @@
 			<xsl:apply-templates select="dcterms:publisher"/>
 			<xsl:apply-templates select="dcterms:isPartOf/bibo:Issue"/>
 			<xsl:apply-templates select="dcterms:isPartOf/bibo:Series"/>
+			<xsl:apply-templates select="dcterms:isPartOf/bibo:Website"/>
 			<xsl:apply-templates select="bibo:isbn10 | bibo:isbn13"/>
 			<xsl:call-template name="access-date"/>
 			<xsl:apply-templates select="bibo:uri"/>
@@ -71,12 +72,12 @@
 	</xsl:template>
 
 	<!-- <xsl:template match="Article"> -->
-		<!-- 	<xsl:apply-templates select="*"/> -->
-		<!-- </xsl:template> -->
+	<!-- 	<xsl:apply-templates select="*"/> -->
+	<!-- </xsl:template> -->
 
 	<!-- <xsl:template match="Webpage"> -->
-		<!-- 	<xsl:apply-templates select="*"/> -->
-		<!-- </xsl:template> -->
+	<!-- 	<xsl:apply-templates select="*"/> -->
+	<!-- </xsl:template> -->
 
 	<xsl:template match="dcterms:title">
 		<title><xsl:value-of select="."/></title>
@@ -144,6 +145,7 @@
 	<xsl:template match="bibo:authorList">
 		<authorgroup>
 			<xsl:apply-templates select="//foaf:Person[@rdf:nodeID = current()/rdf:Seq/rdf:li/@rdf:nodeID]"/>
+			<xsl:apply-templates select="//foaf:Organization[@rdf:nodeID = current()/rdf:Seq/rdf:li/@rdf:nodeID]"/>
 		</authorgroup>
 	</xsl:template>
 
@@ -154,6 +156,13 @@
 				<surname><xsl:value-of select="foaf:surname"/></surname>
 				<firstname><xsl:value-of select="foaf:givenname"/></firstname>
 			</personname>
+		</author>
+	</xsl:template>
+
+	<xsl:key name="oid" match="foaf:Organization" use="@rdf:nodeID"/>
+	<xsl:template match="foaf:Organization">
+		<author>
+			<orgname><xsl:value-of select="foaf:name"/></orgname>
 		</author>
 	</xsl:template>
 
