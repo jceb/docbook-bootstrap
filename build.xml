@@ -262,6 +262,9 @@
                         <exec executable="${xsltproc.exe}">
                             <arg line="--xinclude" />
                             <arg line="--stringparam" />
+                            <arg line="rootid" />
+                            <arg line="${output.rootid}" />
+                            <arg line="--stringparam" />
                             <arg line="dbootstrap.dir" />
                             <arg line="${dbootstrap.dir}" />
                             <arg line="--stringparam" />
@@ -274,6 +277,9 @@
                     <else>
                         <exec executable="${xsltproc.exe}">
                             <arg line="--xinclude" />
+                            <arg line="--stringparam" />
+                            <arg line="rootid" />
+                            <arg line="${output.rootid}" />
                             <arg line="--stringparam" />
                             <arg line="dbootstrap.dir" />
                             <arg line="${dbootstrap.dir}" />

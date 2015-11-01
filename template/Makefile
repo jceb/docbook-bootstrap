@@ -8,11 +8,19 @@ PATH_TO_DBOOTSTRAP=x
 endif
 OUPUT_DIR=build
 
-# change in to the main file of the project
-# it can also be passed to make as an argument:
+# change "in" to the main file of the project it can also be passed to make as
+# an argument to quickly convert another file:
 # make in=FILE
 ifndef
 in=article.xml
+endif
+
+# change "rootid" to the XML id of the new root element.  This makes it easy to
+# build only parts of a larger document.  An empty rootid will build the whole
+# document.  It can also be passed to make as a parameter:
+# make rootid=XMLID
+ifndef
+rootid=
 endif
 
 # you might want to specify some more ant options like additional/overridden
@@ -76,6 +84,6 @@ endif
 # validate, clean and test all work, you just have to type them.  The default
 # target is pdf or whatever you have specified to be the default
 %: $(in) docbook.xsl
-	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile="$(PWD)/$<" -Dfo.stylesheet="$(PWD)/docbook.xsl" -Ddbootstrap.dir="$(PATH_TO_DBOOTSTRAP)" -Dfile.format="$(FORMAT)" -Dfile.suffix="$(SUFFIX)" -Doutput.dir="$(PWD)/$(OUPUT_DIR)" $(PROJECT_OPTIONS) $@
+	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile="$(PWD)/$<" -Dfo.stylesheet="$(PWD)/docbook.xsl" -Ddbootstrap.dir="$(PATH_TO_DBOOTSTRAP)" -Dfile.format="$(FORMAT)" -Dfile.suffix="$(SUFFIX)" -Doutput.dir="$(PWD)/$(OUPUT_DIR)" -Doutput.rootid=$(rootid) $(PROJECT_OPTIONS) $@
 
 .PHONY: Makefile
