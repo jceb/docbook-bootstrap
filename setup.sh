@@ -30,7 +30,7 @@ tar xzf ant-contrib-1.0b3-src.tar.gz
 rm ant-contrib-1.0b3-src.tar.gz
 
 [ -e fop-1.1 ] && rm -rf fop-1.1
-[ -e fop ] && rm fop
+[ -h fop ] && rm fop
 wget 'http://mirror.sdunix.com/apache/xmlgraphics/fop/binaries/fop-1.1-bin.tar.gz'
 tar xzf fop-1.1-bin.tar.gz
 rm fop-1.1-bin.tar.gz
@@ -51,21 +51,22 @@ cd ..
 rm SaxonHE9-5-1-7J.zip
 
 [ -e jing-20091111 ] && rm -rf jing-20091111
-[ -e jing ] && rm jing
+[ -h jing ] && rm jing
 wget 'https://jing-trang.googlecode.com/files/jing-20091111.zip'
 unzip jing-20091111.zip
 rm jing-20091111.zip
 ln -sf jing-20091111 jing
 
 [ -e docbook-xsl-1.78.1 ] && rm -rf docbook-xsl-1.78.1
-[ -e docbook-xsl ] && rm docbook-xsl
-wget -O docbook-xsl-1.78.1.zip 'http://downloads.sourceforge.net/project/docbook/docbook-xsl/1.78.1/docbook-xsl-1.78.1.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fdocbook%2Ffiles%2Fdocbook-xsl%2F1.78.1%2F&ts=1409909425&use_mirror=cznic'
-unzip docbook-xsl-1.78.1.zip
-rm docbook-xsl-1.78.1.zip
-ln -sf docbook-xsl-1.78.1 docbook-xsl
+[ -e docbook-xsl-1.79.0 ] && rm -rf docbook-xsl-1.79.0
+[ -h docbook-xsl ] && rm docbook-xsl
+wget -O docbook-xsl-1.79.0.zip 'http://netcologne.dl.sourceforge.net/project/docbook/docbook-xsl/1.79.0/docbook-xsl-1.79.0.zip'
+unzip docbook-xsl-1.79.0.zip
+rm docbook-xsl-1.79.0.zip
+ln -sf docbook-xsl-1.79.0 docbook-xsl
 
 [ -e jeuclid-fop-3.1.9 ] && rm -rf jeuclid-fop-3.1.9
-[ -e jeuclid-fop ] && rm jeuclid-fop
+[ -h jeuclid-fop ] && rm jeuclid-fop
 wget -O jeuclid-fop-3.1.9.zip 'http://downloads.sourceforge.net/project/jeuclid/3.1.x/3.1.9/jeuclid-fop-3.1.9-distribution.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fjeuclid%2Ffiles%2F3.1.x%2F3.1.9%2F&ts=1422986063&use_mirror=softlayer-ams'
 unzip jeuclid-fop-3.1.9.zip
 rm jeuclid-fop-3.1.9.zip
