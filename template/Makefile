@@ -37,7 +37,7 @@ default:
 
 # start watchman to autobuild project
 watch:
-	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make"], "expression": ["anyof", ["match", ".docbook.xsl", "wholename"], ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
+	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make", "in=$(in)", "rootid=$(rootid)"], "expression": ["anyof", ["match", ".docbook.xsl", "wholename"], ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
 
 stopwatch:
 	watchman watch-del .
