@@ -30,11 +30,12 @@ tar xzf ant-contrib-1.0b3-src.tar.gz
 rm ant-contrib-1.0b3-src.tar.gz
 
 [ -e fop-1.1 ] && rm -rf fop-1.1
+[ -e fop-2.0 ] && rm -rf fop-2.0
 [ -h fop ] && rm fop
-wget 'http://mirror.sdunix.com/apache/xmlgraphics/fop/binaries/fop-1.1-bin.tar.gz'
-tar xzf fop-1.1-bin.tar.gz
-rm fop-1.1-bin.tar.gz
-ln -sf fop-1.1 fop
+wget 'http://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/binaries/fop-2.0-bin.tar.gz'
+tar xzf fop-2.0-bin.tar.gz
+rm fop-2.0-bin.tar.gz
+ln -sf fop-2.0 fop
 
 [ -e offo-hyphenation-binary ] && rm -rf offo-hyphenation-binary
 wget -O offo-hyphenation-binary.zip 'http://downloads.sourceforge.net/project/offo/offo-hyphenation/2.1/offo-hyphenation-binary.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Foffo%2F&ts=1409909292&use_mirror=softlayer-ams'
