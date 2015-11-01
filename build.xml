@@ -259,35 +259,64 @@
                     <isset property="dest.dir" />
                     <then>
                         <!-- epub3 workaround - it needs a directory and no output filename! -->
-                        <exec executable="${xsltproc.exe}">
-                            <arg line="--xinclude" />
-                            <arg line="--stringparam" />
-                            <arg line="rootid" />
-                            <arg line="${output.rootid}" />
-                            <arg line="--stringparam" />
-                            <arg line="dbootstrap.dir" />
-                            <arg line="${dbootstrap.dir}" />
-                            <arg line="--stringparam" />
-                            <arg line="base.dir" />
-                            <arg line="${dest.dir}" />
-                            <arg line="${stylesheet}" />
-                            <arg line="${file.docbook}" />
-                        </exec>
+                        <if>
+                            <and>
+                                <isset property="output.rootid" />
+                                <length string="${output.rootid}" trim="true" when="greater" length="0" />
+                            </and>
+                            <then>
+                                <exec executable="${xsltproc.exe}">
+                                    <arg line="--xinclude" />
+                                    <arg line="--stringparam" />
+                                    <arg line="rootid" />
+                                    <arg line="${output.rootid}" />
+                                    <arg line="--stringparam" />
+                                    <arg line="base.dir" />
+                                    <arg line="${dest.dir}" />
+                                    <arg line="${stylesheet}" />
+                                    <arg line="${file.docbook}" />
+                                </exec>
+                            </then>
+                            <else>
+                                <exec executable="${xsltproc.exe}">
+                                    <arg line="--xinclude" />
+                                    <arg line="--stringparam" />
+                                    <arg line="base.dir" />
+                                    <arg line="${dest.dir}" />
+                                    <arg line="${stylesheet}" />
+                                    <arg line="${file.docbook}" />
+                                </exec>
+                            </else>
+                        </if>
                     </then>
                     <else>
-                        <exec executable="${xsltproc.exe}">
-                            <arg line="--xinclude" />
-                            <arg line="--stringparam" />
-                            <arg line="rootid" />
-                            <arg line="${output.rootid}" />
-                            <arg line="--stringparam" />
-                            <arg line="dbootstrap.dir" />
-                            <arg line="${dbootstrap.dir}" />
-                            <arg line="--output" />
-                            <arg line="${file.output}" />
-                            <arg line="${stylesheet}" />
-                            <arg line="${file.docbook}" />
-                        </exec>
+                        <if>
+                            <and>
+                                <isset property="output.rootid" />
+                                <length string="${output.rootid}" trim="true" when="greater" length="0" />
+                            </and>
+                            <then>
+                                <exec executable="${xsltproc.exe}">
+                                    <arg line="--xinclude" />
+                                    <arg line="--stringparam" />
+                                    <arg line="rootid" />
+                                    <arg line="${output.rootid}" />
+                                    <arg line="--output" />
+                                    <arg line="${file.output}" />
+                                    <arg line="${stylesheet}" />
+                                    <arg line="${file.docbook}" />
+                                </exec>
+                            </then>
+                            <else>
+                                <exec executable="${xsltproc.exe}">
+                                    <arg line="--xinclude" />
+                                    <arg line="--output" />
+                                    <arg line="${file.output}" />
+                                    <arg line="${stylesheet}" />
+                                    <arg line="${file.docbook}" />
+                                </exec>
+                            </else>
+                        </if>
                     </else>
                 </if>
             </then>
