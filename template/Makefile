@@ -2,8 +2,8 @@
 
 # Adjust these variables to fit your environment
 # PATH_TO_DBOOTSTRAP="../docbook-bootstrap"
-PATH_TO_DBOOTSTRAP=$(DOCBOOK_BOOTSTRAP_PATH)
-ifndef
+PATH_TO_DBOOTSTRAP=$(value DOCBOOK_BOOTSTRAP_PATH)
+ifeq ($(PATH_TO_DBOOTSTRAP),)
 PATH_TO_DBOOTSTRAP=x
 endif
 OUPUT_DIR=build
@@ -11,7 +11,7 @@ OUPUT_DIR=build
 # change "in" to the main file of the project it can also be passed to make as
 # an argument to quickly convert another file:
 # make in=FILE
-ifndef
+ifndef in
 in=article.xml
 endif
 
@@ -19,7 +19,7 @@ endif
 # build only parts of a larger document.  An empty id will build the whole
 # document.  It can also be passed to make as a parameter:
 # make id=XMLID
-ifndef
+ifndef id
 id=
 endif
 
