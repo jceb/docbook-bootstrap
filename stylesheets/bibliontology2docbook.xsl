@@ -40,7 +40,7 @@
 
 	<xsl:template match="rdf:RDF">
 		<bibliography>
-			<xsl:apply-templates select="z:UserItem/res:resource | bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle"/>
+			<xsl:apply-templates select="z:UserItem/res:resource | bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | bibo:Patent | sioct:BlogPost | bibo:AcademicArticle"/>
 		</bibliography>
 	</xsl:template>
 
@@ -48,7 +48,7 @@
 		<xsl:apply-templates select="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle"/>
 	</xsl:template>
 
-	<xsl:template match="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | sioct:BlogPost | bibo:AcademicArticle">
+	<xsl:template match="bibo:Book | bibo:Article | bibo:Report | bibo:Webpage | bibo:Document | bibo:Patent | sioct:BlogPost | bibo:AcademicArticle">
 		<biblioentry>
 			<!-- <xsl:apply-templates select="*"/> -->
 			<xsl:attribute name="xml:id">xxx</xsl:attribute>
