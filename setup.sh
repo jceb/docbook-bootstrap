@@ -60,11 +60,12 @@ ln -sf jing-20091111 jing
 
 [ -e docbook-xsl-1.78.1 ] && rm -rf docbook-xsl-1.78.1
 [ -e docbook-xsl-1.79.0 ] && rm -rf docbook-xsl-1.79.0
+[ -e docbook-xsl-1.79.1 ] && rm -rf docbook-xsl-1.79.1
 [ -h docbook-xsl ] && rm docbook-xsl
-wget -O docbook-xsl-1.79.0.zip 'http://netcologne.dl.sourceforge.net/project/docbook/docbook-xsl/1.79.0/docbook-xsl-1.79.0.zip'
-unzip docbook-xsl-1.79.0.zip
-rm docbook-xsl-1.79.0.zip
-ln -sf docbook-xsl-1.79.0 docbook-xsl
+wget -O docbook-xsl-1.79.1.zip 'http://netcologne.dl.sourceforge.net/project/docbook/docbook-xsl/1.79.1/docbook-xsl-1.79.1.zip'
+unzip docbook-xsl-1.79.1.zip
+rm docbook-xsl-1.79.1.zip
+ln -sf docbook-xsl-1.79.1 docbook-xsl
 
 [ -e jeuclid-fop-3.1.9 ] && rm -rf jeuclid-fop-3.1.9
 [ -h jeuclid-fop ] && rm jeuclid-fop
