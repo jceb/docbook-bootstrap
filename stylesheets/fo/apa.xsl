@@ -1,6 +1,6 @@
 <?xml version='1.0'?>
 <!-- An attempt to implement APA style bibliography entries for DocBook fo -->
-<!-- output.  Templates were taken from docbook-xsl-1.78.1/fo/biblio-iso690.xsl -->
+<!-- output.  Templates were taken from ../../lib/docbook-xsl/fo/biblio-iso690.xsl -->
 <!-- See http://www.apastyle.org/ for more details -->
 <!--
   Copyright (C) 2014 Jan Christoph Ebersbach <jceb@e-jc.de>
@@ -446,6 +446,41 @@
   <xsl:call-template name="iso690.access"/>
   <!-- Standard number -->
   <xsl:call-template name="iso690.isbn"/>
+</xsl:template>
+
+<xsl:template match="biblioset" mode="iso690.article.art">
+<!-- Article -->
+  <!-- Primary responsibility -->
+  <xsl:call-template name="iso690.primary"/>
+  <!-- Title -->
+  <xsl:call-template name="iso690.title">
+    <xsl:with-param name="italic" select="0"/>
+  </xsl:call-template>
+  <!-- Subordinate responsibility [nonEL] -->
+  <xsl:if test="not(../*/bibliomisc[@role='medium'])">
+    <xsl:call-template name="iso690.secondary"/>
+  </xsl:if>
+</xsl:template>
+
+<xsl:template match="biblioset" mode="iso690.article.jour">
+<!-- Serial -->
+  <!-- Title and Type of medium -->
+  <xsl:call-template name="iso690.title"/>
+  <!-- Edition -->
+  <xsl:call-template name="iso690.edition">
+    <xsl:with-param name="after" select="./pubdate[not(@role='issuing')]|./volumenum|./issuenum|./pagenums"/>
+  </xsl:call-template>
+  <!-- Number designation [EL] -->
+  <!-- Location within host -->
+  <xsl:call-template name="iso690.article.location"/>
+  <xsl:if test="./bibliomisc[@role='medium']">
+  <!-- Notes [EL] -->
+    <xsl:call-template name="iso690.notice"/>
+  <!-- Avaibility and access [EL] -->
+    <xsl:call-template name="iso690.access"/>
+  <!-- Standard number [EL] -->
+    <xsl:call-template name="iso690.issn"/>
+  </xsl:if>
 </xsl:template>
 
 </xsl:stylesheet>
