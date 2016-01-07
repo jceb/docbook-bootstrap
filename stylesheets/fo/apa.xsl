@@ -311,10 +311,10 @@
     <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'lastfirst.sep'"/></xsl:call-template>
   </xsl:param>
   <xsl:choose>
-	  <xsl:when test="$node/orgname">
-		<xsl:value-of select="$node//orgname[1]" />
+      <xsl:when test="$node/orgname">
+          <xsl:value-of select="$node//orgname[1]" />
     </xsl:when>
-	<xsl:when test="$node//surname">
+    <xsl:when test="$node//surname">
       <xsl:apply-templates mode="iso690.mode" select="$node//surname[1]"/>
       <xsl:if test="$node//firstname">
         <xsl:value-of select="$lastfirst.sep"/>
@@ -452,6 +452,8 @@
 <!-- Article -->
   <!-- Primary responsibility -->
   <xsl:call-template name="iso690.primary"/>
+  <!-- Publication date -->
+  <xsl:call-template name="apa.pubdate"/>
   <!-- Title -->
   <xsl:call-template name="iso690.title">
     <xsl:with-param name="italic" select="0"/>
@@ -471,8 +473,12 @@
     <xsl:with-param name="after" select="./pubdate[not(@role='issuing')]|./volumenum|./issuenum|./pagenums"/>
   </xsl:call-template>
   <!-- Number designation [EL] -->
+  <!-- Place of publication, Publisher, Year/Date of publication, Date of update/revision, Date of citation -->
+  <xsl:call-template name="iso690.pub"/>
   <!-- Location within host -->
   <xsl:call-template name="iso690.article.location"/>
+  <!-- I've no clue what bibliomisc is all about.  Apparently I should embed the
+       following elements .. but that's not allowed? -->
   <xsl:if test="./bibliomisc[@role='medium']">
   <!-- Notes [EL] -->
     <xsl:call-template name="iso690.notice"/>
