@@ -479,14 +479,14 @@
   <xsl:call-template name="iso690.article.location"/>
   <!-- I've no clue what bibliomisc is all about.  Apparently I should embed the
        following elements .. but that's not allowed? -->
-  <xsl:if test="./bibliomisc[@role='medium']">
+  <!-- <xsl:if test="./bibliomisc[@role='medium']"> -->
   <!-- Notes [EL] -->
     <xsl:call-template name="iso690.notice"/>
   <!-- Avaibility and access [EL] -->
     <xsl:call-template name="iso690.access"/>
   <!-- Standard number [EL] -->
     <xsl:call-template name="iso690.issn"/>
-  </xsl:if>
+  <!-- </xsl:if> -->
 </xsl:template>
 
 </xsl:stylesheet>
