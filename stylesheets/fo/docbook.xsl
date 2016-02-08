@@ -109,6 +109,11 @@
         </fo:block>
     </xsl:template>
 
+    <!-- align imagaes at the center: http://www.sagehill.net/docbookxsl/ImageAlignment.html -->
+    <xsl:attribute-set name="informalfigure.properties">
+        <xsl:attribute name="text-align">center</xsl:attribute>
+    </xsl:attribute-set>
+
     <!-- indent first line: http://www.oxygenxml.com/forum/topic8795.html -->
     <xsl:attribute-set name="normal.para.spacing">
         <xsl:attribute name="text-indent">2em</xsl:attribute>
