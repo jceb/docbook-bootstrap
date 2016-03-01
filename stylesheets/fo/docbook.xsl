@@ -23,7 +23,7 @@
 -->
 
 <!-- Parameters can be found here: -->
-<!-- - FO output http://docbook.sourceforge.net/release/xsl/1.79.0/doc/fo/index.html -->
+<!-- - FO output http://docbook.sourceforge.net/release/xsl/1.79.1/doc/fo/index.html -->
 <!-- - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html -->
 <!-- - Print output http://www.sagehill.net/docbookxsl/PrintOutput.html -->
 <!-- - General http://www.sagehill.net/docbookxsl/GeneralCustoms.html -->
@@ -109,18 +109,36 @@
         </fo:block>
     </xsl:template>
 
-    <!-- indent first line: http://www.oxygenxml.com/forum/topic8795.html -->
-    <xsl:attribute-set name="normal.para.spacing">
-        <xsl:attribute name="text-indent">2em</xsl:attribute>
-        <xsl:attribute name="space-before.optimum">1em</xsl:attribute>
-        <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
-        <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
-    </xsl:attribute-set>
+    <!-- Indent first line only for paragraphs below section and chapter
+         elements:
+         https://www.sourceware.org/ml/docbook-apps/2004-q2/msg00105.html -->
+    <xsl:template match="section/simpara|chapter/simpara">
+        <xsl:variable name="keep.together">
+            <xsl:call-template name="pi.dbfo_keep-together"/>
+        </xsl:variable>
+        <fo:block xsl:use-attribute-sets="normal.para.spacing">
+            <!-- indent first line: http://www.oxygenxml.com/forum/topic8795.html -->
+            <xsl:attribute name="text-indent">2em</xsl:attribute>
+            <xsl:if test="$keep.together != ''">
+                <xsl:attribute name="keep-together.within-column"><xsl:value-of
+                        select="$keep.together"/></xsl:attribute>
+            </xsl:if>
+            <xsl:call-template name="anchor"/>
+            <xsl:apply-templates/>
+        </fo:block>
+    </xsl:template>
+
+    <!-- <xsl:attribute-set name="normal.para.spacing"> -->
+    <!--     <1!-- <xsl:attribute name="text-indent">2em</xsl:attribute> --1> -->
+    <!--     <xsl:attribute name="space-before.optimum">1em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute> -->
+    <!-- </xsl:attribute-set> -->
 
     <!-- handle indentation of list items differently -->
     <xsl:attribute-set name="list.item.spacing">
         <xsl:attribute name="margin-left">1em</xsl:attribute>
-        <xsl:attribute name="text-indent">1em</xsl:attribute>
+        <!-- <xsl:attribute name="text-indent">1em</xsl:attribute> -->
         <xsl:attribute name="space-before.optimum">1em</xsl:attribute>
         <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute>
         <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute>
