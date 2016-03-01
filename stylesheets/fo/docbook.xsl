@@ -112,7 +112,7 @@
     <!-- Indent first line only for paragraphs below section and chapter
          elements:
          https://www.sourceware.org/ml/docbook-apps/2004-q2/msg00105.html -->
-    <xsl:template match="section/simpara|chapter/simpara">
+    <xsl:template match="(section|chapter)/(para|simpara)">
         <xsl:variable name="keep.together">
             <xsl:call-template name="pi.dbfo_keep-together"/>
         </xsl:variable>
