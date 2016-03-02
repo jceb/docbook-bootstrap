@@ -112,7 +112,7 @@
     <!-- Indent first line only for paragraphs below section and chapter
          elements:
          https://www.sourceware.org/ml/docbook-apps/2004-q2/msg00105.html -->
-    <xsl:template match="(section|chapter)/(para|simpara)">
+    <xsl:template match="section/para|section/simpara|chapter/para|chapter/simpara">
         <xsl:variable name="keep.together">
             <xsl:call-template name="pi.dbfo_keep-together"/>
         </xsl:variable>
@@ -129,7 +129,7 @@
     </xsl:template>
 
     <!-- <xsl:attribute-set name="normal.para.spacing"> -->
-    <!--     <1!-- <xsl:attribute name="text-indent">2em</xsl:attribute> --1> -->
+    <!--     <xsl:attribute name="text-indent">2em</xsl:attribute> -->
     <!--     <xsl:attribute name="space-before.optimum">1em</xsl:attribute> -->
     <!--     <xsl:attribute name="space-before.minimum">0.8em</xsl:attribute> -->
     <!--     <xsl:attribute name="space-before.maximum">1.2em</xsl:attribute> -->
