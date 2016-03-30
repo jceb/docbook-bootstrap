@@ -46,6 +46,7 @@ stopwatch:
 # possible/allowed for xslt to do it
 docbook.xsl: .docbook.xsl
 	sed -e 's|{$$dbootstrap.dir}|$(PATH_TO_DBOOTSTRAP)|' "$<" > "$@"
+	sed -i -e 's|{$$current.dir}|${PWD}|' "$@"
 
 .docbook.xsl:
 	test -f $@
