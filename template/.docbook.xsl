@@ -46,6 +46,13 @@
     <!-- - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html -->
     <!-- - Print output http://www.sagehill.net/docbookxsl/PrintOutput.html -->
     <!-- - General http://www.sagehill.net/docbookxsl/GeneralCustoms.html -->
+    <!-- - XSL-FO reference http://zvon.org/xxl/xslfoReference/Output/index.html -->
+    <!-- - XSL-FO tutorial http://www.cafeconleche.org/books/bible2/chapters/ch18.html -->
+    <!-- - XSL-FO tutorial http://www.renderx.com/tutorial.html -->
+
+    <!-- custom title page -->
+    <!-- copy from titlepage.xsl the relevant parts and modify them manually
+         using XSL-FO -->
 
     <!-- <xsl:param name="body.margin.top">0.7in</xsl:param> -->
 </xsl:stylesheet>
