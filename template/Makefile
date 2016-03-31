@@ -24,8 +24,8 @@ id=
 endif
 
 # you might want to specify some more ant options like additional/overridden
-# properties, i.e. a custom doctype -Dfile.doctype=book for Asciidoc
-# PROJECT_OPTIONS="-Dfile.doctype=book"
+# properties.  Possible values are found in the build.properties files.
+# PROJECT_OPTIONS="-Dsome.property=value"
 PROJECT_OPTIONS=
 
 #######################################

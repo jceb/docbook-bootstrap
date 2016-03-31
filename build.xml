@@ -382,7 +382,6 @@
         <property name="file.docbook4" value="${output.dir}/db4-${file.docbook.name}.xml" />
         <exec executable="${asciidoc.exe}">
             <arg value="--backend=docbook" />
-            <arg value="--doctype=${file.doctype}" />
             <arg value="--out-file=${file.docbook4}" />
             <arg value="${file}" />
         </exec>
