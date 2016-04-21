@@ -24,7 +24,7 @@ fop.exe = lib/fop/fop
 fop.config = fop.xconf
 
 # Enable this if you have xsltproc instsalled
-xsltproc.exe = xsltproc
+# xsltproc.exe = xsltproc
 
 # Asciidoc
 asciidoc.exe = asciidoctor
