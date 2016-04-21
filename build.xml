@@ -367,7 +367,7 @@
                 <if>
                     <equals arg1="${file.format}" arg2="asciidoc" />
                     <then>
-                        <antcallback target="convert_asciidoc" return="file.docbook" />
+                        <antcallback target="convert_asciidoc_db5" return="file.docbook" />
                     </then>
                     <else>
                         <antcallback target="convert_pandoc" return="file.docbook" />
@@ -377,11 +377,21 @@
         </if>
     </target>
 
-    <target name="convert_asciidoc">
+    <target name="convert_asciidoc_db5">
+        <!-- convert file format to docbook 5 -->
+        <property name="file.docbook" value="${output.dir}/../${file.docbook.name}.xml" />
+        <exec executable="${asciidoc.exe}">
+            <arg value="--backend=docbook5" />
+            <arg value="--out-file=${file.docbook}" />
+            <arg value="${file}" />
+        </exec>
+    </target>
+
+    <target name="convert_asciidoc_db4">
         <!-- convert file format to docbook 4.5 -->
         <property name="file.docbook4" value="${output.dir}/db4-${file.docbook.name}.xml" />
         <exec executable="${asciidoc.exe}">
-            <arg value="--backend=docbook" />
+            <arg value="--backend=docbook45" />
             <arg value="--out-file=${file.docbook4}" />
             <arg value="${file}" />
         </exec>
