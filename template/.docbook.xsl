@@ -55,4 +55,5 @@
          using XSL-FO -->
 
     <!-- <xsl:param name="body.margin.top">0.7in</xsl:param> -->
+    <xsl:param name="img.src.path">{$current.dir}/</xsl:param>
 </xsl:stylesheet>

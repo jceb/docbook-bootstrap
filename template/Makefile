@@ -85,6 +85,6 @@ endif
 # validate, clean and test all work, you just have to type them.  The default
 # target is pdf or whatever you have specified to be the default
 %: $(in) docbook.xsl
-	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dfile="$(PWD)/$<" -Dfo.stylesheet="$(PWD)/docbook.xsl" -Ddbootstrap.dir="$(PATH_TO_DBOOTSTRAP)" -Dfile.format="$(FORMAT)" -Dfile.suffix="$(SUFFIX)" -Doutput.dir="$(PWD)/$(OUPUT_DIR)" -Doutput.rootid=$(id) $(PROJECT_OPTIONS) $@
+	ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml -Dinput.dir="$(PWD)" -Dfile="$(PWD)/$<" -Dfo.stylesheet="$(PWD)/docbook.xsl" -Ddbootstrap.dir="$(PATH_TO_DBOOTSTRAP)" -Dfile.format="$(FORMAT)" -Dfile.suffix="$(SUFFIX)" -Doutput.dir="$(PWD)/$(OUPUT_DIR)" -Doutput.rootid=$(id) $(PROJECT_OPTIONS) $@
 
 .PHONY: Makefile

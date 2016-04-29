@@ -116,10 +116,13 @@
             </and>
             <then>
                 <exec executable="${fop.exe}">
-                    <env key="FOP_HYPHENATION_PATH" value="${hyphenation.jar}" />
+                    <env key="FOP_HYPHENATION_PATH" value="${basedir}/${hyphenation.jar}" />
                     <arg line="--noconfig" />
                     <arg line="-c" />
                     <arg line="${fop.config}" />
+                    <arg line="-param" />
+                    <arg line="base" />
+                    <arg line="${input.dir}" />
                     <arg line="${output.dir}/${file.docbook.name}.fo" />
                     <arg line="${output.dir}/${file.docbook.name}.pdf" />
                 </exec>
@@ -127,8 +130,11 @@
             <else>
                 <then>
                     <exec executable="${fop.exe}">
-                        <env key="FOP_HYPHENATION_PATH" value="${hyphenation.jar}" />
+                        <env key="FOP_HYPHENATION_PATH" value="${basedir}/${hyphenation.jar}" />
                         <arg line="--noconfig" />
+                        <arg line="-param" />
+                        <arg line="base" />
+                        <arg line="${input.dir}" />
                         <arg line="${output.dir}/${file.docbook.name}.fo" />
                         <arg line="${output.dir}/${file.docbook.name}.pdf" />
                     </exec>
@@ -265,7 +271,7 @@
                                 <length string="${output.rootid}" trim="true" when="greater" length="0" />
                             </and>
                             <then>
-                                <exec executable="${xsltproc.exe}">
+                                <exec executable="${xsltproc.exe}" dir="${input.dir}">
                                     <arg line="--xinclude" />
                                     <arg line="--stringparam" />
                                     <arg line="rootid" />
@@ -278,7 +284,7 @@
                                 </exec>
                             </then>
                             <else>
-                                <exec executable="${xsltproc.exe}">
+                                <exec executable="${xsltproc.exe}" dir="${input.dir}">
                                     <arg line="--xinclude" />
                                     <arg line="--stringparam" />
                                     <arg line="base.dir" />
@@ -296,7 +302,7 @@
                                 <length string="${output.rootid}" trim="true" when="greater" length="0" />
                             </and>
                             <then>
-                                <exec executable="${xsltproc.exe}">
+                                <exec executable="${xsltproc.exe}" dir="${input.dir}">
                                     <arg line="--xinclude" />
                                     <arg line="--stringparam" />
                                     <arg line="rootid" />
@@ -308,7 +314,7 @@
                                 </exec>
                             </then>
                             <else>
-                                <exec executable="${xsltproc.exe}">
+                                <exec executable="${xsltproc.exe}" dir="${input.dir}">
                                     <arg line="--xinclude" />
                                     <arg line="--output" />
                                     <arg line="${file.output}" />
@@ -331,7 +337,7 @@
                         <then>
                             <!-- epub3 workaround - it needs a directory and no output filename! -->
                             <xslt includes="${file.docbook}" destdir="${dest.dir}"
-                                style="${stylesheet}" force="true">
+                                style="${stylesheet}" force="true" basedir="${input.dir}">
                                 <classpath path="${xslt.jar}" />
                                 <param name="base.dir" expression="${dest.dir}" />
                             </xslt>
