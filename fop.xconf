@@ -114,11 +114,17 @@ the location of this file.
         <!--
         <font metrics-url="lib/fonts/mssong.xml" kerning="yes" embed-url="lib/fonts/mssong.ttf">
           <font-triplet name="MSSong" style="normal" weight="normal"/>
-          <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="bold"/>
-          <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="normal"/>
-          <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="bold"/>
+          <font-triplet name="MSSong" style="normal" weight="bold"/>
+          <font-triplet name="MSSong" style="italic" weight="normal"/>
+          <font-triplet name="MSSong" style="italic" weight="bold"/>
         </font>
         -->
+        <font metrics-url="lib/fonts/unifont-9.0.04.xml" kerning="yes" embed-url="lib/fonts/unifont-9.0.04.ttf">
+          <font-triplet name="unifont" style="normal" weight="normal"/>
+          <font-triplet name="unifont" style="normal" weight="bold"/>
+          <font-triplet name="unifont" style="italic" weight="normal"/>
+          <font-triplet name="unifont" style="italic" weight="bold"/>
+        </font>
       </fonts>
 
       <!-- This option lets you specify additional options on an XML handler -->
