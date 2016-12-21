@@ -64,15 +64,16 @@ unzip jing-20091111.zip
 rm jing-20091111.zip
 ln -sf jing-20091111 jing
 
-# http://docbook.sourceforge.net/
+# https://github.com/docbook/xslt10-stylesheets
 [ -e docbook-xsl-1.78.1 ] && rm -rf docbook-xsl-1.78.1
 [ -e docbook-xsl-1.79.0 ] && rm -rf docbook-xsl-1.79.0
 [ -e docbook-xsl-1.79.1 ] && rm -rf docbook-xsl-1.79.1
+[ -e docbook-xsl-1.79.2 ] && rm -rf docbook-xsl-1.79.2
 [ -h docbook-xsl ] && rm docbook-xsl
-curl -L -O 'http://netcologne.dl.sourceforge.net/project/docbook/docbook-xsl/1.79.1/docbook-xsl-1.79.1.zip'
-unzip docbook-xsl-1.79.1.zip
-rm docbook-xsl-1.79.1.zip
-ln -sf docbook-xsl-1.79.1 docbook-xsl
+curl -L -O 'https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F1.79.2/docbook-xsl-1.79.2.zip'
+unzip docbook-xsl-1.79.2.zip
+rm docbook-xsl-1.79.2.zip
+ln -sf docbook-xsl-1.79.2 docbook-xsl
 
 # http://jeuclid.sourceforge.net/
 [ -e jeuclid-fop-3.1.9 ] && rm -rf jeuclid-fop-3.1.9
