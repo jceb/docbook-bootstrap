@@ -30,10 +30,10 @@ for i in \
 	; do
 	echo -e "  ${i}"
 done
-echo -n "Enter file format [docbook]: "
+echo -n "Enter file format [asciidoc]: "
 read format
 if [ -z "${format}" ]; then
-	format="xml"
+	format="adoc"
 fi
 case "${format}" in
 	docbook | dbk )
