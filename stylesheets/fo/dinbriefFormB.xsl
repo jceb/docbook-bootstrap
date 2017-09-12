@@ -6,7 +6,7 @@
     xmlns:db="http://docbook.org/ns/docbook"
     exclude-result-prefixes="db ng exsl"
     version='0.8'>
-    <xsl:import href="/usr/share/xml/docbook/stylesheet/docbook-xsl/fo/docbook.xsl"/>
+    <xsl:import href="../../lib/docbook-xsl/fo/docbook.xsl" />
     <xsl:output method="xml" indent="no"/>
 
     <!--
