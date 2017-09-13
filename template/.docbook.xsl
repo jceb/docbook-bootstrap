@@ -35,7 +35,7 @@
     <!-- dynamic imports are not allowed until xslt 3.0 therefore this file is
          used as a template and the variable is expanded by the build target -->
     <!-- <xsl:param name="dbootstrap.dir">.</xsl:param> -->
-    <xsl:import href="{$dbootstrap.dir}/stylesheets/fo/docbook.xsl" />
+    <xsl:import href="{$dbootstrap.dir}/stylesheets/fo/{$dbootstrap.xsl}" />
 
     <!-- ########## Customizations ########## -->
     <!-- WARNING: only customize file .docbook.xsl the other one is auto

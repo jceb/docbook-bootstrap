@@ -4,84 +4,164 @@ set -u
 
 basedir="$(dirname "$(readlink -e "${0}")")"
 
-if [ $# -lt 1 ]; then
-	_tmpdir="template"
-	echo -n "Enter target directory [${_tmpdir}]: "
-	read targetdir
-	if [ -z "${targetdir}" ]; then
-		targetdir="${_tmpdir}"
-	fi
-else
-	if [ "${1}" = '-h' ] || [ "${1}" = '--help' ]; then
-		echo "USAGE: $(basename "${0}") [TARGETDIRECTORY]"
-		echo " Clone docbook-bootstrap template directory and set up a new docbook project directory"
-		exit
-	fi
-	targetdir="${1}"
-fi
+die () {
+    exit 1
+}
 
-echo "Supported file formats:"
-for i in \
-	"Asciidoc:\t\tasciidoc | adoc | ad" \
-	"DocBook:\t\tdocbook | dbk" \
-	"Markdown:\t\tmarkdown | mkd | md" \
-	"Org mode:\t\torg" \
-	"reStructuredText:\trst" \
-	; do
-	echo -e "  ${i}"
-done
-echo -n "Enter file format [asciidoc]: "
-read format
-if [ -z "${format}" ]; then
-	format="adoc"
-fi
-case "${format}" in
-	docbook | dbk )
-		format="xml"
-		;;
-	asciidoc | adoc | ad )
-		format="adoc"
-		;;
-	markdown | mkd | md )
-		format="md"
-		;;
-	rst )
-		format="rst"
-		;;
-	org )
-		format="org"
-		;;
-	* )
-		echo "Unknown format.  Exiting." 1>&2
-		exit 1
-		;;
-esac
+request_targetdir () {
+    local targetdir _tmpdir
+    if [ $# -lt 1 ]; then
+        _tmpdir="template"
+        echo -n "Enter target directory [${_tmpdir}]: " 1>&2
+        read targetdir
+        if [ -z "${targetdir}" ]; then
+            targetdir="${_tmpdir}"
+        fi
+    else
+        if [ "${1}" = '-h' ] || [ "${1}" = '--help' ]; then
+            echo "USAGE: $(basename "${0}") [TARGETDIRECTORY]" 1>&2
+            echo " Clone docbook-bootstrap template directory and set up a new docbook project directory" 1>&2
+            return 1
+        fi
+        targetdir="${1}"
+    fi
+    echo "${targetdir}"
+}
 
-if [ -e "${targetdir}" ]; then
-	echo "File or directory already exists: ${targetdir}" 1>&2
-	exit 1
-fi
-cp -r "${basedir}/template" "${targetdir}"
+request_fileformat () {
+    local format
+    echo "Supported file formats:" 1>&2
+    for i in \
+        "Asciidoc:\t\tasciidoc | adoc | ad" \
+        "DocBook:\t\tdocbook | dbk" \
+        "----------"
+        "Not recommended because of much less functionality:"
+        "Markdown:\t\tmarkdown | mkd | md" \
+        "Org mode:\t\torg" \
+        "reStructuredText:\trst" \
+        ; do
+        echo -e "  ${i}" 1>&2
+    done
+    echo -n "Enter file format [asciidoc]: " 1>&2
+    read format
+    if [ -z "${format}" ]; then
+        format="adoc"
+    fi
+    case "${format}" in
+        docbook | dbk )
+            format="xml"
+            ;;
+        asciidoc | adoc | ad )
+            format="adoc"
+            ;;
+        markdown | mkd | md )
+            format="md"
+            ;;
+        rst )
+            format="rst"
+            ;;
+        org )
+            format="org"
+            ;;
+        * )
+            echo "Unknown format.  Exiting." 1>&2
+            return 1
+            ;;
+    esac
+    echo "${format}"
+}
 
-targetname="$(basename "${targetdir}")"
-sed -i -e "s#^PATH_TO_DBOOTSTRAP=x\$#PATH_TO_DBOOTSTRAP='${basedir}'#" \
-	-e "s#^in=.*#in=${targetname}.${format}#" \
-	"${targetdir}/Makefile"
+request_xsl () {
+    local xsl
+    echo "Supported XSL transformations:" 1>&2
+    for i in \
+        "DIN Brief Form A:\t\tdinA | a" \
+        "DIN Brief Form B:\t\tdinB | b" \
+        "Article :\t\tarticle" \
+        ; do
+        echo -e "  ${i}" 1>&2
+    done
+    echo -n "Select transformation [article]: " 1>&2
+    read xsl
+    if [ -z "${xsl}" ]; then
+        xsl="article"
+    fi
+    case "${xsl}" in
+        dinA | a )
+            echo "DIN Brief Form A not supported yet" 1>&2
+            xsl="dinbriefFormA.xsl"
+            return 1
+            ;;
+        dinB | b )
+            xsl="dinbriefFormB.xsl"
+            ;;
+        article )
+            xsl="docbook.xsl"
+            ;;
+        * )
+            echo "Unknown XSL transformation.  Exiting." 1>&2
+            return 1
+            ;;
+    esac
+    echo "${xsl}"
+}
 
-rm "${targetdir}/README.adoc"
-if [ "${format}" = "xml" ]; then
-	mv "${targetdir}/article.xml" "${targetdir}/${targetname}.${format}"
-else
-	rm "${targetdir}/article.xml"
-	touch "${targetdir}/${targetname}.${format}"
-fi
+copy_template () {
+    # 1: template directory
+    # 2: target directory
+    if [ -e "${2}" ]; then
+        echo "File or directory already exists: ${2}" 1>&2
+        return 1
+    fi
+    cp -r "${1}" "${2}"
+}
 
-set +u
-if [ -z "${DOCBOOK_BOOTSTRAP_PATH}" ]; then
-	set -u
-	echo "Add the following line to your .$(basename "${SHELL}")rc to locate docbook-bootstrap:"
-	echo -e "\texport DOCBOOK_BOOTSTRAP_PATH='${basedir}'"
-fi
-set -u
+individualize_template () {
+    # 1: basedir
+    # 2: targetdir
+    # 3: fileformat
+    # 4: xsl
+    local targetname
+    targetname="$(basename "${2}")"
+    sed -i \
+        -e "s#^PATH_TO_DBOOTSTRAP=x\$#PATH_TO_DBOOTSTRAP='${1}'#" \
+        -e "s#^in=.*#in=${targetname}.${3}#" \
+        -e "s#^xsl=.*#xsl=${4}#" \
+        "${2}/Makefile"
+
+    if [ "${4}" = 'dinbriefFormB.xsl' ]; then
+        echo "Disabling validation because DIN Brief doesn't generate docbook compatible output" 1>&2
+        sed -i \
+            -e "s#^validate=.*#validate=#" \
+            "${2}/Makefile"
+    fi
+
+    rm "${2}/README.adoc"
+    if [ "${3}" = "xml" ]; then
+        mv "${2}/article.xml" "${2}/${targetname}.${3}"
+    else
+        rm "${2}/article.xml"
+        touch "${2}/${targetname}.${3}"
+    fi
+}
+
+print_warning () {
+    set +u
+    if [ -z "${DOCBOOK_BOOTSTRAP_PATH}" ]; then
+        set -u
+        echo "Add the following line to your .$(basename "${SHELL}")rc to locate docbook-bootstrap:" 1>&2
+        echo -e "\texport DOCBOOK_BOOTSTRAP_PATH='${basedir}'" 1>&2
+    fi
+    set -u
+
+}
+
+targetdir="$(request_targetdir "$@" || die)"
+fileformat="$(request_fileformat || die)"
+xsl="$(request_xsl || die)"
+
+copy_template "${basedir}/template" "${targetdir}" || die
+individualize_template "${basedir}" "${targetdir}" "${fileformat}" "${xsl}" || die
+print_warning
 
 echo "Clone is ready at '${targetdir}'"

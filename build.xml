@@ -21,7 +21,9 @@
   specific language governing permissions and limitations
   under the License.
 -->
-<project name="docbook" default="default">
+<project name="docbook" default="default"
+    xmlns:if="ant:if"
+    xmlns:unless="ant:unless">
     <!-- ant contrib tasks -->
     <taskdef resource="net/sf/antcontrib/antcontrib.properties">
       <classpath>
@@ -97,13 +99,13 @@
         <delete dir="${output.dir}/OEBPS/" />
     </target>
 
-    <target name="validate" depends="todocbook" unless='novalidation' description="Validate resulting DocBook file (happens implicitly)">
+    <target name="validate" depends="todocbook" description="Validate resulting DocBook file (happens implicitly)">
         <!-- validate DocBook file -->
-        <java jar="${validate.jar}" fork='true' failonerror='true'>
+        <java jar="${validate.jar}" fork='true' failonerror='true' if:true='${validate}'>
             <jvmarg value="-Dorg.apache.xerces.xni.parser.XMLParserConfiguration=org.apache.xerces.parsers.XIncludeParserConfiguration" />
             <jvmarg value="-Djavax.xml.parsers.SAXParserFactory=org.apache.xerces.jaxp.SAXParserFactoryImpl" />
             <jvmarg value='${validate.jvmarg}' />
-            <arg value='${docbook.rng}' />
+            <arg value='${validate.schema}' />
             <arg value='${file.docbook}' />
         </java>
     </target>
