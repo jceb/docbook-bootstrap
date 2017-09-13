@@ -5,7 +5,8 @@
     xmlns:ng="http://docbook.org/docbook-ng"
     xmlns:db="http://docbook.org/ns/docbook"
     exclude-result-prefixes="db ng exsl"
-    version='0.8'>
+    version='1.0'>
+
     <xsl:import href="../../lib/docbook-xsl/fo/docbook.xsl" />
     <xsl:output method="xml" indent="no"/>
 
@@ -30,7 +31,7 @@
     <xsl:variable name="root.elements" select="' appendix article bibliography book chapter colophon dedication glossary index part preface qandaset refentry reference sect1 section set setindex letter '"/>
 
     <xsl:param name="admon.graphics" select="1"/>
-    <xsl:param name="admon.graphics.path">/usr/share/xml/docbook/stylesheet/docbook-xsl/images/</xsl:param>
+    <xsl:param name="admon.graphics.path">../../lib/docbook-xsl/images/</xsl:param>
     <xsl:param name="admon.graphics.extension">.svg</xsl:param>
     <xsl:param name="admon.textlabel" select="0"/>
 
@@ -135,7 +136,7 @@
             </xsl:choose>
         </xsl:attribute>
     </xsl:attribute-set>
-    <xsl:template match="footnote">
+    <xsl:template match="db:footnote">
         <xsl:choose>
             <xsl:when test="ancestor::table or ancestor::informaltable">
                 <xsl:call-template name="format.footnote.mark">
@@ -206,7 +207,7 @@
         </fo:page-sequence-master>
     </xsl:template>
 
-    <xsl:template match="letter">
+    <xsl:template match="db:letter">
         <xsl:message>DIN 5008 Form B.</xsl:message>
         <xsl:call-template name="fop1-document-info"/>
         <fo:page-sequence master-reference="dinbriefB" id="sequence1">
@@ -238,7 +239,7 @@
             <fo:flow flow-name="bodyregion">
                 <fo:block text-align="start">
                     <fo:inline>
-                        <xsl:for-each select="letterinfo/subjectterm">
+                        <xsl:for-each select="db:letterinfo/db:subjectterm">
                             <xsl:apply-templates/>
                         </xsl:for-each>
                     </fo:inline>
@@ -246,7 +247,7 @@
                 <fo:block text-align="start"
                     space-after="5mm"
                     space-before="5mm">
-                    <xsl:for-each select="letterinfo/salutation">
+                    <xsl:for-each select="db:letterinfo/db:salutation">
                         <xsl:apply-templates/>
                     </xsl:for-each>
                 </fo:block>
@@ -257,7 +258,7 @@
                     <fo:block space-before.optimum="1em"
                         margin-bottom="12mm"
                         space-before="14pt" >
-                        <xsl:for-each select="letterinfo/closing">
+                        <xsl:for-each select="db:letterinfo/db:closing">
                             <xsl:apply-templates/>
                         </xsl:for-each>
                     </fo:block>
@@ -265,7 +266,7 @@
                         margin-bottom="0mm"
                         margin-top="20mm"
                         margin-left="0" >
-                        <xsl:for-each select="letterinfo/sender/personname">
+                        <xsl:for-each select="db:letterinfo/db:sender/db:personname">
                             <xsl:apply-templates/>
                         </xsl:for-each>
                     </fo:block>
@@ -274,10 +275,10 @@
         </fo:page-sequence>
     </xsl:template>
 
-    <xsl:template match="letterinfo"/>
+    <xsl:template match="db:letterinfo"/>
     <!-- asciidoctor xml elements to be ignored -->
-    <xsl:template match="info"/>
-    <xsl:template match="/letter/title"/>
+    <xsl:template match="db:info"/>
+    <xsl:template match="/db:letter/db:title"/>
 
     <xsl:template name="briefkopf">
         <fo:block-container
@@ -296,18 +297,18 @@
                         <fo:table-cell display-align="before">
                             <fo:block text-align="start"
                                 font-weight="bold">
-                                <xsl:value-of select="letterinfo/sender/personname"/>
+                                <xsl:value-of select="db:letterinfo/db:sender/db:personname"/>
                             </fo:block>
                         </fo:table-cell>
                         <fo:table-cell>
-                            <xsl:for-each select="letterinfo/sender/address/*">
+                            <xsl:for-each select="db:letterinfo/db:sender/db:address/*">
                                 <xsl:choose>
                                     <xsl:when test="name(.) = 'city'"></xsl:when>
                                     <xsl:when test="name(.) = 'postcode'">
                                         <fo:block text-align="end">
                                             <xsl:value-of select="."/>
                                             <xsl:value-of select="' '"/>
-                                            <xsl:value-of select="../city"/>
+                                            <xsl:value-of select="../db:city"/>
                                         </fo:block>
                                     </xsl:when>
                                     <xsl:when test="name(.) = 'phone'">
@@ -357,13 +358,13 @@
                 border-left-width="0"
                 border-right-width="0"
                 padding-bottom="1mm" >
-                <xsl:value-of select="letterinfo/sender/personname"/>,
-                <xsl:value-of select="letterinfo/sender/address/street"/>,
-                <xsl:value-of select="letterinfo/sender/address/postcode"/>
+                <xsl:value-of select="db:letterinfo/db:sender/db:personname"/>,
+                <xsl:value-of select="db:letterinfo/db:sender/db:address/db:street"/>,
+                <xsl:value-of select="db:letterinfo/db:sender/db:address/db:postcode"/>
                 <xsl:value-of select="' '"/>
-                <xsl:value-of select="letterinfo/sender/address/city"/>
-                <xsl:if test="letterinfo/sender/address/country">, <xsl:value-of
-                        select="letterinfo/sender/address/country"/>
+                <xsl:value-of select="db:letterinfo/db:sender/db:address/db:city"/>
+                <xsl:if test="db:letterinfo/db:sender/db:address/db:country">, <xsl:value-of
+                        select="db:letterinfo/db:sender/db:address/db:country"/>
                 </xsl:if>
             </fo:block>
         </fo:block-container>
@@ -380,19 +381,19 @@
             display-align="before" >
 
             <fo:block  padding-top="1mm" padding-top.minimum="0mm" >
-                <xsl:value-of select="letterinfo/recipient/orgname"/>
+                <xsl:value-of select="db:letterinfo/db:recipient/db:orgname"/>
             </fo:block>
             <fo:block  padding-top="1mm" padding-top.minimum="0mm" >
-                <xsl:value-of select="letterinfo/recipient/personname"/>
+                <xsl:value-of select="db:letterinfo/db:recipient/db:personname"/>
             </fo:block>
-            <xsl:for-each select="letterinfo/recipient/address/*">
+            <xsl:for-each select="db:letterinfo/db:recipient/db:address/*">
                 <xsl:choose>
                     <xsl:when test="name(.) = 'city'"/>
                     <xsl:when test="name(.) = 'postcode'">
                         <fo:block text-align="start" >
                             <xsl:value-of select="."/>
                             <xsl:value-of select="' '"/>
-                            <xsl:value-of select="../city"/>
+                            <xsl:value-of select="../db:city"/>
                         </fo:block>
                     </xsl:when>
                     <xsl:otherwise>
@@ -413,7 +414,7 @@
             position="absolute"
             top="40mm" left="100mm" height="40mm" width="65mm">
             <fo:block text-align="start">
-                <xsl:value-of select="letterinfo/date"/>
+                <xsl:value-of select="db:letterinfo/db:date"/>
             </fo:block>
         </fo:block-container>
     </xsl:template>
@@ -428,7 +429,7 @@
 
     <xsl:template name="footerzone">
         <fo:block text-align="center" margin-top="5mm">
-            <xsl:for-each select="letterinfo/sender/footer-info/*">
+            <xsl:for-each select="db:letterinfo/db:sender/db:footer-info/*">
                 <xsl:apply-templates/>
             </xsl:for-each>
         </fo:block>
@@ -500,7 +501,7 @@
     <!-- Metadata support ("Document Properties" in Adobe Reader) TODO -->
     <xsl:template name="fop1-document-info">
 
-        <xsl:variable name="authors" select="(//author|//editor|//corpauthor|//authorgroup)[1]"/>
+        <xsl:variable name="authors" select="(//db:author|//db:editor|//db:corpauthor|//db:authorgroup)[1]"/>
         <xsl:variable name="title">DIN Brief Form B</xsl:variable>
 
         <fo:declarations>
@@ -529,7 +530,7 @@
                                         <xsl:value-of select="$authors"/>
                                     </xsl:when>
                                     <xsl:when test="$authors[orgname]">
-                                        <xsl:value-of select="$authors/orgname"/>
+                                        <xsl:value-of select="$authors/db:orgname"/>
                                     </xsl:when>
                                     <xsl:otherwise>
                                         <xsl:call-template name="person.name">
@@ -547,7 +548,7 @@
                         <!-- Subject -->
                         <xsl:if test="//subjectterm">
                             <dc:description>
-                                <xsl:for-each select="//subjectterm">
+                                <xsl:for-each select="//db:subjectterm">
                                     <xsl:value-of select="normalize-space(.)"/>
                                     <xsl:if test="position() != last()">
                                         <xsl:text>, </xsl:text>
@@ -561,9 +562,9 @@
                         <!-- PDF properties go here -->
 
                         <!-- Keywords -->
-                        <xsl:if test="//keyword">
+                        <xsl:if test="//db:keyword">
                             <pdf:Keywords>
-                                <xsl:for-each select="//keyword">
+                                <xsl:for-each select="//db:keyword">
                                     <xsl:value-of select="normalize-space(.)"/>
                                     <xsl:if test="position() != last()">
                                         <xsl:text>, </xsl:text>
