@@ -311,21 +311,6 @@
                                             <xsl:value-of select="../db:city"/>
                                         </fo:block>
                                     </xsl:when>
-                                    <xsl:when test="name(.) = 'phone'">
-                                        <fo:block text-align="end">
-                                            Telefon: <xsl:value-of select="."/>
-                                        </fo:block>
-                                    </xsl:when>
-                                    <xsl:when test="name(.) = 'fax'">
-                                        <fo:block text-align="end">
-                                            Fax: <xsl:value-of select="."/>
-                                        </fo:block>
-                                    </xsl:when>
-                                    <xsl:when test="name(.) = 'email'">
-                                        <fo:block text-align="end">
-                                            E-Mail: <xsl:value-of select="."/>
-                                        </fo:block>
-                                    </xsl:when>
                                     <xsl:otherwise>
                                         <fo:block text-align="end">
                                             <xsl:apply-templates/>
@@ -413,8 +398,33 @@
             border-style="solid"
             position="absolute"
             top="40mm" left="100mm" height="40mm" width="65mm">
-            <fo:block text-align="start">
-                <xsl:value-of select="db:letterinfo/db:date"/>
+            <xsl:for-each select="db:letterinfo/db:sender/db:contact/*">
+                <xsl:choose>
+                    <xsl:when test="name(.) = 'phone'">
+                        <fo:block text-align="start">
+                            Telefon: <xsl:value-of select="."/>
+                        </fo:block>
+                    </xsl:when>
+                    <xsl:when test="name(.) = 'fax'">
+                        <fo:block text-align="start">
+                            Fax: <xsl:value-of select="."/>
+                        </fo:block>
+                    </xsl:when>
+                    <xsl:when test="name(.) = 'email'">
+                        <fo:block text-align="start">
+                            E-Mail: <xsl:value-of select="."/>
+                        </fo:block>
+                    </xsl:when>
+                    <xsl:otherwise>
+                        <fo:block text-align="end">
+                            <xsl:apply-templates/>
+                        </fo:block>
+                    </xsl:otherwise>
+                </xsl:choose>
+            </xsl:for-each>
+            <!-- blank line via linefeed-treatment="preserve" -->
+            <fo:block text-align="start" linefeed-treatment="preserve">
+                Datum: <xsl:value-of select="db:letterinfo/db:date"/>
             </fo:block>
         </fo:block-container>
     </xsl:template>
