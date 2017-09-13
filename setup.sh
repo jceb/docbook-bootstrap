@@ -34,11 +34,12 @@ rm ant-contrib-1.0b3-src.tar.gz
 [ -e fop-1.1 ] && rm -rf fop-1.1
 [ -e fop-2.0 ] && rm -rf fop-2.0
 [ -e fop-2.1 ] && rm -rf fop-2.1
+[ -e fop-2.2 ] && rm -rf fop-2.2
 [ -h fop ] && rm fop
-curl -L -O 'http://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/binaries/fop-2.1-bin.tar.gz'
-tar xzf fop-2.1-bin.tar.gz
-rm fop-2.1-bin.tar.gz
-ln -sf fop-2.1 fop
+curl -L -O 'http://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/binaries/fop-2.2-bin.tar.gz'
+tar xzf fop-2.2-bin.tar.gz
+rm fop-2.2-bin.tar.gz
+ln -sf fop-2.2 fop
 
 # http://offo.sourceforge.net/
 [ -e offo-hyphenation-binary ] && rm -rf offo-hyphenation-binary
