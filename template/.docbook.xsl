@@ -41,6 +41,26 @@
     <!-- WARNING: only customize file .docbook.xsl the other one is auto
          generated -->
 
+    <!-- Pagination and General Styles: -->
+    <!-- <xsl:param name='paper.type'>A4</xsl:param> -->
+    <!-- <xsl:param name='page.orientation'>portrait</xsl:param> -->
+    <!-- <xsl:param name='double.sided'>1</xsl:param> -->
+    <!-- <xsl:param name="header.column.widths">1 3 1</xsl:param> -->
+
+    <!-- <xsl:param name="body.margin.top">0.7in</xsl:param> -->
+    <!-- Font Options: -->
+    <!-- <xsl:param name='title.font.family'>sans-serif,unifont</xsl:param> -->
+    <!-- <xsl:param name='body.font.family'>sans-serif,unifont</xsl:param> -->
+    <!-- <xsl:param name='title.font.family'>sans-serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
+    <!-- <xsl:param name='body.font.family'>serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
+    <!-- <xsl:param name='monospace.font.family'>monospace</xsl:param> -->
+    <!-- <xsl:param name='symbol.font.family'>Symbol,ZapfDingbats,unifont</xsl:param> -->
+
+    <!-- Font size: -->
+    <!-- <xsl:param name='body.font.master'>11</xsl:param> -->
+    <!-- <xsl:param name='footnote.font.size'>9</xsl:param> -->
+    <!-- <xsl:param name='line-height'>1.3</xsl:param> -->
+
     <!-- More parameters can be found here: -->
     <!-- - FO output http://docbook.sourceforge.net/release/xsl/1.78.1/doc/fo/index.html -->
     <!-- - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html -->

@@ -164,7 +164,7 @@
     <xsl:param name='symbol.font.family'>Symbol,ZapfDingbats,unifont</xsl:param>
     <!-- Font size -->
     <xsl:param name='body.font.master'>11</xsl:param>
-    <!--<xsl:param name='footnote.font.size'>9</xsl:param>-->
+    <!-- <xsl:param name='footnote.font.size'>9</xsl:param> -->
     <xsl:param name='line-height'>1.3</xsl:param>
 
     <!-- <xsl:attribute-set name="section.title.properties"> -->
