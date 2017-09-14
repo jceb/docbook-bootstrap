@@ -397,7 +397,7 @@
             border-width="{$test.frame.linewidth}"
             border-style="solid"
             position="absolute"
-            top="40mm" left="100mm" height="40mm" width="65mm">
+            top="40mm" left="115mm" height="40mm" width="75mm">
             <xsl:for-each select="db:letterinfo/db:sender/db:contact/*">
                 <xsl:choose>
                     <xsl:when test="name(.) = 'phone'">
@@ -512,7 +512,7 @@
     <xsl:template name="fop1-document-info">
 
         <xsl:variable name="authors" select="(//db:author|//db:editor|//db:corpauthor|//db:authorgroup)[1]"/>
-        <xsl:variable name="title">DIN Brief Form B</xsl:variable>
+        <xsl:variable name="title" select="//db:subjectterm"/>
 
         <fo:declarations>
             <x:xmpmeta xmlns:x="adobe:ns:meta/">
@@ -556,7 +556,7 @@
                         </xsl:if>
 
                         <!-- Subject -->
-                        <xsl:if test="//subjectterm">
+                        <xsl:if test="//db:subjectterm">
                             <dc:description>
                                 <xsl:for-each select="//db:subjectterm">
                                     <xsl:value-of select="normalize-space(.)"/>
