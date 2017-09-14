@@ -197,7 +197,7 @@
             <fo:region-start region-name="startregion" extent="25mm"/>
         </fo:simple-page-master>
 
-        <fo:page-sequence-master master-name="dinbriefB">
+        <fo:page-sequence-master master-name="dinbriefA">
             <fo:repeatable-page-master-alternatives>
                 <fo:conditional-page-master-reference master-reference="hauptseite"
                     page-position="first"/>
@@ -208,9 +208,9 @@
     </xsl:template>
 
     <xsl:template match="db:letter">
-        <xsl:message>DIN 5008 Form B.</xsl:message>
+        <xsl:message>DIN 5008 Form A.</xsl:message>
         <xsl:call-template name="fop1-document-info"/>
-        <fo:page-sequence master-reference="dinbriefB" id="sequence1">
+        <fo:page-sequence master-reference="dinbriefA" id="sequence1">
             <fo:static-content flow-name="startregion">
                 <xsl:if test="$test.drawframes != 0">
                     <xsl:call-template name="seitenrahmen"/>
@@ -286,7 +286,7 @@
             border-width="{$test.frame.linewidth}"
             border-style="solid"
             width="165mm"
-            height="35mm" top="0" left="0" padding="0mm" position="absolute"
+            height="17mm" top="0" left="0" padding="0mm" position="absolute"
             display-align="center" >
             <fo:table>
                 <fo:table-column />
@@ -333,7 +333,7 @@
             border-style="solid"
             space-before="0mm"
             position="absolute"
-            height="17.7mm" width="80mm" top="35mm"
+            height="17.7mm" width="80mm" top="17mm"
             display-align="center" >
             <fo:block text-align="start" font-size="8pt"
                 border-color="grey"
@@ -362,7 +362,7 @@
             border-width="{$test.frame.linewidth}"
             border-style="solid"
             position="absolute"
-            top="52.7mm" height="27.3mm" width="80mm"
+            top="34.7mm" height="27.3mm" width="80mm"
             display-align="before" >
 
             <fo:block  padding-top="1mm" padding-top.minimum="0mm" >
@@ -397,7 +397,7 @@
             border-width="{$test.frame.linewidth}"
             border-style="solid"
             position="absolute"
-            top="40mm" left="100mm" height="40mm" width="65mm">
+            top="22mm" left="115mm" height="75mm" width="75mm">
             <xsl:for-each select="db:letterinfo/db:sender/db:contact/*">
                 <xsl:choose>
                     <xsl:when test="name(.) = 'phone'">
@@ -493,7 +493,7 @@
     <!-- 105mm vom oberen Rand + 105mm von 1. Marke -->
     <xsl:template name="faltmarken">
         <fo:block-container position="absolute"
-            top="95mm"
+            top="77mm"
             left="6mm"
             height="105mm"
             width="4mm"
@@ -512,7 +512,7 @@
     <xsl:template name="fop1-document-info">
 
         <xsl:variable name="authors" select="(//db:author|//db:editor|//db:corpauthor|//db:authorgroup)[1]"/>
-        <xsl:variable name="title">DIN Brief Form B</xsl:variable>
+        <xsl:variable name="title" select="//db:subjectterm"/>
 
         <fo:declarations>
             <x:xmpmeta xmlns:x="adobe:ns:meta/">
@@ -556,7 +556,7 @@
                         </xsl:if>
 
                         <!-- Subject -->
-                        <xsl:if test="//subjectterm">
+                        <xsl:if test="//db:subjectterm">
                             <dc:description>
                                 <xsl:for-each select="//db:subjectterm">
                                     <xsl:value-of select="normalize-space(.)"/>
