@@ -34,8 +34,8 @@ request_fileformat () {
     for i in \
         "Asciidoc:\t\tasciidoc | adoc | ad" \
         "DocBook:\t\tdocbook | dbk" \
-        "----------"
-        "Not recommended because of much less functionality:"
+        "----------" \
+        "Not recommended because of much less functionality:" \
         "Markdown:\t\tmarkdown | mkd | md" \
         "Org mode:\t\torg" \
         "reStructuredText:\trst" \
@@ -88,9 +88,7 @@ request_xsl () {
     fi
     case "${xsl}" in
         dinA | a )
-            echo "DIN Brief Form A not supported yet" 1>&2
             xsl="dinbriefFormA.xsl"
-            return 1
             ;;
         dinB | b )
             xsl="dinbriefFormB.xsl"
@@ -129,7 +127,7 @@ individualize_template () {
         -e "s#^xsl=.*#xsl=${4}#" \
         "${2}/Makefile"
 
-    if [ "${4}" = 'dinbriefFormB.xsl' ]; then
+    if [ "${4}" = 'dinbriefFormA.xsl' ] || [ "${4}" = 'dinbriefFormB.xsl' ]; then
         echo "Disabling validation because DIN Brief doesn't generate docbook compatible output" 1>&2
         sed -i \
             -e "s#^validate=.*#validate=#" \
