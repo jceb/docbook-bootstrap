@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+<letter xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>Request for Funding</title>
+<date>2017-09-14</date>
+<author>
+<personname>
+<firstname>John</firstname>
+<surname>Doe</surname>
+</personname>
+<email>john.doe@example.dom</email>
+</author>
+<authorinitials>JD</authorinitials>
+<revhistory>
+<revision>
+<revnumber>1.0</revnumber>
+<date>2017-09-14</date>
+<authorinitials>JD</authorinitials>
+</revision>
+</revhistory>
+</info>
+<letterinfo>
+  <sender>
+    <personname>John Doe</personname>
+    <address>
+      <street>My Street 3</street>
+      <postcode>12345</postcode>
+      <city>My Town</city>
+    </address>
+    <contact>
+      <phone>+1 123 456</phone>
+      <!-- <fax> fax </fax> -->
+      <email>john.doe@example.dom</email>
+    </contact>
+    <!--
+    <footer-info>
+      <para>Bankverbindung: Bank in Köln, Kto 123</para>
+    </footer-info>
+    -->
+  </sender>
+
+  <recipient>
+    <orgname>Lots of money Ltd.</orgname>
+    <personname>Joe Rick</personname>
+    <address>
+      <street>Richstreet 1</street>
+      <postcode>54321</postcode>
+      <city>Rich Town</city>
+      <country>The Land of Gold</country>
+    </address>
+  </recipient>
+
+  <date>2017-09-14</date>
+
+  <subjectterm>Request for Funding</subjectterm>
+
+  <salutation>Dear Rick,</salutation>
+
+  <closing>Kind Regards,</closing>
+</letterinfo>
+<simpara>Please send me some of your money to fund this awesome idea!</simpara>
+</letter>

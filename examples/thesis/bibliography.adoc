@@ -1,0 +1,33 @@
+[bibliography]
+== Bibliography
+
+++++
+
+<bibliodiv label="Books">
+    <title>Books</title>
+
+    <biblioentry xml:id="bib_trivial" xreflabel="bib_trivial">
+        <abbrev>bib_trivial</abbrev>
+        <title>The Art of Finding Trivial Bugs</title>
+        <titleabbrev>The Art of Finding Trivial Bugs</titleabbrev>
+        <authorgroup>
+            <author>
+                <personname>
+                    <surname>Bughunter</surname>
+                    <firstname>Joe</firstname>
+                </personname>
+            </author>
+        </authorgroup>
+        <pubdate>2009</pubdate>
+        <edition>1st ed</edition>
+        <publisher>
+            <publishername>Awesome Books</publishername>
+            <address>
+                <city>Bugtown</city>
+                <state>B</state>
+            </address>
+        </publisher>
+    </biblioentry>
+</bibliodiv>
+
+++++

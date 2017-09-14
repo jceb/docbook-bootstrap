@@ -1,0 +1,18 @@
+= Finding bugs in software using tests
+:Author:    John Doe
+:Email:     john.doe@example.org
+:Date:      2017-09-14
+:Revision:  1
+:doctype:   book
+:docinfo:
+
+// execute the following lines to regenerate the fold markers
+// :args *.adoc|exec 'argdo! exec ":g/{{{[1-9]$/d"|%s/^\(\([=]\{2,\}\)\s*\(.*\)\)/\="\/\/ ".submatch(3)." {{{".(len(submatch(2))-1)."\r".submatch(0)/'|exec 'argdo! g/{{{[1-9]$/exec "normal! dd}{p"'
+
+include::00_intro.adoc[]
+
+include::10_first_chapter.adoc[]
+
+include::bibliography.adoc[]
+
+include::appendix.adoc[]

@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc?>
+<?asciidoc-numbered?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>Finding bugs in software using tests</title>
+<date>2017-09-14</date>
+<author>
+<personname>
+<firstname>John</firstname>
+<surname>Doe</surname>
+</personname>
+<email>john.doe@example.org</email>
+</author>
+<authorinitials>JD</authorinitials>
+<subtitle>The Case of My Company</subtitle>
+</info>
+<chapter xml:id="sec_intro">
+<title>Introduction</title>
+<simpara>Finding bugs in software is very difficult<footnote><simpara>&#32;<xref linkend="sec_first_chapter"/></simpara></footnote>.  Lorem ipsum dolor sit amet,
+consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut
+labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et
+accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no
+sea takimata sanctus est Lorem ipsum dolor sit amet.</simpara>
+<simpara>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet.</simpara>
+<simpara>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet.</simpara>
+</chapter>
+<chapter xml:id="sec_first_chapter">
+<title>First Chapter</title>
+<simpara>Here&#8217;s what I found:</simpara>
+<table xml:id="table_findings" frame="all" rowsep="1" colsep="1">
+<title>Findings of finding bugs</title>
+<tgroup cols="2">
+<colspec colname="col_1" colwidth="25*"/>
+<colspec colname="col_2" colwidth="75*"/>
+<thead>
+<row>
+<entry align="left" valign="top">Type</entry>
+<entry align="left" valign="top">Description</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry align="left" valign="top"><simpara>Trivial</simpara></entry>
+<entry align="left" valign="top"><simpara>I wish there were more trivial bugs<footnote><simpara>&#32;<link linkend="bib_trivial">Trivial, 2008, pp. 71</link></simpara></footnote></simpara></entry>
+</row>
+<row>
+<entry align="left" valign="top"><simpara>Difficult</simpara></entry>
+<entry align="left" valign="top"><simpara>A lot of bugs are very difficult to spot and fix</simpara></entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+<simpara>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet
+<footnote><simpara>&#32;<xref linkend="appendix_bugs"/></simpara></footnote> .</simpara>
+</chapter>
+<bibliography xml:id="_bibliography">
+<title>Bibliography</title>
+<bibliodiv label="Books">
+    <title>Books</title>
+
+    <biblioentry xml:id="bib_trivial" xreflabel="bib_trivial">
+        <abbrev>bib_trivial</abbrev>
+        <title>The Art of Finding Trivial Bugs</title>
+        <titleabbrev>The Art of Finding Trivial Bugs</titleabbrev>
+        <authorgroup>
+            <author>
+                <personname>
+                    <surname>Bughunter</surname>
+                    <firstname>Joe</firstname>
+                </personname>
+            </author>
+        </authorgroup>
+        <pubdate>2009</pubdate>
+        <edition>1st ed</edition>
+        <publisher>
+            <publishername>Awesome Books</publishername>
+            <address>
+                <city>Bugtown</city>
+                <state>B</state>
+            </address>
+        </publisher>
+    </biblioentry>
+</bibliodiv>
+</bibliography>
+<appendix xml:id="appendix_bugs">
+<title>Some of the worst bugs</title>
+<simpara>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At
+vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren,
+no sea takimata sanctus est Lorem ipsum dolor sit amet.</simpara>
+</appendix>
+</book>
