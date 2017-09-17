@@ -28,6 +28,9 @@
             </address>
         </publisher>
     </biblioentry>
+
 </bibliodiv>
 
 ++++
+
+// vi: ft=docbk:tw=80:sw=4:ts=4:sts=4:et:fdm=indent

@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="111.1628mm"
+   height="111.1628mm"
+   viewBox="0 0 111.1628 111.1628"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.2 5c3e80d, 2017-08-06"
+   sodipodi:docname="chart.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1"
+     inkscape:cx="119.61885"
+     inkscape:cy="162.79047"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:window-width="1920"
+     inkscape:window-height="1064"
+     inkscape:window-x="0"
+     inkscape:window-y="16"
+     inkscape:window-maximized="0" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-47.542198,-50.35817)">
+    <circle
+       cx="103.1236"
+       cy="105.93957"
+       r="55.581398"
+       id="circle821"
+       style="opacity:1;fill:#ffd755;fill-opacity:0.36633684;fill-rule:nonzero;stroke:none;stroke-width:3.38215017;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.96666715" />
+    <path
+       style="opacity:1;fill:#ff5555;fill-opacity:0.36633684;fill-rule:nonzero;stroke:none;stroke-width:3.38215017;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.96666715"
+       id="path815"
+       sodipodi:type="arc"
+       sodipodi:cx="103.1236"
+       sodipodi:cy="105.93957"
+       sodipodi:rx="55.581398"
+       sodipodi:ry="55.581398"
+       sodipodi:start="0"
+       sodipodi:end="1.2761381"
+       d="m 158.70499,105.93957 a 55.581398,55.581398 0 0 1 -39.43984,53.18592 L 103.1236,105.93957 Z" />
+    <path
+       cx="85.525452"
+       cy="105.55343"
+       r="26.080357"
+       id="path817"
+       style="opacity:1;fill:#c755c8;fill-opacity:0.36633684;fill-rule:nonzero;stroke:none;stroke-width:1.58700001;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.96666703"
+       d=""
+       inkscape:connector-curvature="0" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:33.81716537px;line-height:21.13572884px;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.84542918px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="72.401085"
+       y="99.006393"
+       id="text825"><tspan
+         sodipodi:role="line"
+         id="tspan823"
+         x="72.401085"
+         y="99.006393"
+         style="stroke-width:0.84542918px">Pie</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:9.81974316px;line-height:6.13733959px;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.24549359px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       x="113.07824"
+       y="116.94318"
+       id="text829"><tspan
+         sodipodi:role="line"
+         id="tspan827"
+         x="113.07824"
+         y="116.94318"
+         style="stroke-width:0.24549359px">Slice</tspan></text>
+  </g>
+</svg>

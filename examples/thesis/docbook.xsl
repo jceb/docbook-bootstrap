@@ -35,7 +35,7 @@
     <!-- dynamic imports are not allowed until xslt 3.0 therefore this file is
          used as a template and the variable is expanded by the build target -->
     <!-- <xsl:param name="dbootstrap.dir">.</xsl:param> -->
-    <xsl:import href="../..//stylesheets/fo/docbook.xsl" />
+    <xsl:import href="/home/jceb/Documents/Projects/docbook-bootstrap/stylesheets/fo/docbook.xsl" />
 
     <!-- ########## Customizations ########## -->
     <!-- WARNING: only customize file .docbook.xsl the other one is auto
@@ -73,6 +73,271 @@
     <!-- custom title page -->
     <!-- copy from titlepage.xsl the relevant parts and modify them manually
          using XSL-FO -->
+    <xsl:template name="book.titlepage.recto">
+        <xsl:choose>
+            <xsl:when test="bookinfo/title">
+                <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/title"/>
+            </xsl:when>
+            <xsl:when test="info/title">
+                <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/title"/>
+            </xsl:when>
+            <xsl:when test="title">
+                <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="title"/>
+            </xsl:when>
+        </xsl:choose>
+
+        <xsl:choose>
+            <xsl:when test="bookinfo/subtitle">
+                <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/subtitle"/>
+            </xsl:when>
+            <xsl:when test="info/subtitle">
+                <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/subtitle"/>
+            </xsl:when>
+            <xsl:when test="subtitle">
+                <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="subtitle"/>
+            </xsl:when>
+        </xsl:choose>
+
+        <!-- <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/corpauthor"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/corpauthor"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/authorgroup"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/authorgroup"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/author"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/author"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="bookinfo/itermset"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.recto.auto.mode" select="info/itermset"/> -->
+
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.5in</xsl:attribute>
+            <xsl:attribute name="text-align">center</xsl:attribute>
+            <xsl:attribute name="font-size">18.8832pt</xsl:attribute>
+            Master's Thesis
+        </xsl:element>
+
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.5in</xsl:attribute>
+            <xsl:attribute name="text-align">center</xsl:attribute>
+            <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.3in</xsl:attribute>
+                Author
+            </xsl:element>
+            <xsl:element name="fo:block">
+                John Doe
+            </xsl:element>
+            <xsl:element name="fo:block">
+                My Street 3
+            </xsl:element>
+            <xsl:element name="fo:block">
+                12345 Somewhere
+            </xsl:element>
+            <xsl:element name="fo:block">
+                Phone: +1 1234567
+            </xsl:element>
+            <xsl:element name="fo:block">
+                E-Mail: john.doe@example.org
+            </xsl:element>
+        </xsl:element>
+
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.0in</xsl:attribute>
+            <xsl:attribute name="text-align">center</xsl:attribute>
+            <xsl:attribute name="font-size">18.8832pt</xsl:attribute>
+            <xsl:element name ="fo:external-graphic">
+                <xsl:attribute name="content-type">content-type:image/jpeg</xsl:attribute>
+                <xsl:attribute name="width">auto</xsl:attribute>
+                <xsl:attribute name="height">auto</xsl:attribute>
+                <xsl:attribute name="content-height">70%</xsl:attribute>
+                <xsl:attribute name="content-width">70%</xsl:attribute>
+                <xsl:attribute name="src">url(/home/jceb/Documents/Projects/docbook-bootstrap/examples/thesis/figures/logo.svg)</xsl:attribute>
+            </xsl:element>
+            Graduate Center Somewhere
+        </xsl:element>
+
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.2in</xsl:attribute>
+            <xsl:element name="fo:table">
+                <xsl:attribute name="table-layout">fixed</xsl:attribute>
+                <xsl:attribute name="width">100%</xsl:attribute>
+                <xsl:element name="fo:table-column">
+                    <xsl:attribute name="column-number">1</xsl:attribute>
+                    <xsl:attribute name="column-width">proportional-column-width(1)</xsl:attribute>
+                </xsl:element>
+                <xsl:element name="fo:table-column">
+                    <xsl:attribute name="column-number">2</xsl:attribute>
+                    <xsl:attribute name="column-width">proportional-column-width(1)</xsl:attribute>
+                </xsl:element>
+                <xsl:element name="fo:table-body">
+                    <xsl:element name="fo:table-row">
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                First assessment supervisor
+                            </xsl:element>
+                        </xsl:element>
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                Prof. Dr. Oliver Smart
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                    <xsl:element name="fo:table-row">
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                Second assessment supervisor
+                            </xsl:element>
+                        </xsl:element>
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                Prof. Dr. George Skilled
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                    <xsl:element name="fo:table-row">
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                Closing date
+                            </xsl:element>
+                        </xsl:element>
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                2017-10-03
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                    <xsl:element name="fo:table-row">
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                Course of studies
+                            </xsl:element>
+                        </xsl:element>
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                Business Administration MBA
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                    <xsl:element name="fo:table-row">
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                Matriculation number
+                            </xsl:element>
+                        </xsl:element>
+                        <xsl:element name="fo:table-cell">
+                            <xsl:element name="fo:block">
+                                12345
+                            </xsl:element>
+                        </xsl:element>
+                    </xsl:element>
+                </xsl:element>
+            </xsl:element>
+        </xsl:element>
+
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.2in</xsl:attribute>
+            Note: Thesis submitted to obtain the qualification "Master of
+            Business Administration (MBA)" at the University of Somewhere in the
+            study program "Business Administration".
+        </xsl:element>
+
+    </xsl:template>
+
+    <xsl:template name="book.titlepage.verso">
+        <!-- <xsl:choose> -->
+        <!--     <xsl:when test="bookinfo/title"> -->
+        <!--         <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/title"/> -->
+        <!--     </xsl:when> -->
+        <!--     <xsl:when test="info/title"> -->
+        <!--         <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/title"/> -->
+        <!--     </xsl:when> -->
+        <!--     <xsl:when test="title"> -->
+        <!--         <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="title"/> -->
+        <!--     </xsl:when> -->
+        <!-- </xsl:choose> -->
+
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/corpauthor"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/corpauthor"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/authorgroup"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/authorgroup"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/author"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/author"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/othercredit"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/othercredit"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/releaseinfo"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/releaseinfo"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/pubdate"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/pubdate"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/copyright"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/copyright"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/abstract"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/abstract"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="bookinfo/legalnotice"/> -->
+        <!-- <xsl:apply-templates mode="book.titlepage.verso.auto.mode" select="info/legalnotice"/> -->
+
+        <xsl:element name="fo:block">
+            I herewith declare that I am the sole author of the current master´s
+            thesis according to the regulation of University of Somewhere and
+            that I have conducted all works connected with the Master thesis on
+            my own.
+        </xsl:element>
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.1in</xsl:attribute>
+            Furthermore, I declare that I only used those resources that are
+            referenced in the work.  All formulations and concepts taken from
+            printed, verbal or online sources be they word-for-word quotations
+            or corresponding in their meaning are quoted according to the rules
+            of good scientific conduct and are indicated by footnotes, in the
+            text or other forms of detailed references.  Support during the work
+            including significant supervision is indicated accordingly.
+        </xsl:element>
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.1in</xsl:attribute>
+            The master´s thesis has not been presented to any other examination
+            authority.  The work has been submitted in printed and electronic
+            form.
+        </xsl:element>
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.1in</xsl:attribute>
+            I am aware of the legal consequences of a false declaration of
+            honor.
+        </xsl:element>
+
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.2in</xsl:attribute>
+            Somewhere, 2017-09-17
+        </xsl:element>
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.8in</xsl:attribute>
+            John Doe
+        </xsl:element>
+
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">4.7in</xsl:attribute>
+            Confidentiality clause
+        </xsl:element>
+        <xsl:element name="fo:block">
+            <xsl:attribute name="space-before">0.1in</xsl:attribute>
+            This assessment contains confidential data of My Company Ltd.  This
+            work may only be made available to the reviewer and authorized
+            members of the board of examiners.  Any publication and duplication
+            of this assessment - even in part - is prohibited.
+        </xsl:element>
+
+    </xsl:template>
+
+    <xsl:template match="section/para|section/simpara|chapter/para|chapter/simpara">
+        <xsl:variable name="keep.together">
+            <xsl:call-template name="pi.dbfo_keep-together"/>
+        </xsl:variable>
+        <fo:block xsl:use-attribute-sets="normal.para.spacing">
+            <!-- indent first line: http://www.oxygenxml.com/forum/topic8795.html -->
+            <xsl:attribute name="text-indent">0em</xsl:attribute>
+            <xsl:if test="$keep.together != ''">
+                <xsl:attribute name="keep-together.within-column"><xsl:value-of
+                        select="$keep.together"/></xsl:attribute>
+            </xsl:if>
+            <xsl:call-template name="anchor"/>
+            <xsl:apply-templates/>
+        </fo:block>
+    </xsl:template>
 
     <!-- <xsl:param name="body.margin.top">0.7in</xsl:param> -->
     <xsl:param name="img.src.path">/home/jceb/Documents/Projects/docbook-bootstrap/examples/thesis/</xsl:param>
