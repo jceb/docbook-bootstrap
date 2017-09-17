@@ -71,8 +71,7 @@
     <!-- - XSL-FO tutorial http://www.renderx.com/tutorial.html -->
 
     <!-- custom title page -->
-    <!-- copy from titlepage.xsl the relevant parts and modify them manually
-         using XSL-FO -->
+    <!-- copy from stylesheets/fo/titlepage.xsl the relevant parts and modify them manually using XSL-FO -->
 
     <!-- <xsl:param name="body.margin.top">0.7in</xsl:param> -->
     <xsl:param name="img.src.path">{$current.dir}/</xsl:param>
