@@ -237,7 +237,7 @@
             </fo:static-content>
 
             <fo:flow flow-name="bodyregion">
-                <fo:block text-align="start">
+                <fo:block text-align="start" text-decoration="underline">
                     <fo:inline>
                         <xsl:for-each select="db:letterinfo/db:subjectterm">
                             <xsl:apply-templates/>
