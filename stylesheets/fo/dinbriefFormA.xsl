@@ -255,21 +255,42 @@
                 <xsl:apply-templates/>
 
                 <fo:block page-break-inside="avoid">
-                    <fo:block space-before.optimum="1em"
-                        margin-bottom="12mm"
-                        space-before="14pt" >
-                        <xsl:for-each select="db:letterinfo/db:closing">
-                            <xsl:apply-templates/>
-                        </xsl:for-each>
-                    </fo:block>
-                    <fo:block space-before.optimum="1em"
-                        margin-bottom="0mm"
-                        margin-top="20mm"
-                        margin-left="0" >
-                        <xsl:for-each select="db:letterinfo/db:sender/db:personname">
-                            <xsl:apply-templates/>
-                        </xsl:for-each>
-                    </fo:block>
+                    <xsl:choose>
+                        <xsl:when test="db:letterinfo/db:signature">
+                            <fo:block space-before.optimum="1em"
+                                margin-bottom="2mm"
+                                space-before="14pt" >
+                                <xsl:for-each select="db:letterinfo/db:closing">
+                                    <xsl:apply-templates/>
+                                </xsl:for-each>
+                            </fo:block>
+                            <fo:block space-before.optimum="1em"
+                                margin-bottom="0mm"
+                                margin-top="0mm"
+                                margin-left="0" >
+                                <xsl:for-each select="db:letterinfo/db:signature">
+                                    <xsl:apply-templates/>
+                                </xsl:for-each>
+                            </fo:block>
+                        </xsl:when>
+                        <xsl:otherwise>
+                            <fo:block space-before.optimum="1em"
+                                margin-bottom="2mm"
+                                space-before="14pt" >
+                                <xsl:for-each select="db:letterinfo/db:closing">
+                                    <xsl:apply-templates/>
+                                </xsl:for-each>
+                            </fo:block>
+                            <fo:block space-before.optimum="1em"
+                                margin-bottom="0mm"
+                                margin-top="20mm"
+                                margin-left="0" >
+                                <xsl:for-each select="db:letterinfo/db:sender/db:personname">
+                                    <xsl:apply-templates/>
+                                </xsl:for-each>
+                            </fo:block>
+                        </xsl:otherwise>
+                    </xsl:choose>
                 </fo:block>
             </fo:flow>
         </fo:page-sequence>
