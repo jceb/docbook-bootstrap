@@ -397,7 +397,7 @@
             border-width="{$test.frame.linewidth}"
             border-style="solid"
             position="absolute"
-            top="22mm" left="115mm" height="75mm" width="75mm">
+            top="40mm" left="115mm" height="40mm" width="75mm">
             <fo:table>
                 <fo:table-column column-width="23%" />
                 <fo:table-column column-width="77%" />
