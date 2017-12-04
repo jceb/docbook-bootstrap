@@ -1,0 +1,11 @@
+#!/bin/bash
+cp=../lib/fop/build/fop.jar
+for i in ../lib/fop/lib/*.jar; do
+    cp="$cp:$i"
+done
+
+while [ $# -ge 1 ]; do
+    echo java -cp "$cp" org.apache.fop.fonts.apps.TTFReader "$1" "${1%.ttf}.xml"
+    java -cp "$cp" org.apache.fop.fonts.apps.TTFReader "$1" "${1%.ttf}.xml"
+    shift
+done

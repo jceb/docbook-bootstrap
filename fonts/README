@@ -1,0 +1,12 @@
+# Information
+
+Discussion at http://www.mail-archive.com/fop-user@xml.apache.org/msg13631.html
+More information at http://xmlgraphics.apache.org/fop/0.94/fonts.html#register
+
+# Usage:
+
+1. copy the TTF file into this folder
+2. run ./compile MYFONT.ttf
+3. add font to ../fop.xconf
+4. add font to ../stylesheets/fo/docbook.xsl
+5. recompile document and check if the new font is used
