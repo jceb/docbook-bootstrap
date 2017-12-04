@@ -85,48 +85,82 @@ the location of this file.
         (normal = 400, bold = 700)
         -->
 
-        <!--
-        <font metrics-url="arial.xml" kerning="yes" embed-url="arial.ttf">
-          <font-triplet name="Arial" style="normal" weight="normal"/>
-          <font-triplet name="ArialMT" style="normal" weight="normal"/>
-        </font>
-        <font metrics-url="arialb.xml" kerning="yes" embed-url="arialb.ttf">
-          <font-triplet name="Arial" style="normal" weight="bold"/>
-          <font-triplet name="ArialMT" style="normal" weight="bold"/>
-        </font>
-        -->
-        <!--
-        <font metrics-url="lib/fonts/ukai.xml" kerning="yes" embed-url="lib/fonts/ukai.ttf">
-          <font-triplet name="ARPLZenKaiUni" style="normal" weight="normal"/>
-          <font-triplet name="ARPLZenKaiUni" style="normal" weight="bold"/>
-          <font-triplet name="ARPLZenKaiUni" style="italic" weight="normal"/>
-          <font-triplet name="ARPLZenKaiUni" style="italic" weight="bold"/>
-        </font>
-        -->
-        <!--
-        <font metrics-url="lib/fonts/uming.xml" kerning="yes" embed-url="lib/fonts/uming.ttf">
-          <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="normal"/>
-          <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="bold"/>
-          <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="normal"/>
-          <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="bold"/>
-        </font>
-        -->
-        <!--
-        <font metrics-url="lib/fonts/mssong.xml" kerning="yes" embed-url="lib/fonts/mssong.ttf">
-          <font-triplet name="MSSong" style="normal" weight="normal"/>
-          <font-triplet name="MSSong" style="normal" weight="bold"/>
-          <font-triplet name="MSSong" style="italic" weight="normal"/>
-          <font-triplet name="MSSong" style="italic" weight="bold"/>
-        </font>
-        -->
-        <!--
-        <font metrics-url="lib/fonts/unifont-9.0.04.xml" kerning="yes" embed-url="lib/fonts/unifont-9.0.04.ttf">
-          <font-triplet name="unifont" style="normal" weight="normal"/>
-          <font-triplet name="unifont" style="normal" weight="bold"/>
-          <font-triplet name="unifont" style="italic" weight="normal"/>
-          <font-triplet name="unifont" style="italic" weight="bold"/>
-        </font>
-        -->
+        <!-- <font metrics-url="fonts/Caladea-Regular.xml" kerning="yes" embed-url="fonts/Caladea-Regular.ttf"> -->
+        <!--   <font-triplet name="Caladea" style="normal" weight="normal"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/Caladea-Bold.xml" kerning="yes" embed-url="fonts/Caladea-Bold.ttf"> -->
+        <!--   <font-triplet name="Caladea" style="normal" weight="bold"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/Caladea-Italic.xml" kerning="yes" embed-url="fonts/Caladea-Italic.ttf"> -->
+        <!--   <font-triplet name="Caladea" style="italic" weight="normal"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/Caladea-BoldItalic.xml" kerning="yes" embed-url="fonts/Caladea-BoldItalic.xml"> -->
+        <!--   <font-triplet name="Caladea" style="italic" weight="bold"/> -->
+        <!-- </font> -->
+
+        <!-- <font metrics-url="fonts/Carlito-Regular.xml" kerning="yes" embed-url="fonts/Carlito-Regular.ttf"> -->
+        <!--   <font-triplet name="Carlito" style="normal" weight="normal"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/Carlito-Bold.xml" kerning="yes" embed-url="fonts/Carlito-Bold.ttf"> -->
+        <!--   <font-triplet name="Carlito" style="normal" weight="bold"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/Carlito-Italic.xml" kerning="yes" embed-url="fonts/Carlito-Italic.ttf"> -->
+        <!--   <font-triplet name="Carlito" style="italic" weight="normal"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/Carlito-BoldItalic.xml" kerning="yes" embed-url="fonts/Carlito-BoldItalic.xml"> -->
+        <!--   <font-triplet name="Carlito" style="italic" weight="bold"/> -->
+        <!-- </font> -->
+
+        <!-- <font metrics-url="fonts/calibri.xml" kerning="yes" embed-url="fonts/calibri.ttf"> -->
+        <!--   <font-triplet name="Calibri" style="normal" weight="normal"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/calibrib.xml" kerning="yes" embed-url="fonts/calibrib.ttf"> -->
+        <!--   <font-triplet name="Calibri" style="normal" weight="bold"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/calibrii.xml" kerning="yes" embed-url="fonts/calibrii.ttf"> -->
+        <!--   <font-triplet name="Calibri" style="italic" weight="normal"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/calibriz.xml" kerning="yes" embed-url="fonts/calibriz.ttf"> -->
+        <!--   <font-triplet name="Calibri" style="italic" weight="bold"/> -->
+        <!-- </font> -->
+
+        <!-- <font metrics-url="fonts/arial.xml" kerning="yes" embed-url="fonts/arial.ttf"> -->
+        <!--   <font-triplet name="Arial" style="normal" weight="normal"/> -->
+        <!--   <font-triplet name="ArialMT" style="normal" weight="normal"/> -->
+        <!-- </font> -->
+        <!-- <font metrics-url="fonts/arialb.xml" kerning="yes" embed-url="fonts/arialb.ttf"> -->
+        <!--   <font-triplet name="Arial" style="normal" weight="bold"/> -->
+        <!--   <font-triplet name="ArialMT" style="normal" weight="bold"/> -->
+        <!-- </font> -->
+
+        <!-- <font metrics-url="fonts/ukai.xml" kerning="yes" embed-url="fonts/ukai.ttf"> -->
+        <!--   <font-triplet name="ARPLZenKaiUni" style="normal" weight="normal"/> -->
+        <!--   <font-triplet name="ARPLZenKaiUni" style="normal" weight="bold"/> -->
+        <!--   <font-triplet name="ARPLZenKaiUni" style="italic" weight="normal"/> -->
+        <!--   <font-triplet name="ARPLZenKaiUni" style="italic" weight="bold"/> -->
+        <!-- </font> -->
+
+        <!-- <font metrics-url="fonts/uming.xml" kerning="yes" embed-url="fonts/uming.ttf"> -->
+        <!--   <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="normal"/> -->
+        <!--   <font-triplet name="ARPLShanHeiSunUni" style="normal" weight="bold"/> -->
+        <!--   <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="normal"/> -->
+        <!--   <font-triplet name="ARPLShanHeiSunUni" style="italic" weight="bold"/> -->
+        <!-- </font> -->
+
+        <!-- <font metrics-url="fonts/mssong.xml" kerning="yes" embed-url="fonts/mssong.ttf"> -->
+        <!--   <font-triplet name="MSSong" style="normal" weight="normal"/> -->
+        <!--   <font-triplet name="MSSong" style="normal" weight="bold"/> -->
+        <!--   <font-triplet name="MSSong" style="italic" weight="normal"/> -->
+        <!--   <font-triplet name="MSSong" style="italic" weight="bold"/> -->
+        <!-- </font> -->
+
+        <!-- <font metrics-url="fonts/unifont-9.0.04.xml" kerning="yes" embed-url="fonts/unifont-9.0.04.ttf"> -->
+        <!--   <font-triplet name="unifont" style="normal" weight="normal"/> -->
+        <!--   <font-triplet name="unifont" style="normal" weight="bold"/> -->
+        <!--   <font-triplet name="unifont" style="italic" weight="normal"/> -->
+        <!--   <font-triplet name="unifont" style="italic" weight="bold"/> -->
+        <!-- </font> -->
+
       </fonts>
 
       <!-- This option lets you specify additional options on an XML handler -->
