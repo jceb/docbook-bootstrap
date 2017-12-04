@@ -7,7 +7,7 @@
     exclude-result-prefixes="db ng exsl"
     version='1.0'>
 
-    <xsl:import href="../../lib/docbook-xsl/fo/docbook.xsl" />
+    <xsl:import href="style.xsl" />
     <xsl:output method="xml" indent="no"/>
 
     <!--
@@ -36,8 +36,6 @@
     <xsl:param name="admon.textlabel" select="0"/>
 
 
-    <xsl:param name="body.font.master">11</xsl:param>
-    <xsl:param name="body.font.family">sans-serif</xsl:param>
     <xsl:param name="paper.type">A4</xsl:param>
     <xsl:param name="page.margin.top">10mm</xsl:param>
     <xsl:param name="page.margin.bottom">10mm</xsl:param>

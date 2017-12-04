@@ -49,11 +49,11 @@
 
     <!-- <xsl:param name="body.margin.top">0.7in</xsl:param> -->
     <!-- Font Options: -->
-    <!-- <xsl:param name='title.font.family'>sans-serif,unifont</xsl:param> -->
-    <!-- <xsl:param name='body.font.family'>sans-serif,unifont</xsl:param> -->
-    <!-- <xsl:param name='title.font.family'>sans-serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
-    <!-- <xsl:param name='body.font.family'>serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
-    <!-- <xsl:param name='monospace.font.family'>monospace</xsl:param> -->
+    <!-- <xsl:param name='title.font.family'>Carlito,Calibri,sans-serif</xsl:param> -->
+    <!-- <xsl:param name='body.font.family'>Carlito,Calibri,sans-serif</xsl:param> -->
+    <!-- <xsl:param name='title.font.family'>Caladea,Cambria,serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
+    <!-- <xsl:param name='body.font.family'>Caladea,Cambria,serif,ARPLZenKaiUni,ARPLShanHeiSunUni,MSSong</xsl:param> -->
+    <!-- <xsl:param name='monospace.font.family'>Hack,monospace</xsl:param> -->
     <!-- <xsl:param name='symbol.font.family'>Symbol,ZapfDingbats,unifont</xsl:param> -->
 
     <!-- Font size: -->
