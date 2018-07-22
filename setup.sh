@@ -2,9 +2,18 @@
 # set up or update docbook build environment
 
 set -e
+set -x
 
 dir="$(readlink -f "$(dirname $0)")"
 cd "${dir}"
+
+delete () {
+    while [ $# -ge 1 ]; do
+        [ -e "$1" ] && rm -rf "$1"
+        [ -h "$1" ] && rm "$1"
+        shift
+    done
+}
 
 echo 'Downloading docbook-bootstrap dependencies.'
 echo
@@ -25,60 +34,54 @@ mkdir -p ISO690_bibliography
 curl -L -o ISO690_bibliography/doc.html "http://markmail.org/download.xqy?id=n2qumyhk2togibuf&number=1"
 
 # http://ant-contrib.sourceforge.net/
-[ -e ant-contrib ] && rm -rf ant-contrib
+delete ant-contrib
 curl -L -o ant-contrib-1.0b3-src.tar.gz 'http://downloads.sourceforge.net/project/ant-contrib/ant-contrib/1.0b3/ant-contrib-1.0b3-bin.tar.gz?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Fant-contrib%2Ffiles%2Fant-contrib%2F1.0b3%2F&ts=1477924772&use_mirror=freefr'
 tar xzf ant-contrib-1.0b3-src.tar.gz
 rm ant-contrib-1.0b3-src.tar.gz
 
 # https://xmlgraphics.apache.org/fop/
-[ -e fop-1.1 ] && rm -rf fop-1.1
-[ -e fop-2.0 ] && rm -rf fop-2.0
-[ -e fop-2.1 ] && rm -rf fop-2.1
-[ -e fop-2.2 ] && rm -rf fop-2.2
-[ -h fop ] && rm fop
-curl -L -O 'http://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/binaries/fop-2.2-bin.tar.gz'
-tar xzf fop-2.2-bin.tar.gz
-rm fop-2.2-bin.tar.gz
-ln -sf fop-2.2 fop
+delete fop fop-1.1 fop-2.0 fop-2.1 fop-2.2 fop-2.3
+curl -L -O 'http://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/binaries/fop-2.3-bin.tar.gz'
+tar xzf fop-2.3-bin.tar.gz
+rm fop-2.3-bin.tar.gz
+ln -s fop-2.3/fop fop
 
 # http://offo.sourceforge.net/
-[ -e offo-hyphenation-binary ] && rm -rf offo-hyphenation-binary
+delete offo-hyphenation-compiled
 curl -L -o offo-hyphenation-binary.zip 'http://downloads.sourceforge.net/project/offo/offo-hyphenation/2.2/offo-hyphenation-compiled.zip?r=https%3A%2F%2Fsourceforge.net%2Fprojects%2Foffo%2F&ts=1461219320&use_mirror=netix'
 unzip offo-hyphenation-binary.zip
 rm offo-hyphenation-binary.zip
 
 # http://saxon.sourceforge.net/
-[ -e saxon9 ] && rm -rf saxon9
-curl -L -O 'http://netcologne.dl.sourceforge.net/project/saxon/Saxon-HE/9.7/SaxonHE9-7-0-4J.zip'
+delete saxon9
+curl -L -O 'http://netcologne.dl.sourceforge.net/project/saxon/Saxon-HE/9.8/SaxonHE9-8-0-12J.zip'
 mkdir saxon9
 cd saxon9
-unzip ../SaxonHE9-7-0-4J.zip
+unzip ../SaxonHE9-8-0-12J.zip
 ln -sf saxon9he.jar saxon9.jar
 cd ..
-rm SaxonHE9-7-0-4J.zip
+rm SaxonHE9-8-0-12J.zip
 
 # https://github.com/relaxng/jing-trang
-[ -e jing-20091111 ] && rm -rf jing-20091111
-[ -h jing ] && rm jing
-curl -L -O 'https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/jing-trang/jing-20091111.zip'
-unzip jing-20091111.zip
-rm jing-20091111.zip
-ln -sf jing-20091111 jing
+delete jing jing-20091111 jing-trang-20151127
+curl -L -O 'https://github.com/relaxng/jing-trang/archive/V20151127.zip'
+unzip V20151127.zip
+rm V20151127.zip
+cd jing-trang-20151127
+./ant
+cd ..
+ln -sf jing-trang-20151127 jing
 
 # https://github.com/docbook/xslt10-stylesheets
-[ -e docbook-xsl-1.78.1 ] && rm -rf docbook-xsl-1.78.1
-[ -e docbook-xsl-1.79.0 ] && rm -rf docbook-xsl-1.79.0
-[ -e docbook-xsl-1.79.1 ] && rm -rf docbook-xsl-1.79.1
-[ -e docbook-xsl-1.79.2 ] && rm -rf docbook-xsl-1.79.2
-[ -h docbook-xsl ] && rm docbook-xsl
+delete docbook-xsl docbook-xsl-1.78.1 docbook-xsl-1.79.0 docbook-xsl-1.79.1 docbook-xsl-1.79.2
+# curl -L -O 'https://github.com/docbook/xslt20-stylesheets/releases/download/2.3.4/docbook-xslt2-2.3.4.zip'
 curl -L -O 'https://github.com/docbook/xslt10-stylesheets/releases/download/release%2F1.79.2/docbook-xsl-1.79.2.zip'
 unzip docbook-xsl-1.79.2.zip
 rm docbook-xsl-1.79.2.zip
 ln -sf docbook-xsl-1.79.2 docbook-xsl
 
 # http://jeuclid.sourceforge.net/
-[ -e jeuclid-fop-3.1.9 ] && rm -rf jeuclid-fop-3.1.9
-[ -h jeuclid-fop ] && rm jeuclid-fop
+delete jeuclid-fop jeuclid-fop-3.1.9
 curl -L -o jeuclid-fop-3.1.9.zip 'http://downloads.sourceforge.net/project/jeuclid/3.1.x/3.1.9/jeuclid-fop-3.1.9-distribution.zip?r=http%3A%2F%2Fsourceforge.net%2Fprojects%2Fjeuclid%2Ffiles%2F3.1.x%2F3.1.9%2F&ts=1422986063&use_mirror=softlayer-ams'
 unzip jeuclid-fop-3.1.9.zip
 rm jeuclid-fop-3.1.9.zip
