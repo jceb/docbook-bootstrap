@@ -64,13 +64,18 @@ rm SaxonHE9-8-0-12J.zip
 
 # https://github.com/relaxng/jing-trang
 delete jing jing-20091111 jing-trang-20151127
-curl -L -O 'https://github.com/relaxng/jing-trang/archive/V20151127.zip'
-unzip V20151127.zip
-rm V20151127.zip
-cd jing-trang-20151127
-./ant
-cd ..
-ln -sf jing-trang-20151127 jing
+# curl -L -O 'https://github.com/relaxng/jing-trang/archive/V20151127.zip'
+# unzip V20151127.zip
+# rm V20151127.zip
+# cd jing-trang-20151127
+# ./ant
+# cd ..
+# ln -sf jing-trang-20151127 jing
+curl -L -O 'https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/jing-trang/jing-20091111.zip'
+unzip jing-20091111.zip
+rm jing-20091111.zip
+ln -sf jing-20091111 jing
+
 
 # https://github.com/docbook/xslt10-stylesheets
 delete docbook-xsl docbook-xsl-1.78.1 docbook-xsl-1.79.0 docbook-xsl-1.79.1 docbook-xsl-1.79.2
