@@ -1,4 +1,6 @@
-#!/usr/bin/make -f
+#!/usr/bin/env make -f
+.POSIX:
+.SUFFIXES:
 
 # Adjust these variables to fit your environment
 # PATH_TO_DBOOTSTRAP="../docbook-bootstrap"
@@ -48,14 +50,22 @@ endif
 # DON'T CHANGE ANYTHING BELOW THIS LINE
 #######################################
 
-# trigger the ant default target
-default:
+.PHONY: help
+help:
+	@ant -buildfile $(PATH_TO_DBOOTSTRAP)/build.xml $(DEBUG) -Dvalidate="$(validate)" -Dinput.dir="$(PWD)" -Dfile="$(PWD)/$<" -Dfo.stylesheet="$(PWD)/docbook.xsl" -Ddbootstrap.dir="$(PATH_TO_DBOOTSTRAP)" -Dfile.format="$(FORMAT)" -Dfile.suffix="$(SUFFIX)" -Dinput.dir="$(PWD)" -Doutput.dir="$(PWD)/$(OUPUT_DIR)" -Doutput.rootid=$(id) $(PROJECT_OPTIONS) help
+	@echo
+	@echo "Additional targets:"
+	@egrep -h '\s##\s' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "     \033[36m%-20s\033[0m %s\n", $$1, $$2}'
 
-# start watchman to autobuild project
-watch:
-	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make", "in=$(in)", "id=$(id)"], "expression": ["anyof", ["match", ".docbook.xsl", "wholename"], ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
+.PHONY: build
+build: default ## Trigger ant's build (default) target
 
-stopwatch:
+.PHONY: watch
+watch: ## Start watchman to autobuild project
+	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make", "build", "in=$(in)", "id=$(id)"], "expression": ["anyof", ["match", ".docbook.xsl", "wholename"], ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
+
+.PHONY: stopwatch
+stopwatch: ## Stop watchman
 	watchman watch-del .
 
 # Expand dbootstrap.dir variable in xslt stylesheet .. since it's not
