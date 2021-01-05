@@ -40,11 +40,11 @@ tar xzf ant-contrib-1.0b3-src.tar.gz
 rm ant-contrib-1.0b3-src.tar.gz
 
 # https://xmlgraphics.apache.org/fop/
-delete fop fop-1.1 fop-2.0 fop-2.1 fop-2.2 fop-2.3
-curl -L -O 'http://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/binaries/fop-2.3-bin.tar.gz'
-tar xzf fop-2.3-bin.tar.gz
-rm fop-2.3-bin.tar.gz
-ln -s fop-2.3/fop fop
+delete fop fop-1.1 fop-2.0 fop-2.1 fop-2.2 fop-2.3 fop-2.5
+curl -L -O 'http://ftp.halifax.rwth-aachen.de/apache/xmlgraphics/fop/binaries/fop-2.5-bin.tar.gz'
+tar xzf fop-2.5-bin.tar.gz
+rm fop-2.5-bin.tar.gz
+ln -s fop-2.5/fop fop
 
 # http://offo.sourceforge.net/
 delete offo-hyphenation-compiled
@@ -53,17 +53,18 @@ unzip offo-hyphenation-binary.zip
 rm offo-hyphenation-binary.zip
 
 # http://saxon.sourceforge.net/
+# ATTENTION: saxon 9.9 and 10 don't seem to work well with docbook-xsl/fo
 delete saxon9
-curl -L -O 'http://netcologne.dl.sourceforge.net/project/saxon/Saxon-HE/9.8/SaxonHE9-8-0-12J.zip'
+curl -L -O 'http://netcologne.dl.sourceforge.net/project/saxon/Saxon-HE/9.8/SaxonHE9-8-0-15J.zip'
 mkdir saxon9
 cd saxon9
-unzip ../SaxonHE9-8-0-12J.zip
+unzip ../SaxonHE9-8-0-15J.zip
 ln -sf saxon9he.jar saxon9.jar
 cd ..
-rm SaxonHE9-8-0-12J.zip
+rm SaxonHE9-8-0-15J.zip
 
 # https://github.com/relaxng/jing-trang
-delete jing jing-20091111 jing-trang-20151127
+delete jing jing-20091111 jing-trang-20151127 jing-20181222
 # curl -L -O 'https://github.com/relaxng/jing-trang/archive/V20151127.zip'
 # unzip V20151127.zip
 # rm V20151127.zip
@@ -71,10 +72,10 @@ delete jing jing-20091111 jing-trang-20151127
 # ./ant
 # cd ..
 # ln -sf jing-trang-20151127 jing
-curl -L -O 'https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/jing-trang/jing-20091111.zip'
-unzip jing-20091111.zip
-rm jing-20091111.zip
-ln -sf jing-20091111 jing
+curl -L -O 'https://github.com/relaxng/jing-trang/releases/download/V20181222/jing-20181222.zip'
+unzip jing-20181222.zip
+rm jing-20181222.zip
+ln -sf jing-20181222 jing
 
 
 # https://github.com/docbook/xslt10-stylesheets
