@@ -1,0 +1,16 @@
+= TITLE
+:Author:    AUTHOR
+:Email:     MAIL
+:Date:      DATE
+:lang:      de/en, ...
+:doctype:   article
+:docinfo:
+
+// AsciiDoc User Guide: https://asciidoc.org/chunked/index.html
+
+== First Chapter
+
+[[bibliography]]
+== Bibliography
+
+include::bibliography.adoc[]

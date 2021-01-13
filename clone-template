@@ -137,6 +137,8 @@ individualize_template () {
     rm "${2}/README.adoc"
     if [ "${3}" = "xml" ]; then
         mv "${2}/article.xml" "${2}/${targetname}.${3}"
+    elif [ "${3}" = "adoc" ]; then
+        mv "${2}/article.adoc" "${2}/${targetname}.${3}"
     else
         rm "${2}/article.xml"
         touch "${2}/${targetname}.${3}"
