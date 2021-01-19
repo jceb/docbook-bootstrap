@@ -38,7 +38,8 @@
 
     <!-- ########## ToC/LoT/Index Generation ########## -->
     <!-- Table of Contents, enabled or disabled -->
-    <!-- <xsl:param name='generate.toc'></xsl:param> -->
+    <!-- <xsl:param name="generate.toc">article</xsl:param> -->
+    <!-- <xsl:param name="generate.toc">book</xsl:param> -->
 
     <!-- ########## Automatic labeling ########## -->
     <!-- <xsl:param name='section.autolabel'>1</xsl:param> -->

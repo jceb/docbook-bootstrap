@@ -41,9 +41,15 @@
     <!-- WARNING: only customize file .docbook.xsl the other one is auto
          generated -->
 
-    <!-- Disable Table of Contents -->
+    <!-- ########## ToC/LoT/Index Generation ########## -->
+    <!-- Table of Contents, enabled or disabled -->
     <!-- <xsl:param name="generate.toc">article</xsl:param> -->
     <!-- <xsl:param name="generate.toc">book</xsl:param> -->
+
+    <!-- ########## Automatic labeling ########## -->
+    <!-- <xsl:param name='section.autolabel'>1</xsl:param> -->
+    <!-- <xsl:param name='section.autolabel.max.depth'>1</xsl:param> -->
+    <!-- <xsl:param name='section.label.includes.component.label'>1</xsl:param> -->
 
     <!-- uncomment this to suppress toc when using XSL 2.0 -->
     <!-- <xsl:param name="generate.toc"> -->
