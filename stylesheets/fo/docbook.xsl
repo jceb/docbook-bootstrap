@@ -35,7 +35,7 @@
     <xsl:import href="style.xsl" />
     <!-- Use APA style bibliography entries - "bibliography.style" must be -->
     <!-- set to "iso690" -->
-    <!-- <xsl:import href="apa.xsl" /> -->
+    <xsl:import href="apa.xsl" />
 
     <!-- custom title page -->
     <xsl:import href="titlepage.xsl" />
