@@ -1,3 +1,4 @@
 build/
 stylesheets/fo/titlepage.templates.xml
 stylesheets/fo/titlepage.xsl
+lib/
