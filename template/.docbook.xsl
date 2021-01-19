@@ -41,6 +41,16 @@
     <!-- WARNING: only customize file .docbook.xsl the other one is auto
          generated -->
 
+    <!-- Disable Table of Contents -->
+    <!-- <xsl:param name="generate.toc">article</xsl:param> -->
+    <!-- <xsl:param name="generate.toc">book</xsl:param> -->
+
+    <!-- uncomment this to suppress toc when using XSL 2.0 -->
+    <!-- <xsl:param name="generate.toc"> -->
+    <!--     article nop -->
+    <!--     book nop -->
+    <!-- </xsl:param> -->
+
     <!-- Pagination and General Styles: -->
     <!-- <xsl:param name='paper.type'>A4</xsl:param> -->
     <!-- <xsl:param name='page.orientation'>portrait</xsl:param> -->
