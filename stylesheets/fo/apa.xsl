@@ -168,18 +168,18 @@
 <!--   </xsl:choose> -->
 <!-- </xsl:template> -->
 
-<xsl:template name="apa.pubdate">
-  <xsl:param name="endsep">
-    <xsl:call-template name="gentext.template"><xsl:with-param name="context" select="'iso690'"/><xsl:with-param name="name" select="'pubinfo.sep'"/></xsl:call-template>
-  </xsl:param>
-  <xsl:choose>
-    <xsl:when test="(./pubdate[not(@role='issuing')]|./copyright/year)">
-      <xsl:apply-templates mode="iso690.mode" select="./pubdate[not(@role='issuing')]|./copyright/year">
-        <xsl:with-param name="sep" select="$endsep"/>
-      </xsl:apply-templates>
-    </xsl:when>
-  </xsl:choose>
-</xsl:template>
+<!-- <xsl:template name="apa.pubdate"> -->
+<!--   <xsl:param name="endsep"> -->
+<!--     <xsl:call&#45;template name="gentext.template"><xsl:with&#45;param name="context" select="'iso690'"/><xsl:with&#45;param name="name" select="'pubinfo.sep'"/></xsl:call&#45;template> -->
+<!--   </xsl:param> -->
+<!--   <xsl:choose> -->
+<!--     <xsl:when test="(./pubdate[not(@role='issuing')]|./copyright/year)"> -->
+<!--       <xsl:apply&#45;templates mode="iso690.mode" select="./pubdate[not(@role='issuing')]|./copyright/year"> -->
+<!--         <xsl:with&#45;param name="sep" select="$endsep"/> -->
+<!--       </xsl:apply&#45;templates> -->
+<!--     </xsl:when> -->
+<!--   </xsl:choose> -->
+<!-- </xsl:template> -->
 
 <!-- <xsl:template name="iso690.author.list"> -->
 <!--   <xsl:param name="person.list" -->
