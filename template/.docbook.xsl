@@ -23,7 +23,7 @@
 -->
 
 <!-- Parameters can be found here: -->
-<!-- - FO output http://docbook.sourceforge.net/release/xsl/1.78.1/doc/fo/index.html -->
+<!-- - FO output http://docbook.sourceforge.net/release/xsl/1.79.2/doc/fo/index.html -->
 <!-- - HTML output http://www.sagehill.net/docbookxsl/HtmlOutput.html -->
 <!-- - Print output http://www.sagehill.net/docbookxsl/PrintOutput.html -->
 <!-- - General http://www.sagehill.net/docbookxsl/GeneralCustoms.html -->
@@ -61,7 +61,28 @@
     <!-- <xsl:param name='paper.type'>A4</xsl:param> -->
     <!-- <xsl:param name='page.orientation'>portrait</xsl:param> -->
     <!-- <xsl:param name='double.sided'>1</xsl:param> -->
+    <!-- <xsl:param name="column.count.body" select="2"/> -->
     <!-- <xsl:param name="header.column.widths">1 3 1</xsl:param> -->
+
+    <!-- <xsl:attribute&#45;set name="component.title.properties"> -->
+    <!--     <xsl:attribute name="font&#45;family"> -->
+    <!--         <xsl:value&#45;of select="$title.font.family"/> -->
+    <!--     </xsl:attribute> -->
+    <!--     <xsl:attribute name="font&#45;size"> -->
+    <!--         <xsl:value&#45;of select="$body.font.master * 2"/> -->
+    <!--         <xsl:text>pt</xsl:text> -->
+    <!--     </xsl:attribute> -->
+    <!--     <xsl:attribute name="font&#45;weight">bold</xsl:attribute> -->
+    <!--         <!&#45;&#45; font size is calculated dynamically by section.heading template &#45;&#45;> -->
+    <!--     <xsl:attribute name="keep&#45;with&#45;next.within&#45;column">always</xsl:attribute> -->
+    <!--     <xsl:attribute name="text&#45;align">left</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;before.minimum">0.3em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;before.optimum">0.4em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;before.maximum">0.8em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;after.minimum">0.2em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;after.optimum">0.3em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;after.maximum">0.7em</xsl:attribute> -->
+    <!-- </xsl:attribute&#45;set> -->
 
     <!-- <xsl:param name="body.margin.top">0.7in</xsl:param> -->
     <!-- Font Options: -->
@@ -76,6 +97,40 @@
     <!-- <xsl:param name='body.font.master'>11</xsl:param> -->
     <!-- <xsl:param name='footnote.font.size'>9</xsl:param> -->
     <!-- <xsl:param name='line-height'>1.3</xsl:param> -->
+
+    <!-- <xsl:attribute&#45;set name="section.title.properties"> -->
+    <!--     <xsl:attribute name="font&#45;family"> -->
+    <!--         <xsl:value&#45;of select="$title.font.family"/> -->
+    <!--     </xsl:attribute> -->
+    <!--     <xsl:attribute name="font&#45;size"> -->
+    <!--         <xsl:value&#45;of select="$body.font.master * 1.2"/> -->
+    <!--         <xsl:text>pt</xsl:text> -->
+    <!--     </xsl:attribute> -->
+    <!--     <xsl:attribute name="font&#45;weight">bold</xsl:attribute> -->
+    <!--         <!&#45;&#45; font size is calculated dynamically by section.heading template &#45;&#45;> -->
+    <!--     <xsl:attribute name="keep&#45;with&#45;next.within&#45;column">always</xsl:attribute> -->
+    <!--     <xsl:attribute name="text&#45;align">left</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;before.minimum">0.2em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;before.optimum">0.4em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;before.maximum">0.6em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;after.minimum">0.2em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;after.optimum">0.4em</xsl:attribute> -->
+    <!--     <xsl:attribute name="space&#45;after.maximum">0.6em</xsl:attribute> -->
+    <!-- </xsl:attribute&#45;set> -->
+    <!--  -->
+    <!-- <xsl:attribute&#45;set name="section.title.level1.properties"> -->
+    <!--     <xsl:attribute name="font&#45;size"> -->
+    <!--         <xsl:value&#45;of select="$body.font.master * 1.2"/> -->
+    <!--         <xsl:text>pt</xsl:text> -->
+    <!--     </xsl:attribute> -->
+    <!-- </xsl:attribute&#45;set> -->
+    <!--  -->
+    <!-- <xsl:attribute&#45;set name="section.title.level2.properties"> -->
+    <!--     <xsl:attribute name="font&#45;size"> -->
+    <!--         <xsl:value&#45;of select="$body.font.master * 1.1"/> -->
+    <!--         <xsl:text>pt</xsl:text> -->
+    <!--     </xsl:attribute> -->
+    <!-- </xsl:attribute&#45;set> -->
 
     <!-- More parameters can be found here: -->
     <!-- - FO output http://docbook.sourceforge.net/release/xsl/1.78.1/doc/fo/index.html -->
