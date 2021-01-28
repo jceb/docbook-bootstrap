@@ -134,4 +134,7 @@
         </fo:block>
     </xsl:template>
 
+    <xsl:template match="processing-instruction('asciidoc-pagebreak')">
+        <fo:block break-after='page'/>
+    </xsl:template>
 </xsl:stylesheet>
