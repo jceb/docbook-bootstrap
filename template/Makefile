@@ -62,7 +62,12 @@ build: default ## Trigger ant's build (default) target
 
 .PHONY: watch
 watch: ## Start watchman to autobuild project
-	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make", "build", "in=$(in)", "id=$(id)"], "expression": ["anyof", ["match", ".docbook.xsl", "wholename"], ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
+	mkdir -p "${XDG_RUNTIME_DIR}/watchman"
+	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make", "build", "in=$(in)", "id=$(id)"], "expression": ["anyof", ["match", ".docbook.xsl", "wholename"], ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j --logfile="${XDG_RUNTIME_DIR}/watchman/log"
+
+.PHONY: watchlog
+watchlog: ## Watch watchman log output
+	tail -f "${XDG_RUNTIME_DIR}/watchman/log"
 
 .PHONY: stopwatch
 stopwatch: ## Stop watchman
