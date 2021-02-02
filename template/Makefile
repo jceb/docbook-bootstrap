@@ -2,7 +2,7 @@
 .POSIX:
 .SUFFIXES:
 
-WATCHLOG="${XDG_RUNTIME_DIR}/watchman/log$(shell echo "${PWD}" | sed -e 's/ //g;s#/#_#g')"
+WATCHLOG=${XDG_RUNTIME_DIR}/watchman/log
 
 # Adjust these variables to fit your environment
 # PATH_TO_DBOOTSTRAP="../docbook-bootstrap"
@@ -65,16 +65,18 @@ build: default ## Trigger ant's build (default) target
 .PHONY: watch
 watch: ## Start watchman to autobuild project
 	mkdir -p $$(dirname "$(WATCHLOG)")
-	echo '["watch", "${PWD}"]' | watchman -j
-	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make", "build", "in=$(in)", "id=$(id)"], "expression": ["anyof", ["match", ".docbook.xsl", "wholename"], ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j --logfile="$(WATCHLOG)"
+	echo '["watch", "${PWD}"]' | watchman -j --logfile="$(WATCHLOG)"
+	echo '["trigger", "${PWD}", {"append_files": false, "command": ["make", "build", "in=$(in)", "id=$(id)"], "expression": ["anyof", ["match", ".docbook.xsl", "wholename"], ["match", "*.xsl", "wholename"], ["match", "*.adoc", "wholename"], ["match", "*.svg", "wholename"], ["match", "*.png", "wholename"]], "name": "build"}]' | watchman -j
+	watchman watch-list
 
 .PHONY: watchlog
-watchlog: ## Watch watchman log output
+watchlog: $(WATCHLOG) ## Watch watchman log output
 	tail -f "$(WATCHLOG)"
 
 .PHONY: stopwatch
 stopwatch: ## Stop watchman
-	watchman watch-del "${PWD}"
+	watchman watch-del "${PWD}" --logfile="$(WATCHLOG)"
+	watchman watch-list
 
 # Expand dbootstrap.dir variable in xslt stylesheet .. since it's not
 # possible/allowed for xslt to do it
